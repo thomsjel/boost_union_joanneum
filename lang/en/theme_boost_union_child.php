@@ -46,6 +46,11 @@ $string['prescssinheritancesetting_desc'] = 'With this setting, you control if t
 // ... ... Setting: Extra SCSS inheritance setting.
 $string['extrascssinheritancesetting'] = 'Extra SCSS inheritance';
 $string['extrascssinheritancesetting_desc'] = 'With this setting, you control if the extra SCSS code from Boost Union should be inherited or duplicated.';
+// ... Section: Cohort settings.
+$string['cohortsettingsheading'] = 'Cohort settings';
+// ... ... Setting: Custom menu items.
+$string['custommenuitems'] = 'Custom menu items';
+$string['custommenuitems_desc'] = 'Enter each menu item on a new line with format: menu text|link URL|tooltip title (optional)|language code (optional)|{cohort IDs} (optional). Lines starting with a hyphen will appear as menu items in the previous top level menu and ### makes a divider. For example:<br><code>Teacher Resources|/teacher|Teacher Area|en|{1,2,3}</code><br>This will only show "Teacher Resources" to users in cohorts 1, 2, or 3.';
 
 /**************************************************************
  * EXTENSION POINT:

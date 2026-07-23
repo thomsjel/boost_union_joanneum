@@ -127,6 +127,28 @@ if ($hassiteconfig || has_capability('theme/boost_union:configure', context_syst
         $setting->set_updatedcallback('theme_reset_all_caches');
         $tab->add($setting);
 
+        // Create cohort settings heading.
+        $name = 'theme_boost_union_child/cohortsettingsheading';
+        $title = get_string('cohortsettingsheading', 'theme_boost_union_child', null, true);
+        $setting = new admin_setting_heading($name, $title, null);
+        $tab->add($setting);
+
+        // Setting: Custom menu items with cohort support.
+        $name = 'theme_boost_union_child/custommenuitems';
+        $title = get_string('custommenuitems', 'theme_boost_union_child', null, true);
+        $description = get_string('custommenuitems_desc', 'theme_boost_union_child', null, true);
+        $setting = new admin_setting_configtextarea(
+            $name,
+            $title,
+            $description,
+            '',
+            PARAM_RAW,
+            '60',
+            '10'
+        );
+        $setting->set_updatedcallback('theme_reset_all_caches');
+        $tab->add($setting);
+
         // Add tab to settings page.
         $page->add($tab);
 
