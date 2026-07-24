@@ -128,8 +128,8 @@ if ($hassiteconfig || has_capability('theme/boost_union:configure', context_syst
         $tab->add($setting);
 
         // Create cohort settings heading.
-        $name = 'theme_boost_union_child/cohortsettingsheading';
-        $title = get_string('cohortsettingsheading', 'theme_boost_union_child', null, true);
+        $name = 'theme_boost_union_child/custommenuitemsheading';
+        $title = get_string('custommenuitemsheading', 'theme_boost_union_child', null, true);
         $setting = new admin_setting_heading($name, $title, null);
         $tab->add($setting);
 
