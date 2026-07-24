@@ -6,10 +6,6 @@ use theme_boost_union\output\navigation\primary as boost_union_primary;
 use custom_menu;
 
 class primary extends boost_union_primary {
-    public function __construct($page) {
-        parent::__construct($page);
-    }
-
     /**
      * Override to filter custom menu items by cohort.
      * This is called by export_for_template() in the parent class.
@@ -56,7 +52,7 @@ class primary extends boost_union_primary {
         $filteredmenustring = $this->filter_custom_menu_by_cohort($custommenustring, $usercohortids);
 
         // If the filtered string is empty, return empty array.
-        if (empty(trim($filteredmenustring))) {
+        if (trim($filteredmenustring) === '') {
             return [];
         }
 
@@ -75,20 +71,18 @@ class primary extends boost_union_primary {
     /**
      * Build HTML span for a cohort ID.
      */
-    private function build_cohort_span($cohortid, $DB): string {
-        $cohortname = $DB->get_field('cohort', 'name', ['id' => (int)$cohortid]);
-        $cohortdesc = $DB->get_field('cohort', 'description', ['id' => (int)$cohortid]);
-        $cohorttagcolor = '';
-        if ($cohortdesc !== false) {
-            $cohorttagcolor = strip_tags($cohortdesc ?? '');
+    private function build_cohort_span(int $cohortid, $DB): string {
+        $cohort = $DB->get_record('cohort', ['id' => $cohortid], 'id, name, description');
+        if (!$cohort) {
+            return '';
         }
-        if ($cohortname !== false) {
-            $escapedname = htmlspecialchars($cohortname, ENT_QUOTES, 'UTF-8');
-            $bgcolor = $cohorttagcolor . '25';
-            return "<span class='cohort-tag cohort-$cohortid' style='background-color:$bgcolor; color:$cohorttagcolor; border:1px solid $cohorttagcolor;'>$escapedname</span>";
-        }
-        return '';
-    }
+
+        $color = $cohort->description ? trim(strip_tags($cohort->description)) : '';
+        $bgcolor = $color . '05'; // Add alpha for background
+        $escapedname = htmlspecialchars($cohort->name, ENT_QUOTES, 'UTF-8');
+
+    return "<span class='cohort-tag cohort-$cohortid' style='background-color:$bgcolor; color:$color; border:1px solid $color;'>$escapedname</span>";
+}
 
     /**
      * Recursively process nodes to add cohort spans.
@@ -131,7 +125,11 @@ class primary extends boost_union_primary {
             }
             
             // Get the text from exported data.
-            $currenttext = is_array($exported) ? ($exported['text'] ?? '') : ($exported->text ?? '');
+            $currenttext = match (true) {
+                is_array($exported) => $exported['text'] ?? '',
+                is_object($exported) => $exported->text ?? '',
+                default => '',
+            };
             $currenttext = trim($currenttext);
             
             // Find matching cohort IDs.
@@ -184,55 +182,31 @@ class primary extends boost_union_primary {
      * 
      * @param bool $foradmin If true, skip filtering and just remove cohort markers from all lines.
      */
-    private function filter_custom_menu_by_cohort(string $custommenustring, array $usercohortids, bool $foradmin = false): string {
+    private function filter_custom_menu_by_cohort(string $custommenustring, array $usercohortids): string {
         $lines = explode("\n", $custommenustring);
         $filteredlines = [];
 
         foreach ($lines as $line) {
             $trimmed = trim($line);
-            
-            // Keep empty lines and dividers as-is.
             if (empty($trimmed) || $trimmed === '###') {
                 $filteredlines[] = $line;
                 continue;
             }
 
-            // Extract cohort IDs from the line.
+            // Extract cohort IDs.
             $requiredcohortids = [];
             if (preg_match('/\{([^}]+)\}/', $trimmed, $matches)) {
                 $requiredcohortids = array_map('trim', explode(',', $matches[1]));
+                $trimmed = preg_replace('/\|\{[^}]+\}$/', '', $trimmed);
+                $trimmed = trim(str_replace('  ', ' ', $trimmed));
             }
 
-            // If admin mode, don't filter - just remove cohort markers.
-            if ($foradmin) {
-                $cleanedline = preg_replace('/\|\{[^}]+\}$/', '', $trimmed);
-                $cleanedline = trim(str_replace('  ', ' ', $cleanedline));
-                $filteredlines[] = $cleanedline;
+            // Skip if user lacks access.
+            if (!empty($requiredcohortids) && !array_intersect($requiredcohortids, $usercohortids)) {
                 continue;
             }
 
-            // Original filtering logic for non-admin.
-            // Check access: if no cohort restriction, allow.
-            $hasaccess = empty($requiredcohortids);
-            if (!$hasaccess) {
-                foreach ($requiredcohortids as $requiredid) {
-                    if (in_array($requiredid, $usercohortids)) {
-                        $hasaccess = true;
-                        break;
-                    }
-                }
-            }
-
-            // Skip if no access.
-            if (!$hasaccess) {
-                continue;
-            }
-
-            // Remove the cohort restriction from the line.
-            $cleanedline = preg_replace('/\|\{[^}]+\}$/', '', $trimmed);
-            $cleanedline = trim(str_replace('  ', ' ', $cleanedline));
-            
-            $filteredlines[] = $cleanedline;
+            $filteredlines[] = $trimmed;
         }
 
         return implode("\n", $filteredlines);
