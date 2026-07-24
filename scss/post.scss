@@ -3,3 +3,34 @@
  * Add your SCSS code here.
  * It will be added on top of Boost Union's SCSS code.
  ***************************************************************/
+
+ .cohort-tag{
+    background-color: rgba(128, 128, 128, 0.169);
+    color: gray;
+    border: 1px solid gray;
+    border-radius: 1rem;
+    padding: 0 .35rem;
+    font-weight: 500;
+    font-size: .75rem;
+}
+
+.nav-link{
+    position: relative;
+    .cohort-tag{
+        font-size: 0.65rem;
+        line-height: .8rem;
+        padding: 0 0.25rem;
+        position: absolute;
+        left: 50%;
+        top: 2px;
+        transform: translateX(-50%);
+    }
+}
+
+.dropdown-item:hover{
+    .cohort-tag{
+        color:white !important;
+        background-color: var(--primary)  !important;
+        border-color: white  !important;
+    }
+}
