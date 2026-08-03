@@ -157,6 +157,41 @@ if ($hassiteconfig || has_capability('theme/boost_union:configure', context_syst
          * Add your Boost Union Child settings here.
          *********************************************************/
 
+        // Tab: Slider.
+        $tab = new admin_settingpage(
+            'theme_boost_union_child_slider',
+            get_string('slidertab', 'theme_boost_union_child', null, true)
+        );
+
+        // Heading: Slider layout.
+        $name = 'theme_boost_union_child/sliderlayoutheading';
+        $title = get_string('sliderlayoutheading', 'theme_boost_union_child', null, true);
+        $setting = new admin_setting_heading($name, $title, null);
+        $tab->add($setting);
+
+        // Setting: Slider layout type.
+        $sliderlayoutoptions = [
+                THEME_BOOST_UNION_CHILD_SETTING_SLIDER_LAYOUT_DEFAULT =>
+                        get_string('sliderlayoutsetting_default', 'theme_boost_union_child'),
+                THEME_BOOST_UNION_CHILD_SETTING_SLIDER_LAYOUT_TEXTLEFT_SOLID =>
+                        get_string('sliderlayoutsetting_textleft_solid', 'theme_boost_union_child'),
+        ];
+        $name = 'theme_boost_union_child/sliderlayout';
+        $title = get_string('sliderlayoutsetting', 'theme_boost_union_child', null, true);
+        $description = get_string('sliderlayoutsetting_desc', 'theme_boost_union_child', null, true);
+        $setting = new admin_setting_configselect(
+            $name,
+            $title,
+            $description,
+            THEME_BOOST_UNION_CHILD_SETTING_SLIDER_LAYOUT_DEFAULT,
+            $sliderlayoutoptions
+        );
+        $setting->set_updatedcallback('theme_reset_all_caches');
+        $tab->add($setting);
+
+        // Add tab to settings page.
+        $page->add($tab);
+
         // Add settings page to the admin settings category.
         $ADMIN->add('theme_boost_union', $page);
     }

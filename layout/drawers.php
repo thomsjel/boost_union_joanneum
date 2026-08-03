@@ -217,7 +217,7 @@ if ($PAGE->pagelayout == 'frontpage') {
 
 // Include the template content for the slider, but only if we are on the frontpage.
 if ($PAGE->pagelayout == 'frontpage') {
-    require_once(dirname(__DIR__, 2) . '/boost_union/layout/includes/slider.php');
+    require_once($CFG->dirroot . '/theme/boost_union_child/layout/includes/slider.php');
 }
 
 // Include the template content for the smart menus.

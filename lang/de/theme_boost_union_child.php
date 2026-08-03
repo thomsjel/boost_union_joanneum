@@ -55,6 +55,16 @@ $string['extrascssinheritancesetting_desc'] = 'Mit dieser Einstellung legen Sie 
 // Privacy API.
 $string['privacy:metadata'] = 'Das „Boost Union Child“-Theme speichert keinerlei personenbezogene Daten von Nutzern.';
 
+// Settings: Slider tab.
+$string['slidertab'] = 'Slider';
+// ... Section: Slider layout.
+$string['sliderlayoutheading'] = 'Slider-Layout';
+// ... ... Setting: Slider layout type.
+$string['sliderlayoutsetting'] = 'Slider-Layout-Typ';
+$string['sliderlayoutsetting_desc'] = 'Mit dieser Einstellung können Sie das Layout für den Slider auswählen.';
+$string['sliderlayoutsetting_default'] = 'Standard (Vollbreitenbild mit Textüberlagerung)';
+$string['sliderlayoutsetting_textleft_solid'] = 'Text links mit durchgezogener Hintergrundfarbe und Bild rechts';
+
 // Settings: General settings tab.
 // ... Section: Cohort-based navigation.
 $string['custommenuitemsheading'] = 'Kohortenbasierte Navigation';
