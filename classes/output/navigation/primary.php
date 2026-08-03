@@ -34,7 +34,7 @@ class primary extends boost_union_primary {
             $custommenunodes = \custom_menu::convert_text_to_menu_nodes($custommenustring, $currentlang);
 
             // Process nodes recursively to add cohort spans.
-            $nodes = $this->add_cohort_spans_to_nodes($custommenunodes, $custommenustring, $DB, $output);
+            $nodes = $this->add_cohort_labels_to_nodes($custommenunodes, $custommenustring, $DB, $output);
 
             return $nodes;
         }
@@ -68,6 +68,7 @@ class primary extends boost_union_primary {
         return $nodes;
     }
 
+
     /**
      * Build HTML span for a cohort ID.
      */
@@ -88,7 +89,7 @@ class primary extends boost_union_primary {
      * Recursively process nodes to add cohort spans.
      * Modifies exported node data AFTER export to ensure HTML is preserved.
      */
-    private function add_cohort_spans_to_nodes(array $nodes, string $originalmenustring, $DB, renderer_base $output): array {
+    private function add_cohort_labels_to_nodes(array $nodes, string $originalmenustring, $DB, renderer_base $output): array {
         $result = [];
         
         // Build a map of text to cohort IDs from original menu string.
@@ -164,9 +165,9 @@ class primary extends boost_union_primary {
             
             if (!empty($children)) {
                 if (is_array($exported)) {
-                    $exported['children'] = $this->add_cohort_spans_to_nodes($children, $originalmenustring, $DB, $output);
+                    $exported['children'] = $this->add_cohort_labels_to_nodes($children, $originalmenustring, $DB, $output);
                 } else {
-                    $exported->children = $this->add_cohort_spans_to_nodes($children, $originalmenustring, $DB, $output);
+                    $exported->children = $this->add_cohort_labels_to_nodes($children, $originalmenustring, $DB, $output);
                 }
             }
 
