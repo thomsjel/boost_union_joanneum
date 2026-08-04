@@ -104,7 +104,7 @@
             {{! Text content with solid background - left side }}
             <div class="slide-text-solid bg-light p-4 rounded-left {{contentstyleclass}}">
               {{#linktext}}{{#link}}<a href="{{link}}" {{#linktitle}}title="{{linktitle}}"{{/linktitle}} {{#linktargetnewtab}}target="_blank" rel="noopener noreferrer"{{/linktargetnewtab}}>{{/link}}{{/linktext}}
-                {{#caption}}<h5>{{caption}}</h5>{{/caption}}
+                {{#caption}}<h5 class="text-light">{{caption}}</h5>{{/caption}}
                 {{{content}}}
               {{#linktext}}{{#link}}</a>{{/link}}{{/linktext}}
             </div>
@@ -132,7 +132,7 @@
   </div>
 </div>
 {{/slidergeneralsettings.islayouttextleft}}
-{{! Default layout - Full width image with text overlay }}
+{{^slidergeneralsettings.islayouttextleft}}
 <div id="themeboostunionslider-wrapper" class="container-fluid pb-3">
   <div id="themeboostunionslider" class="carousel {{slidergeneralsettings.animation}}" data-interval="{{slidergeneralsettings.interval}}"
     data-keyboard="{{slidergeneralsettings.keyboard}}" data-pause="{{slidergeneralsettings.pause}}"
@@ -177,14 +177,11 @@
   </div>
 </div>
 {{/slidergeneralsettings.islayouttextleft}}
-{{/showslider}}
-
-
-{{#js}}
+  {{#js}}
 require(['jquery', 'theme_boost/bootstrap/carousel'], function($) {
   if (document.getElementById('themeboostunionslider')) {
     $('#themeboostunionslider').carousel();
   }
 });
-{{/js}}
+  {{/js}}
 {{/showslider}}

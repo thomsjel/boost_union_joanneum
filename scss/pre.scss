@@ -1,3 +1,8 @@
+@font-face {
+     font-family: 'UnitSlab';
+     src: url("http://localhost/pluginfile.php/1/theme_boost_union/customfonts/0/UnitSlabOT.otf");
+}
+
 // Slider layout: Text left with solid background and image right
 .slider-layout-textleft-solid {
     .carousel-inner {
@@ -5,20 +10,26 @@
             .slide-container {
                 display: flex;
                 align-items: center;
-                min-height: 400px;
+                height: 20rem;
                 
                 .slide-text-solid {
                     flex: 1;
-                    background-color: #fff;
+                    background-color: var(--primary) !important;
                     padding: 2rem;
                     border-radius: 0.25rem;
                     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-                    margin-right: 1rem;
+                    height: 100%;
+                    align-items: center;
+                    display: flex;
+                    justify-content: center;
+                    flex-direction: column;
+                    align-items: flex-start;
                     
                     h5 {
                         color: #333;
                         font-size: 1.5rem;
                         margin-bottom: 1rem;
+                        font-family: 'UnitSlab';
                     }
                     
                     // Dark content style overrides for solid background
@@ -41,7 +52,7 @@
                 }
                 
                 .slide-image {
-                    width: 50%;
+                    width: 45%;
                     height: 100%;
                     
                     img {
@@ -93,6 +104,21 @@
     .carousel-control-prev,
     .carousel-control-next {
         width: 5%;
+    }
+}
+
+.carousel-indicators { 
+    li {
+        width: 20px !important;
+        height: 8px !important;
+        background-color: transparent !important;
+        background-clip: padding-box;
+        border: 1px solid white !important;
+        opacity: 1 !important;
+    }
+    .active{
+        background-color: #fff !important;
+        border: 1px solid white !important;
     }
 }
 
