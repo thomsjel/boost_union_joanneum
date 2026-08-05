@@ -192,6 +192,41 @@ if ($hassiteconfig || has_capability('theme/boost_union:configure', context_syst
         // Add tab to settings page.
         $page->add($tab);
 
+        // Tab: Login page.
+        $tab = new admin_settingpage(
+            'theme_boost_union_child_login',
+            get_string('loginpagetab', 'theme_boost_union_child', null, true)
+        );
+
+        // Heading: Login page layout.
+        $name = 'theme_boost_union_child/loginlayoutheading';
+        $title = get_string('loginlayoutheading', 'theme_boost_union_child', null, true);
+        $setting = new admin_setting_heading($name, $title, null);
+        $tab->add($setting);
+
+        // Setting: Login page layout type.
+        $loginlayoutoptions = [
+                THEME_BOOST_UNION_CHILD_SETTING_LOGIN_LAYOUT_DEFAULT =>
+                        get_string('loginlayoutsetting_default', 'theme_boost_union_child'),
+                THEME_BOOST_UNION_CHILD_SETTING_LOGIN_LAYOUT_SPLIT_SCREEN =>
+                        get_string('loginlayoutsetting_splitscreen', 'theme_boost_union_child'),
+        ];
+        $name = 'theme_boost_union_child/loginlayout';
+        $title = get_string('loginlayoutsetting', 'theme_boost_union_child', null, true);
+        $description = get_string('loginlayoutsetting_desc', 'theme_boost_union_child', null, true);
+        $setting = new admin_setting_configselect(
+            $name,
+            $title,
+            $description,
+            THEME_BOOST_UNION_CHILD_SETTING_LOGIN_LAYOUT_DEFAULT,
+            $loginlayoutoptions
+        );
+        $setting->set_updatedcallback('theme_reset_all_caches');
+        $tab->add($setting);
+
+        // Add tab to settings page.
+        $page->add($tab);
+
         // Add settings page to the admin settings category.
         $ADMIN->add('theme_boost_union', $page);
     }

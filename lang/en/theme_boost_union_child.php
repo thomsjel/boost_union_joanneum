@@ -71,3 +71,13 @@ $string['sliderlayoutsetting'] = 'Slider layout type';
 $string['sliderlayoutsetting_desc'] = 'With this setting, you can choose the layout for the slider.';
 $string['sliderlayoutsetting_default'] = 'Default (Full width image with text overlay)';
 $string['sliderlayoutsetting_textleft_solid'] = 'Text left with solid background and image right';
+
+// Settings: Login page tab.
+$string['loginpagetab'] = 'Login page';
+// ... Section: Login page layout.
+$string['loginlayoutheading'] = 'Login page layout';
+// ... ... Setting: Login page layout type.
+$string['loginlayoutsetting'] = 'Login page layout type';
+$string['loginlayoutsetting_desc'] = 'With this setting, you can choose the layout for the login page.';
+$string['loginlayoutsetting_default'] = 'Default';
+$string['loginlayoutsetting_splitscreen'] = 'Split screen (BG image left, login right)';

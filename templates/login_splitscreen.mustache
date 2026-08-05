@@ -1,0 +1,75 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template theme_boost_union_child/login_splitscreen
+
+    Split screen login page template with background image on left and login form on right.
+
+    Example context (json):
+    {
+        "output": {
+            "doctype": "<!DOCTYPE html>",
+            "page_title": "Login page",
+            "favicon": "favicon.ico",
+            "main_content": "<h1>Headers keep HTML validators happy</h1>"
+        }
+    }
+}}
+{{> theme_boost/head }}
+
+<body {{{ bodyattributes }}}>
+{{> core/local/toast/wrapper}}
+
+<div id="page-wrapper">
+
+    {{{ output.standard_top_of_body_html }}}
+
+    <div id="page" class="container-fluid p-0 m-0">
+        <div id="page-content" class="row m-0">
+            <!-- Left side - Background image area (50vw) -->
+            <div id="login-bg-image" class="col-md-6 p-0 d-none d-md-block" style="{{#loginbackgroundimageurl}}background-image: url({{{loginbackgroundimageurl}}});{{/loginbackgroundimageurl}} background-size: cover; background-position: center; background-repeat: no-repeat;">
+                <div class="login-bg-wrapper">
+                    {{#loginbackgroundimagetext}}
+                    <div class="login-bg-text" style="color: {{{ loginbackgroundimagetextcolor }}};">
+                        {{{ loginbackgroundimagetext }}}
+                    </div>
+                    {{/loginbackgroundimagetext}}
+                </div>
+            </div>
+            
+            <!-- Right side - Login form area (50vw) -->
+            <div id="login-form-container" class="col-md-6 d-flex align-items-center justify-content-center p-4">
+                <div class="login-wrapper {{{ loginwrapperclass }}}">
+                    <div class="login-container {{{ logincontainerclass }}}">
+                    <a class="btn btn-primary btn-login-form" href="https://localhost/auth/oidc/?source=loginpage">Log in to Moodle</a>
+                        {{{ output.main_content }}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{> theme_boost/footer }}
+</div>
+
+</body>
+</html>
+{{#js}}
+M.util.js_pending('theme_boost/loader');
+require(['theme_boost/loader'], function() {
+  M.util.js_complete('theme_boost/loader');
+});
+{{/js}}

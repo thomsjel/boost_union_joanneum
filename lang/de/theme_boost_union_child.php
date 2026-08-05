@@ -65,6 +65,16 @@ $string['sliderlayoutsetting_desc'] = 'Mit dieser Einstellung können Sie das La
 $string['sliderlayoutsetting_default'] = 'Standard (Vollbreitenbild mit Textüberlagerung)';
 $string['sliderlayoutsetting_textleft_solid'] = 'Text links mit durchgezogener Hintergrundfarbe und Bild rechts';
 
+// Settings: Login page tab.
+$string['loginpagetab'] = 'Login-Seite';
+// ... Section: Login page layout.
+$string['loginlayoutheading'] = 'Login-Seiten-Layout';
+// ... ... Setting: Login page layout type.
+$string['loginlayoutsetting'] = 'Login-Seiten-Layout-Typ';
+$string['loginlayoutsetting_desc'] = 'Mit dieser Einstellung können Sie das Layout für die Login-Seite auswählen.';
+$string['loginlayoutsetting_default'] = 'Standard';
+$string['loginlayoutsetting_splitscreen'] = 'Geteilter Bildschirm (Hintergrundbild links, Login rechts)';
+
 // Settings: General settings tab.
 // ... Section: Cohort-based navigation.
 $string['custommenuitemsheading'] = 'Kohortenbasierte Navigation';
