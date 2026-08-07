@@ -279,6 +279,8 @@
     </div>
     {{/logininstructionsabove}}
 
+    <div class="login-separator my-5">ODER</div>
+
     {{! =========================================================================== }}
     {{! OPEN LAYOUT CONTAINER: Tabs or Accordion }}
     {{! =========================================================================== }}
@@ -303,6 +305,7 @@
     {{! LOGIN METHODS: Loop through sorted methods }}
     {{! =========================================================================== }}
     {{#loginmethods}}
+
 
     {{! --------------------------------------------------------------------------- }}
     {{! METHOD: Local Login }}
@@ -382,7 +385,7 @@
     {{! METHOD: Identity Providers (OAuth2, SAML, etc.) }}
     {{! --------------------------------------------------------------------------- }}
     {{#isidp}}
-    {{#showidplogin}}
+    {{^showidplogin}}
     {{>theme_boost_union/loginform-partial-method-start}}
 
         <div class="login-identityproviders">
@@ -592,14 +595,14 @@
     {{! LOGIN FORM FOOTER }}
     {{! =========================================================================== }}
 
-    <div class="d-flex">
+    <div class="d-flex justify-content-center">
         {{#languagemenu}}
             <div class="login-languagemenu">
                 {{>core/action_menu}}
             </div>
             <div class="divider border-start align-self-center mx-3"></div>
         {{/languagemenu}}
-        <button type="button" class="btn btn-secondary" {{!
+        <button type="button" class="btn " {{!
         }} data-modal="alert"{{!
         }} data-modal-title-str='["cookiesenabled", "core"]' {{!
         }} data-modal-content-str='["cookiesenabled_help_html", "core"]'{{!

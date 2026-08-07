@@ -77,8 +77,9 @@
     #login-form-container {
         height: 100vh;
         min-height: 100vh;
-        background-color: $gray-100;
-        background-image: linear-gradient(to bottom right, $gray-100, $gray-200);
+        /*background-color: $gray-100;
+        background-image: linear-gradient(to bottom right, $gray-100, $gray-200);*/
+        background: $white;
 
         .login-form-forgotpassword{
             text-align:right;
@@ -99,13 +100,34 @@
         background-color: $white;
         border-radius: 8px;
         margin: 0;
+
+        .login-separator{
+            display: flex;
+            align-items: center;
+            gap: .75rem;
+            color: #6a737b;
+            font-size: .875rem;
+            text-transform: uppercase;
+            letter-spacing: .08em;
+        }
+
+        .login-separator::before, .login-separator::after{
+            content: "";
+            flex: 1;
+            border-top: 1px solid #dee2e6;
+        }
     }
 
-    input, button, .btn-login-form{
-        padding: .5rem 1rem;
+    input, .btn-link, .btn-login-form{
+        padding: .5rem 1rem !important;
         font-size: 1.17rem;
         line-height: 1.5;
         width:100%;
+        text-align: center !important;
+    }
+
+    .btn-link.collapsed{
+        background-color: $white !important;
     }
 }
 
