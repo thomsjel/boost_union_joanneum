@@ -15,9 +15,9 @@
     along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 }}
 {{!
-    @template theme_boost_union_child/login_splitscreen
+    @template theme_boost/login
 
-    Split screen login page template with background image on left and login form on right.
+    Login page template
 
     Example context (json):
     {
@@ -55,7 +55,7 @@
             <div id="login-form-container" class="col-md-6 d-flex align-items-center justify-content-center p-4">
                 <div class="login-wrapper {{{ loginwrapperclass }}}">
                     <div class="login-container {{{ logincontainerclass }}}">
-                    <a class="btn btn-primary btn-login-form" href="https://localhost/auth/oidc/?source=loginpage">Log in to Moodle</a>
+
                         {{{ output.main_content }}}
                     </div>
                 </div>

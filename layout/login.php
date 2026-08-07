@@ -31,8 +31,7 @@ global $CFG;
 // Get the login layout setting from theme_boost_union_child.
 $loginlayout = get_config('theme_boost_union_child', 'loginlayout');
 
-// Handle different login layouts.
-if ($loginlayout === THEME_BOOST_UNION_CHILD_SETTING_LOGIN_LAYOUT_SPLIT_SCREEN) {
+
     // Split screen layout.
     $bodyattributes = $OUTPUT->body_attributes();
     [$loginbackgroundimagetext, $loginbackgroundimagetextcolor] = theme_boost_union_get_loginbackgroundimage_text();
@@ -44,6 +43,7 @@ if ($loginlayout === THEME_BOOST_UNION_CHILD_SETTING_LOGIN_LAYOUT_SPLIT_SCREEN) 
         'bodyattributes' => $bodyattributes,
         'loginbackgroundimagetext' => $loginbackgroundimagetext,
         'loginbackgroundimagetextcolor' => $loginbackgroundimagetextcolor,
+        'loginurloidc' => new moodle_url('/auth/oidc/?source=loginpage')
     ];
 
     // Add login container classes based on parent theme settings.
@@ -88,10 +88,16 @@ if ($loginlayout === THEME_BOOST_UNION_CHILD_SETTING_LOGIN_LAYOUT_SPLIT_SCREEN) 
 
     // Include the template content for the info banners.
     require_once($CFG->dirroot . '/theme/boost_union/layout/includes/infobanners.php');
-    
-    // Render the split screen template.
-    echo $OUTPUT->render_from_template('theme_boost_union_child/login_splitscreen', $templatecontext);
+
+    // Handle different login layouts.
+if ($loginlayout === THEME_BOOST_UNION_CHILD_SETTING_LOGIN_LAYOUT_SPLIT_SCREEN) {
+
+    // Render login.mustache from theme_boost (which is overridden in theme_boost_union).
+    echo $OUTPUT->render_from_template('theme_boost_union_child/core/login_split', $templatecontext);
+
 } else {
-    // Default layout - delegate to parent theme's login.php to ensure all functionality is preserved.
-    require_once($CFG->dirroot . '/theme/boost_union/layout/login.php');
+
+    // Render login.mustache from theme_boost (which is overridden in theme_boost_union).
+    echo $OUTPUT->render_from_template('theme_boost/login', $templatecontext);
+
 }

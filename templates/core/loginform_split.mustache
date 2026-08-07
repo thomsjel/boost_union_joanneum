@@ -230,10 +230,7 @@
     Section (to close the container), Footer Section (language menu and cookies notice), and
     JavaScript Section (for form handling and layout-specific functionality).
 }}
-
 <div class="loginform">
-<h1>TEST</h1>
-
     {{#loginbrandshowlogo}}
         {{#logourl}}
             <div id="loginlogo" class="login-logo{{#loginlogoclasses}} {{loginlogoclasses}}{{/loginlogoclasses}}">
@@ -269,6 +266,8 @@
     {{! =========================================================================== }}
 
     <div id="theme_boost_union-loginform">
+    
+    <a class="btn btn-primary btn-login-form" href="{{{ loginurloidc }}}">Log in to Moodle</a>
     
     {{! =========================================================================== }}
     {{! GLOBAL INSTRUCTIONS ABOVE LOGIN PANELS }}
@@ -593,12 +592,12 @@
     {{! LOGIN FORM FOOTER }}
     {{! =========================================================================== }}
 
-    <div class="d-col">
+    <div class="d-flex">
         {{#languagemenu}}
             <div class="login-languagemenu">
                 {{>core/action_menu}}
             </div>
-            {{! <div class="divider border-start align-self-center mx-3"></div> }}
+            <div class="divider border-start align-self-center mx-3"></div>
         {{/languagemenu}}
         <button type="button" class="btn btn-secondary" {{!
         }} data-modal="alert"{{!
