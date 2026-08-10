@@ -74,6 +74,7 @@ $string['loginlayoutsetting'] = 'Login-Seiten-Layout-Typ';
 $string['loginlayoutsetting_desc'] = 'Mit dieser Einstellung können Sie das Layout für die Login-Seite auswählen.';
 $string['loginlayoutsetting_default'] = 'Standard';
 $string['loginlayoutsetting_splitscreen'] = 'Geteilter Bildschirm (Hintergrundbild links, Login rechts)';
+$string['loginoidc'] = 'OpenIDC Login Button aktivieren.';
 
 // Settings: General settings tab.
 // ... Section: Cohort-based navigation.
@@ -81,3 +82,6 @@ $string['custommenuitemsheading'] = 'Kohortenbasierte Navigation';
 // ... ... Setting: Custom menu items.
 $string['custommenuitems'] = 'Eigene Menüpunkte';
 $string['custommenuitems_desc'] = 'Geben Sie jeden Menüpunkt in einer neuen Zeile im folgenden Format ein: <strong>Format</strong>:<br><br><strong>Titel des Menüpunkts | Link-URL | Titel des Tooltips (optional) | Sprachcode (optional) | {Kohorten-IDs} (optional)</strong><br><br>Zeilen, die mit einem Bindestrich beginnen, werden als Menüpunkte im übergeordneten Menü angezeigt, und ### dient als Trennzeichen. <br><br><div class="settings-example"><span class="settings-example-title">Beispiel</span><div class="settings-example-code"><code>Ressourcen für Lehrkräfte <span>|</span> /teacher <span>|</span> Bereich für Lehrkräfte <span>|</span> en <span>|</span> <strong> {1}</strong><br>Ressourcen für Schüler <span>|</span> /students <span>| | |</span> <strong>{2}</strong></code></div></div><br>Dadurch werden nur „Ressourcen für Lehrkräfte“ für Benutzer in Kohorten mit der Datenbank-ID=1 und „Ressourcen für Schüler“ für Benutzer in Kohorten mit der Datenbank-ID=2 angezeigt.';
+
+// Miscellaneous
+$string['or'] = 'oder';

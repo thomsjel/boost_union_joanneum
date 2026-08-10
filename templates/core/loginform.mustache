@@ -171,7 +171,7 @@
                 "isfirsttimesignup": false,
                 "isguest": false,
                 "isfirst": true,
-                "label": "Local account",
+                "label": "Moodle account",
                 "active": true
             },
             {
@@ -230,6 +230,7 @@
     Section (to close the container), Footer Section (language menu and cookies notice), and
     JavaScript Section (for form handling and layout-specific functionality).
 }}
+
 <div class="loginform">
     {{#loginbrandshowlogo}}
         {{#logourl}}
@@ -266,11 +267,11 @@
     {{! =========================================================================== }}
 
     <div id="theme_boost_union-loginform">
-    
+
     {{#isoidcloginenabled}}
         <a class="btn btn-primary btn-login-form" href="{{{ loginurloidc }}}">Log in to Moodle</a>
     {{/isoidcloginenabled}}
-    
+
     {{! =========================================================================== }}
     {{! GLOBAL INSTRUCTIONS ABOVE LOGIN PANELS }}
     {{! =========================================================================== }}
@@ -280,10 +281,6 @@
         {{{logininstructionsabove}}}
     </div>
     {{/logininstructionsabove}}
-
-    {{#isoidcloginenabled}}
-        <div class="login-separator my-5 text-uppercase">{{{ labelor }}}</div>
-    {{/isoidcloginenabled}}
 
     {{! =========================================================================== }}
     {{! OPEN LAYOUT CONTAINER: Tabs or Accordion }}
@@ -309,7 +306,6 @@
     {{! LOGIN METHODS: Loop through sorted methods }}
     {{! =========================================================================== }}
     {{#loginmethods}}
-
 
     {{! --------------------------------------------------------------------------- }}
     {{! METHOD: Local Login }}
@@ -365,7 +361,7 @@
                 </div>
             {{/recaptcha}}
             <div class="login-form-submit mb-3">
-                <button class="btn {{localloginbtnclass}} btn-secondary w-100" type="submit" id="loginbtn">{{#str}}login{{/str}}</button>
+                <button class="btn {{localloginbtnclass}}" type="submit" id="loginbtn">{{#str}}login{{/str}}</button>
             </div>
             <div class="login-form-forgotpassword mb-3">
                 <a href="{{forgotpasswordurl}}">{{#str}}forgotaccount{{/str}}</a>
@@ -389,7 +385,7 @@
     {{! METHOD: Identity Providers (OAuth2, SAML, etc.) }}
     {{! --------------------------------------------------------------------------- }}
     {{#isidp}}
-    {{^showidplogin}}
+    {{#showidplogin}}
     {{>theme_boost_union/loginform-partial-method-start}}
 
         <div class="login-identityproviders">
@@ -537,7 +533,7 @@
             <input type="hidden" name="logintoken" value="{{logintoken}}">
             <input type="hidden" name="username" value="guest" />
             <input type="hidden" name="password" value="guest" />
-            <button class="btn {{guestloginbtnclass}} w-100" type="submit" id="loginguestbtn">{{#str}}loginguest{{/str}}</button>
+            <button class="btn {{guestloginbtnclass}}" type="submit" id="loginguestbtn">{{#str}}loginguest{{/str}}</button>
         </form>
 
         {{! Instructions (below form) }}
@@ -599,14 +595,14 @@
     {{! LOGIN FORM FOOTER }}
     {{! =========================================================================== }}
 
-    <div class="d-flex justify-content-center">
+    <div class="d-flex">
         {{#languagemenu}}
             <div class="login-languagemenu">
                 {{>core/action_menu}}
             </div>
             <div class="divider border-start align-self-center mx-3"></div>
         {{/languagemenu}}
-        <button type="button" class="btn " {{!
+        <button type="button" class="btn btn-secondary" {{!
         }} data-modal="alert"{{!
         }} data-modal-title-str='["cookiesenabled", "core"]' {{!
         }} data-modal-content-str='["cookiesenabled_help_html", "core"]'{{!

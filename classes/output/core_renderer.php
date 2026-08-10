@@ -1378,16 +1378,19 @@ class core_renderer extends core_renderer_intermediate {
 
         // Check if the splitscreen layout is enabled in theme settings.
         $splitscreenabled = true; //get_config('theme_boost_union_child', 'loginsplitscreenenabled');
+        // Get the login layout setting from theme_boost_union_child.
+        $loginlayout = get_config('theme_boost_union_child', 'loginlayout');
 
-        if($splitscreenabled){
+        if($loginlayout === THEME_BOOST_UNION_CHILD_SETTING_LOGIN_LAYOUT_SPLIT_SCREEN){
 
             $context->loginurloidc = new moodle_url('/auth/oidc/?source=loginpage');
+            $context->isoidcloginenabled = get_config('theme_boost_union_child', 'enableoidclogin');
+            $context->labelor = get_string('or', 'theme_boost_union_child', null, true);
             
             // Render the custom splitscreen template.
             return $this->render_from_template('theme_boost_union_child/core/loginform_split', $context);
 
         } else {
-            echo "split screen is not enabled";
             // Render the login form template with the context.
             return $this->render_from_template('theme_boost_union/core/loginform', $context);
         }

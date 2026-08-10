@@ -32,6 +32,7 @@ global $CFG;
 $loginlayout = get_config('theme_boost_union_child', 'loginlayout');
 
 
+
     // Split screen layout.
     $bodyattributes = $OUTPUT->body_attributes();
     [$loginbackgroundimagetext, $loginbackgroundimagetextcolor] = theme_boost_union_get_loginbackgroundimage_text();
@@ -43,7 +44,7 @@ $loginlayout = get_config('theme_boost_union_child', 'loginlayout');
         'bodyattributes' => $bodyattributes,
         'loginbackgroundimagetext' => $loginbackgroundimagetext,
         'loginbackgroundimagetextcolor' => $loginbackgroundimagetextcolor,
-        'loginurloidc' => new moodle_url('/auth/oidc/?source=loginpage')
+        
     ];
 
     // Add login container classes based on parent theme settings.
@@ -73,6 +74,7 @@ $loginlayout = get_config('theme_boost_union_child', 'loginlayout');
     }
     
     $templatecontext['loginbackgroundimageurl'] = $loginbackgroundimageurl;
+
 
     // Include the template content for the footnote.
     require_once($CFG->dirroot . '/theme/boost_union/layout/includes/footnote.php');

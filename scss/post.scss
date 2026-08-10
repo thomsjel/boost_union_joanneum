@@ -96,7 +96,7 @@
         width: 100%;
         max-width: 100%;
         box-shadow: none;
-        padding: 0px;
+        /*padding: 0px;*/
         background-color: $white;
         border-radius: 8px;
         margin: 0;
@@ -118,7 +118,7 @@
         }
     }
 
-    input, .btn-link, .btn-login-form{
+    input, .btn-link, .btn-login-form, .btn-secondary{
         padding: .5rem 1rem !important;
         font-size: 1.17rem;
         line-height: 1.5;
@@ -128,6 +128,16 @@
 
     .btn-link.collapsed{
         background-color: $white !important;
+    }
+}
+
+#login-layout-accordion{
+    .btn-primary, .btn-secondary{
+        padding: .5rem 1rem !important;
+        font-size: 1.17rem;
+        line-height: 1.5;
+        width:100%;
+        text-align: center !important;
     }
 }
 

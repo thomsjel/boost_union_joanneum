@@ -224,7 +224,17 @@ if ($hassiteconfig || has_capability('theme/boost_union:configure', context_syst
         $setting->set_updatedcallback('theme_reset_all_caches');
         $tab->add($setting);
 
-        // Add tab to settings page.
+        // Setting: Show OPENIDC Login Button
+        $name = 'theme_boost_union_child/enableoidclogin';
+        $setting = new admin_setting_configcheckbox(
+            $name,  
+            get_string('loginoidc', 'theme_boost_union_child', null, true),
+            '',
+            0              
+        );
+        $setting->set_updatedcallback('theme_reset_all_caches');
+        $tab->add($setting);
+
         $page->add($tab);
 
         // Add settings page to the admin settings category.

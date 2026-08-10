@@ -81,3 +81,7 @@ $string['loginlayoutsetting'] = 'Login page layout type';
 $string['loginlayoutsetting_desc'] = 'With this setting, you can choose the layout for the login page.';
 $string['loginlayoutsetting_default'] = 'Default';
 $string['loginlayoutsetting_splitscreen'] = 'Split screen (BG image left, login right)';
+$string['loginoidc'] = 'Enable OpenIDC Login Button.';
+
+// Miscellaneous
+$string['or'] = 'or';
