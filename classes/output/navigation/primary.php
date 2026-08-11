@@ -82,7 +82,7 @@ class primary extends boost_union_primary {
         $bgcolor = $color . '05'; // Add alpha for background
         $escapedname = htmlspecialchars($cohort->name, ENT_QUOTES, 'UTF-8');
 
-        return "<span class='cohort-tag cohort-$cohortid'>$escapedname</span>"; //style='background-color:$bgcolor; color:$color; border:1px solid $color;'
+        return "<span class='cohort-tag cohort-$cohortid'>&#x2022; $escapedname</span>"; //style='background-color:$bgcolor; color:$color; border:1px solid $color;'
     }
 
     /**
