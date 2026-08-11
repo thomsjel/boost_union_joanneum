@@ -1,3 +1,21 @@
+@font-face {
+     font-family: 'UnitSlab';
+     src: url("/pluginfile.php/1/theme_boost_union/customfonts/0/UnitSlabOT.otf");
+}
+
+@font-face {
+     font-family: 'Parka';
+     src: url("/pluginfile.php/1/theme_boost_union/customfonts/0/Parka Regular.otf");
+}
+
+body{
+    font-family: 'Parka', sans-serif !important;
+}
+
+h1, h2, h3, h4, h5{
+    font-family: 'UnitSlab', serif !important;
+}
+
 // Slider layout: Text left with solid background and image right
 .slider-layout-textleft-solid {
     .carousel-inner {
