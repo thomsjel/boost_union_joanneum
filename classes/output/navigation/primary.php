@@ -82,8 +82,37 @@ class primary extends boost_union_primary {
         $bgcolor = $color . '05'; // Add alpha for background
         $escapedname = htmlspecialchars($cohort->name, ENT_QUOTES, 'UTF-8');
 
-    return "<span class='cohort-tag cohort-$cohortid' style='background-color:$bgcolor; color:$color; border:1px solid $color;'>$escapedname</span>";
-}
+        return "<span class='cohort-tag cohort-$cohortid'>$escapedname</span>"; //style='background-color:$bgcolor; color:$color; border:1px solid $color;'
+    }
+
+    /**
+     * Build HTML div container with multiple cohort spans.
+     */
+    private function build_cohort_spans_container($currenttext, array $cohortids, $DB): string {
+        $spans = [];
+        foreach ($cohortids as $cohortid) {
+            $span = $this->build_cohort_span($cohortid, $DB);
+            if ($span) {
+                $spans[] = $span;
+            }
+        }
+        
+        if (empty($spans)) {
+            return '';
+        }
+
+        $label = get_string('cohorttagscontainer_desc', 'theme_boost_union_child');
+        
+        return '<div class="cohort-tags-container"><legend>' . $label . '</legend>' . implode(' ', $spans) . '</div>';
+    }
+
+    /**
+     * Build toggle button which shows the cohort spans container on hover.
+     */
+    private function build_cohort_spans_container_toggle(): string {
+
+        return '<div class="cohort-tags-container-toggle"><i class="fa-solid fa-eye"></i></div>';
+    }
 
     /**
      * Recursively process nodes to add cohort spans.
@@ -136,17 +165,12 @@ class primary extends boost_union_primary {
             // Find matching cohort IDs.
             $cohortids = $texttocohorts[$currenttext] ?? [];
             
-            // Add cohort spans if any.
+            // Add cohort spans container if any.
             if (!empty($cohortids)) {
-                $spans = [];
-                foreach ($cohortids as $cid) {
-                    $span = $this->build_cohort_span($cid, $DB);
-                    if ($span) {
-                        $spans[] = $span;
-                    }
-                }
-                if (!empty($spans)) {
-                    $newtext = $currenttext . ' ' . implode(' ', $spans);
+                $toggle = $this->build_cohort_spans_container_toggle();
+                $container = $this->build_cohort_spans_container($currenttext, $cohortids, $DB);
+                if ($container) {
+                    $newtext = $currenttext . ' ' . $toggle . $container;
                     if (is_array($exported)) {
                         $exported['text'] = $newtext;
                     } else {

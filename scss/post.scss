@@ -3,7 +3,7 @@
  * Add your SCSS code here.
  * It will be added on top of Boost Union's SCSS code.
  ***************************************************************/
-
+/*
  .cohort-tag{
     background-color: rgba(128, 128, 128, 0.169);
     color: gray;
@@ -13,9 +13,10 @@
     font-weight: 500;
     font-size: .75rem;
 }
-
-.nav-link{
-    position: relative;
+*/
+.cohort-tags-container{
+    display: none;
+    /*
     .cohort-tag{
         font-size: 0.65rem;
         line-height: .8rem;
@@ -25,13 +26,69 @@
         top: 2px;
         transform: translateX(-50%);
     }
+        */
 }
 
 .dropdown-item:hover{
-    .cohort-tag{
-        color:white !important;
-        background-color: var(--primary)  !important;
-        border-color: white  !important;
+    .cohort-tags-container{
+        color:black !important;
+    }
+}
+
+.nav-link, .dropdown-item {
+    position:relative !important;
+}
+
+.cohort-tags-container{
+    position: absolute;
+    top: 3.75rem;
+    display: none;
+    flex-direction: column;
+    background: white;
+    width: 100%;
+    border: 1px solid rgb(0 0 0 / .15);
+    border-radius: .5rem;
+    margin: 0 .3rem 0 0;
+    legend{
+        background-color:#DEE2E6;
+        font-size: .938rem !important;
+        padding: .5rem;
+        border-top-left-radius: .5rem;
+        border-top-right-radius: .5rem;
+    }
+    span{
+        padding: .5rem;
+    }
+}
+
+.dropdown-item{
+    .cohort-tags-container{
+        width: fit-content;
+        z-index:310;
+        position: relative;
+        top: .5rem;
+        left: 0;
+        margin: 0 0.65rem;
+    }
+}
+
+.cohort-tags-container-toggle{
+    position: relative;
+    width: 0.9rem;
+    height: 0.9rem;
+    z-index:300;
+    margin: 0 0 0 .3rem;
+    color: rgb(0 0 0 / .6);
+    i{
+        
+        position: absolute;
+    }
+}
+
+.cohort-tags-container-toggle:hover{
+    color: rgb(0 0 0 / .8);
+    + .cohort-tags-container{
+        display: flex;
     }
 }
 

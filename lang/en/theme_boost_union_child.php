@@ -61,6 +61,7 @@ $string['custommenuitemsheading'] = 'Cohort-based navigation';
 // ... ... Setting: Custom menu items.
 $string['custommenuitems'] = 'Custom menu items';
 $string['custommenuitems_desc'] = 'Enter each menu item on a new line with <strong>format</strong>:<br><br><strong>Menu item title | Link URL | Tooltip title (optional) | language code (optional) | {cohort IDs} (optional)</strong><br><br>Lines starting with a hyphen will appear as menu items in the previous top level menu and ### makes a divider.<br><br><div class="settings-example"><span class="settings-example-title">Example</span><div class="settings-example-code"><code>Teacher Resources <span>|</span> /teacher <span>|</span> Teacher Area <span>|</span> en <span>|</span> <strong>{1}</strong><br>Student Resources <span>|</span> /students <span>| | |</span> <strong>{2}</strong></code></div></div><br>This will only show "Teacher Resources" to users in cohorts with database id=1 and "Student Resources" to users in cohorts with database id=2.';
+$string['cohorttagscontainer_desc'] = 'Cohort visibility';
 
 // Settings: Slider tab.
 $string['slidertab'] = 'Slider';
