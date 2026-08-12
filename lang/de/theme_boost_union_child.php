@@ -84,6 +84,35 @@ $string['loginlayoutsetting_default'] = 'Standard';
 $string['loginlayoutsetting_splitscreen'] = 'Geteilter Bildschirm (Hintergrundbild links, Login rechts)';
 $string['loginoidc'] = 'OpenIDC Login Button aktivieren.';
 
+// Settings: Highlights tab.
+$string['highlightstab'] = 'Highlights';
+// ... Section: Highlights settings.
+$string['highlightsheading'] = 'Highlights';
+$string['highlightsheading_desc'] = 'Konfigurieren Sie bis zu 6 Highlights, die als Kacheln im Frontend angezeigt werden.';
+// ... ... Setting: Enable highlights.
+$string['enablehighlights'] = 'Highlights aktivieren';
+$string['enablehighlights_desc'] = 'Wenn aktiviert, werden die Highlights im Frontend angezeigt.';
+// ... Section: Highlights visibility.
+$string['highlightsvisibilityheading'] = 'Highlight-Sichtbarkeit';
+// ... ... Setting: Show highlights on frontpage.
+$string['showhighlightsonfrontpage'] = 'Highlights auf der Startseite anzeigen';
+$string['showhighlightsonfrontpage_desc'] = 'Wenn aktiviert, werden die Highlights auf der Startseite angezeigt.';
+// ... ... Setting: Show highlights on dashboard.
+$string['showhighlightsonDashboard'] = 'Highlights auf dem Dashboard anzeigen';
+$string['showhighlightsonDashboard_desc'] = 'Wenn aktiviert, werden die Highlights auf dem Benutzer-Dashboard (Mein Moodle) angezeigt.';
+// ... ... Settings: Highlight items.
+$string['highlightenabled'] = 'Highlight aktivieren';
+$string['highlightenabled_desc'] = 'Wenn aktiviert, wird dieses Highlight angezeigt.';
+$string['highlightsectiontitle'] = 'Überschrift des Abschnitts';
+$string['highlighticon'] = 'Symbol-Datei';
+$string['highlighticon_desc'] = 'Laden Sie eine Symbol-Bilddatei (SVG, JPG, JPEG oder PNG) für dieses Highlight hoch.';
+$string['highlighttitle'] = 'Titel';
+$string['highlighttitle_desc'] = 'Geben Sie den Titel für dieses Highlight ein.';
+$string['highlightdescription'] = 'Beschreibung';
+$string['highlightdescription_desc'] = 'Geben Sie die Beschreibung für dieses Highlight ein.';
+$string['highlightlink'] = 'Link';
+$string['highlightlink_desc'] = 'Geben Sie die URL für diese Highlight-Kachel ein (z.B. /course oder https://beispiel.de).';
+
 // Settings: General settings tab.
 // ... Section: Cohort-based navigation.
 $string['custommenuitemsheading'] = 'Kohortenbasierte Navigation';

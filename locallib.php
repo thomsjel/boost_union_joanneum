@@ -26,3 +26,56 @@
  * EXTENSION POINT:
  * Add whatever Boost Union Child local functions you need here.
  **************************************************************/
+
+/**
+ * Get the highlight icon file URL from the filearea.
+ *
+ * @param int $highlightno The highlight number (1-6).
+ * @return string|null The URL of the icon file, or null if not found.
+ */
+function theme_boost_union_child_get_highlight_icon_url($highlightno) {
+    // If the highlight number is apparently not valid, return.
+    if ($highlightno < 1 || $highlightno > 6) {
+        return null;
+    }
+
+    // Get the icon config for this highlight.
+    $iconconfig = get_config('theme_boost_union_child', 'highlight' . $highlightno . 'icon');
+
+    // If an icon is configured.
+    if (!empty($iconconfig)) {
+        // Get the system context.
+        $systemcontext = context_system::instance();
+
+        // Get filearea.
+        $fs = get_file_storage();
+
+        // Get all files from filearea.
+        $files = $fs->get_area_files(
+            $systemcontext->id,
+            'theme_boost_union_child',
+            'highlight' . $highlightno . 'icon',
+            false,
+            'itemid',
+            false
+        );
+
+        // Just pick the first file - we are sure that there is just one file.
+        $file = reset($files);
+
+        if ($file) {
+            // Build and return the image URL.
+            return \core\url::make_pluginfile_url(
+                $file->get_contextid(),
+                $file->get_component(),
+                $file->get_filearea(),
+                $file->get_itemid(),
+                $file->get_filepath(),
+                $file->get_filename()
+            );
+        }
+    }
+
+    // As no file was found, return null.
+    return null;
+}

@@ -92,5 +92,34 @@ $string['loginlayoutsetting_default'] = 'Default';
 $string['loginlayoutsetting_splitscreen'] = 'Split screen (BG image left, login right)';
 $string['loginoidc'] = 'Enable OpenIDC Login Button.';
 
+// Settings: Highlights tab.
+$string['highlightstab'] = 'Highlights';
+// ... Section: Highlights settings.
+$string['highlightsheading'] = 'Highlights';
+$string['highlightsheading_desc'] = 'Configure up to 6 highlights to be displayed as tiles in the frontend.';
+// ... ... Setting: Enable highlights.
+$string['enablehighlights'] = 'Enable highlights';
+$string['enablehighlights_desc'] = 'If checked, highlights will be displayed in the frontend.';
+// ... Section: Highlights visibility.
+$string['highlightsvisibilityheading'] = 'Highlights visibility';
+// ... ... Setting: Show highlights on frontpage.
+$string['showhighlightsonfrontpage'] = 'Show highlights on frontpage';
+$string['showhighlightsonfrontpage_desc'] = 'If checked, the highlights will be displayed on the site frontpage.';
+// ... ... Setting: Show highlights on dashboard.
+$string['showhighlightsonDashboard'] = 'Show highlights on dashboard';
+$string['showhighlightsonDashboard_desc'] = 'If checked, the highlights will be displayed on the user dashboard (My Moodle).';
+// ... ... Settings: Highlight items.
+$string['highlightenabled'] = 'Enable highlight';
+$string['highlightenabled_desc'] = 'If checked, this highlight will be displayed.';
+$string['highlightsectiontitle'] = 'Section headline';
+$string['highlighticon'] = 'Icon file';
+$string['highlighticon_desc'] = 'Upload an icon image file (SVG, JPG, JPEG, or PNG) for this highlight.';
+$string['highlighttitle'] = 'Title';
+$string['highlighttitle_desc'] = 'Enter the title for this highlight.';
+$string['highlightdescription'] = 'Description';
+$string['highlightdescription_desc'] = 'Enter the description for this highlight.';
+$string['highlightlink'] = 'Link';
+$string['highlightlink_desc'] = 'Enter the URL for this highlight tile (e.g., /course or https://example.com).';
+
 // Miscellaneous
 $string['or'] = 'or';

@@ -242,6 +242,9 @@
                         {{#sliderpositionbeforeafter}}
                             {{> theme_boost_union/slider }}
                         {{/sliderpositionbeforeafter}}
+                        {{#highlightspositionafter}}
+                            {{> theme_boost_union_child/highlights }}
+                        {{/highlightspositionafter}}
                         {{{ output.main_content }}}
                         {{{ output.activity_navigation }}}
                         {{{ output.course_content_footer }}}
@@ -254,7 +257,7 @@
                         {{#sliderpositionafterafter}}
                             {{> theme_boost_union/slider }}
                         {{/sliderpositionafterafter}}
-
+                        
                     </div>
                 </div>
             </div>

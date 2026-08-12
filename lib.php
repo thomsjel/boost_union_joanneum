@@ -35,6 +35,66 @@ define('THEME_BOOST_UNION_CHILD_SETTING_LOGIN_LAYOUT_DEFAULT', 'default');
 define('THEME_BOOST_UNION_CHILD_SETTING_LOGIN_LAYOUT_SPLIT_SCREEN', 'splitscreen');
 
 /**
+ * Serves files from the theme_boost_union_child file areas.
+ *
+ * @param stdClass $course
+ * @param stdClass $cm
+ * @param context $context
+ * @param string $filearea
+ * @param array $args
+ * @param bool $forcedownload
+ * @param array $options
+ * @return bool|null False to stop file serving, or null to continue
+ */
+function theme_boost_union_child_pluginfile($course, $cm, $context, $filearea, $args, $forcedownload, array $options = []) {
+    global $CFG;
+
+    // Define allowed fileareas - add new ones here as needed.
+    $allowedfileareas = [
+        'highlight1icon', 'highlight2icon', 'highlight3icon',
+        'highlight4icon', 'highlight5icon', 'highlight6icon',
+        // Add future fileareas here, e.g.:
+        // 'customfont1', 'customfont2', 'backgroundimage', etc.
+    ];
+
+    // Check if this filearea is allowed.
+    if (!in_array($filearea, $allowedfileareas)) {
+        return false;
+    }
+
+    // Only allow access to system context files.
+    if ($context->contextlevel != CONTEXT_SYSTEM) {
+        return false;
+    }
+
+    // Anyone, including guests and non-logged in users, can view these files.
+    $options = ['cacheability' => 'public'];
+
+    // Find the original file.
+    $fs = get_file_storage();
+    $itemid = clean_param(array_shift($args), PARAM_INT);
+    $filename = clean_param(array_shift($args), PARAM_FILE);
+
+    // Get the file from the file storage.
+    $file = $fs->get_file(
+        $context->id,
+        'theme_boost_union_child',
+        $filearea,
+        $itemid,
+        '/',
+        $filename
+    );
+
+    if (!$file) {
+        send_file_not_found();
+    }
+
+    // Send the file.
+    send_stored_file($file, 0, 0, true, $options);
+    return true;
+}
+
+/**
  * Returns the main SCSS content.
  *
  * @param \core\output\theme_config $theme The theme config object.

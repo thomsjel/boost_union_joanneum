@@ -269,6 +269,161 @@ if ($hassiteconfig || has_capability('theme/boost_union:configure', context_syst
 
         $page->add($tab);
 
+        // Tab: Highlights.
+        $tab = new admin_settingpage(
+            'theme_boost_union_child_highlights',
+            get_string('highlightstab', 'theme_boost_union_child', null, true)
+        );
+
+        // Heading: Highlights.
+        $name = 'theme_boost_union_child/highlightsheading';
+        $title = get_string('highlightsheading', 'theme_boost_union_child', null, true);
+        $description = get_string('highlightsheading_desc', 'theme_boost_union_child', null, true);
+        $setting = new admin_setting_heading($name, $title, $description);
+        $tab->add($setting);
+
+        // Setting: Enable highlights.
+        $name = 'theme_boost_union_child/enablehighlights';
+        $title = get_string('enablehighlights', 'theme_boost_union_child', null, true);
+        $description = get_string('enablehighlights_desc', 'theme_boost_union_child', null, true);
+        $setting = new admin_setting_configcheckbox(
+            $name,
+            $title,
+            $description,
+            0
+        );
+        $setting->set_updatedcallback('theme_reset_all_caches');
+        $tab->add($setting);
+
+        // Setting: Highlight section title.
+        $name = 'theme_boost_union_child/highlightsectiontitle';
+        $title = get_string('highlightsectiontitle', 'theme_boost_union_child', null, true);
+        $setting = new admin_setting_configtext(
+            $name,
+            $title,
+            '',
+            '',
+            PARAM_TEXT
+        );
+        $setting->set_updatedcallback('theme_reset_all_caches');
+        $tab->add($setting);
+
+        // Heading: Highlights visibility.
+        $name = 'theme_boost_union_child/highlightsvisibilityheading';
+        $title = get_string('highlightsvisibilityheading', 'theme_boost_union_child', null, true);
+        $setting = new admin_setting_heading($name, $title, null);
+        $tab->add($setting);
+
+        // Setting: Show highlights on frontpage.
+        $name = 'theme_boost_union_child/showhighlightsonfrontpage';
+        $title = get_string('showhighlightsonfrontpage', 'theme_boost_union_child', null, true);
+        $description = get_string('showhighlightsonfrontpage_desc', 'theme_boost_union_child', null, true);
+        $setting = new admin_setting_configcheckbox(
+            $name,
+            $title,
+            $description,
+            0
+        );
+        $setting->set_updatedcallback('theme_reset_all_caches');
+        $tab->add($setting);
+
+        // Setting: Show highlights on dashboard.
+        $name = 'theme_boost_union_child/showhighlightsonDashboard';
+        $title = get_string('showhighlightsonDashboard', 'theme_boost_union_child', null, true);
+        $description = get_string('showhighlightsonDashboard_desc', 'theme_boost_union_child', null, true);
+        $setting = new admin_setting_configcheckbox(
+            $name,
+            $title,
+            $description,
+            0
+        );
+        $setting->set_updatedcallback('theme_reset_all_caches');
+        $tab->add($setting);
+
+        // Add settings for up to 6 highlights.
+        for ($i = 1; $i <= 6; $i++) {
+            // Heading for each highlight.
+            $name = 'theme_boost_union_child/highlight' . $i . 'heading';
+            $title = "Highlight $i";
+            $setting = new admin_setting_heading($name, $title, null);
+            $tab->add($setting);
+
+            // Setting: Enable highlight.
+            $name = 'theme_boost_union_child/highlight' . $i . 'enabled';
+            $title = get_string('highlightenabled', 'theme_boost_union_child', null, true);
+            $description = get_string('highlightenabled_desc', 'theme_boost_union_child', null, true);
+            $setting = new admin_setting_configcheckbox(
+                $name,
+                $title,
+                $description,
+                0
+            );
+            $setting->set_updatedcallback('theme_reset_all_caches');
+            $tab->add($setting);
+
+            // Setting: Highlight icon.
+            $name = 'theme_boost_union_child/highlight' . $i . 'icon';
+            $title = get_string('highlighticon', 'theme_boost_union_child', null, true);
+            $description = get_string('highlighticon_desc', 'theme_boost_union_child', null, true);
+            $setting = new admin_setting_configstoredfile(
+                $name,
+                $title,
+                $description,
+                'highlight' . $i . 'icon',
+                0,
+                ['maxfiles' => 1, 'accepted_types' => ['.svg', '.png', '.jpg', '.jpeg']]
+            );
+            $setting->set_updatedcallback('theme_reset_all_caches');
+            $tab->add($setting);
+
+            // Setting: Highlight title.
+            $name = 'theme_boost_union_child/highlight' . $i . 'title';
+            $title = get_string('highlighttitle', 'theme_boost_union_child', null, true);
+            $description = get_string('highlighttitle_desc', 'theme_boost_union_child', null, true);
+            $setting = new admin_setting_configtext(
+                $name,
+                $title,
+                $description,
+                '',
+                PARAM_TEXT
+            );
+            $setting->set_updatedcallback('theme_reset_all_caches');
+            $tab->add($setting);
+
+            // Setting: Highlight description.
+            $name = 'theme_boost_union_child/highlight' . $i . 'description';
+            $title = get_string('highlightdescription', 'theme_boost_union_child', null, true);
+            $description = get_string('highlightdescription_desc', 'theme_boost_union_child', null, true);
+            $setting = new admin_setting_configtextarea(
+                $name,
+                $title,
+                $description,
+                '',
+                PARAM_TEXT,
+                '60',
+                '4'
+            );
+            $setting->set_updatedcallback('theme_reset_all_caches');
+            $tab->add($setting);
+
+            // Setting: Highlight link.
+            $name = 'theme_boost_union_child/highlight' . $i . 'link';
+            $title = get_string('highlightlink', 'theme_boost_union_child', null, true);
+            $description = get_string('highlightlink_desc', 'theme_boost_union_child', null, true);
+            $setting = new admin_setting_configtext(
+                $name,
+                $title,
+                $description,
+                '',
+                PARAM_URL
+            );
+            $setting->set_updatedcallback('theme_reset_all_caches');
+            $tab->add($setting);
+        }
+
+        // Add tab to settings page.
+        $page->add($tab);
+
         // Add settings page to the admin settings category.
         $ADMIN->add('theme_boost_union', $page);
     }

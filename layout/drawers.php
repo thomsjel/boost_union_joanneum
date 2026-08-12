@@ -152,6 +152,10 @@ $bodyattributes = $OUTPUT->body_attributes($extraclasses); // In the original la
 $header = $PAGE->activityheader;
 $headercontent = $header->export_for_template($renderer);
 
+// Pre-render the main content placeholder to ensure it's available in the template
+// This is needed for compatibility with Moodle's header() method which expects the token
+$maincontentplaceholder = $OUTPUT->main_content();
+
 $templatecontext = [
     'sitename' => format_string($SITE->shortname, true, ['context' => context_course::instance(SITEID), "escape" => false]),
     'output' => $OUTPUT,
@@ -172,6 +176,7 @@ $templatecontext = [
     'overflow' => $overflow,
     'headercontent' => $headercontent,
     'addblockbutton' => $addblockbutton,
+    //'main_content' => $maincontentplaceholder,
 ];
 
 // Include the template content for the course related hints.
@@ -224,6 +229,16 @@ $showsliderondashboard = isset($childconfig->showsliderondashboard) ? $childconf
 if (($PAGE->pagelayout == 'frontpage' && $showslideronfrontpage) ||
     ($PAGE->pagelayout == 'mydashboard' && $showsliderondashboard)) {
     require_once($CFG->dirroot . '/theme/boost_union_child/layout/includes/slider.php');
+}
+
+// Include the template content for the highlights, but only if we are on the frontpage or dashboard
+// and the corresponding setting is enabled.
+$showhighlightsonfrontpage = isset($childconfig->showhighlightsonfrontpage) ? $childconfig->showhighlightsonfrontpage : 0;
+$showhighlightsonDashboard = isset($childconfig->showhighlightsonDashboard) ? $childconfig->showhighlightsonDashboard : 0;
+
+if (($PAGE->pagelayout == 'frontpage' && $showhighlightsonfrontpage) ||
+    ($PAGE->pagelayout == 'mydashboard' && $showhighlightsonDashboard)) {
+    require_once($CFG->dirroot . '/theme/boost_union_child/layout/includes/highlights.php');
 }
 
 // Include the template content for the smart menus.
