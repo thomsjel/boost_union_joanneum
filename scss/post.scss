@@ -246,6 +246,7 @@
         min-height: 50% !important;
         border-bottom-left-radius: 0 !important;
         border-bottom-right-radius: 0 !important;
+        padding: 1.5rem !important;
     }
 
     .slide-container{
@@ -257,6 +258,10 @@
         .carousel-control-next, .carousel-control-prev{
             width: 10%;
         }
+    }
+
+    .buc-slider-caption{
+        font-size: 1.8rem;
     }
 }
 

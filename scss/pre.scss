@@ -25,18 +25,25 @@ h1, h2, h3, h4, h5{
  * Slider
  ======================================*/
 
+ .buc-slider-caption{
+    font-size: 2.3rem;
+    line-height: 1.2;
+    font-family: 'UnitSlab';
+ }
+
 // Slider layout: Text left with solid background and image right
 .slider-layout-textleft-solid {
     .carousel-control-next{
-            right: .25rem;
+            right: 0;
     }
     .carousel-control-prev{
-            left: .25rem;
+            left: 0;
     }
     .carousel-control-next, .carousel-control-prev{
 
         opacity: 1;
         filter: none !important;
+        width: 3rem !important;
 
         span{
             background: white;
@@ -72,7 +79,7 @@ h1, h2, h3, h4, h5{
                     justify-content: center;
                     flex-direction: column;
                     align-items: flex-start;
-                    padding: 2rem 2rem 2rem 3rem;
+                    padding: 3rem;
                     border-top-right-radius: 0;
                     border-bottom-right-radius: 0;
                     
@@ -103,7 +110,7 @@ h1, h2, h3, h4, h5{
                 }
                 
                 .slide-image {
-                    width: 45%;
+                    width: 40%;
                     height: 100%;
                     
                     img {
