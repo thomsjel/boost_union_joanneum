@@ -235,6 +235,24 @@
             max-width: 500px;
         }
     }
+
+    .slide-text-solid{
+        margin-bottom: 0 !important;
+        min-height: 50% !important;
+        border-bottom-left-radius: 0 !important;
+        border-bottom-right-radius: 0 !important;
+    }
+
+    .slide-container{
+        height: 30rem !important;
+    }
+
+    .slider-layout-textleft-solid {
+   
+        .carousel-control-next, .carousel-control-prev{
+            width: 10%;
+        }
+    }
 }
 
 /* Theme settings integration */

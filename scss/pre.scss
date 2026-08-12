@@ -8,6 +8,11 @@
      src: url("/pluginfile.php/1/theme_boost_union/customfonts/0/Parka Regular.otf");
 }
 
+:root{
+    --buc-box-shadow-color: #00000036;
+    --buc-box-shadow: 0 0 .5rem var(--buc-box-shadow-color);
+}
+
 body{
     font-family: 'Parka', sans-serif !important;
 }
@@ -16,8 +21,38 @@ h1, h2, h3, h4, h5{
     font-family: 'UnitSlab', serif !important;
 }
 
+/*=======================================
+ * Slider
+ ======================================*/
+
 // Slider layout: Text left with solid background and image right
 .slider-layout-textleft-solid {
+    .carousel-control-next{
+            right: .25rem;
+    }
+    .carousel-control-prev{
+            left: .25rem;
+    }
+    .carousel-control-next, .carousel-control-prev{
+
+        opacity: 1;
+        filter: none !important;
+
+        span{
+            background: white;
+            border-radius: 50%;
+            padding: 1rem;
+            display: flex;
+            place-items: center;
+            justify-content: center;
+            border: 1px solid var(--primary);
+            box-shadow: var(--buc-box-shadow);
+
+            i{
+                color: var(--primary);
+            }
+        }
+    }
     .carousel-inner {
         .carousel-item {
             .slide-container {
@@ -37,6 +72,9 @@ h1, h2, h3, h4, h5{
                     justify-content: center;
                     flex-direction: column;
                     align-items: flex-start;
+                    padding: 2rem 2rem 2rem 3rem;
+                    border-top-right-radius: 0;
+                    border-bottom-right-radius: 0;
                     
                     h5 {
                         color: #333;
@@ -121,6 +159,10 @@ h1, h2, h3, h4, h5{
 }
 
 .carousel-indicators { 
+
+    filter: none !important;
+    
+
     li {
         width: 20px !important;
         height: 8px !important;
@@ -128,6 +170,7 @@ h1, h2, h3, h4, h5{
         background-clip: padding-box;
         border: 1px solid white !important;
         opacity: 1 !important;
+        box-shadow: var(--buc-box-shadow);
     }
     .active{
         background-color: #fff !important;
@@ -188,4 +231,3 @@ h1, h2, h3, h4, h5{
         }
     }
 }
-

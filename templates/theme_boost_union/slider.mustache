@@ -102,7 +102,7 @@
         <div id="themeboostunionslide{{no}}" class="carousel-item {{#isfirstslide}}active{{/isfirstslide}}">
           <div class="slide-container d-flex align-items-center">
             {{! Text content with solid background - left side }}
-            <div class="slide-text-solid bg-light p-4 rounded-left {{contentstyleclass}}">
+            <div class="slide-text-solid bg-light rounded-left {{contentstyleclass}}">
               {{#linktext}}{{#link}}<a href="{{link}}" {{#linktitle}}title="{{linktitle}}"{{/linktitle}} {{#linktargetnewtab}}target="_blank" rel="noopener noreferrer"{{/linktargetnewtab}}>{{/link}}{{/linktext}}
                 {{#caption}}<h5 class="text-light">{{caption}}</h5>{{/caption}}
                 {{{content}}}
@@ -121,11 +121,11 @@
 
     {{#slidergeneralsettings.showarrownav}}
     <a class="carousel-control-prev" href="#themeboostunionslider" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="carousel-control-prev-icon" aria-hidden="true"><i class="fa-solid fa-chevron-left"></i></span>
       <span class="sr-only">prev</span>
     </a>
     <a class="carousel-control-next" href="#themeboostunionslider" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="carousel-control-next-icon" aria-hidden="true"><i class="fa-solid fa-chevron-right"></i></span>
       <span class="sr-only">next</span>
     </a>
     {{/slidergeneralsettings.showarrownav}}
