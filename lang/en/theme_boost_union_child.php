@@ -72,6 +72,14 @@ $string['sliderlayoutsetting'] = 'Slider layout type';
 $string['sliderlayoutsetting_desc'] = 'With this setting, you can choose the layout for the slider.';
 $string['sliderlayoutsetting_default'] = 'Default (Full width image with text overlay)';
 $string['sliderlayoutsetting_textleft_solid'] = 'Text left with solid background and image right';
+// ... Section: Slider visibility.
+$string['slidervisibilityheading'] = 'Slider visibility';
+// ... ... Setting: Show slider on frontpage.
+$string['showslideronfrontpage'] = 'Show slider on frontpage';
+$string['showslideronfrontpage_desc'] = 'If checked, the slider will be displayed on the site frontpage.';
+// ... ... Setting: Show slider on dashboard.
+$string['showsliderondashboard'] = 'Show slider on dashboard';
+$string['showsliderondashboard_desc'] = 'If checked, the slider will be displayed on the user dashboard (My Moodle).';
 
 // Settings: Login page tab.
 $string['loginpagetab'] = 'Login page';

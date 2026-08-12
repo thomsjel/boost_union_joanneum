@@ -215,8 +215,14 @@ if ($PAGE->pagelayout == 'frontpage') {
     require_once(dirname(__DIR__, 2) . '/boost_union/layout/includes/advertisementtiles.php');
 }
 
-// Include the template content for the slider, but only if we are on the frontpage.
-if ($PAGE->pagelayout == 'frontpage') {
+// Include the template content for the slider, but only if we are on the frontpage or dashboard
+// and the corresponding setting is enabled.
+$childconfig = get_config('theme_boost_union_child');
+$showslideronfrontpage = isset($childconfig->showslideronfrontpage) ? $childconfig->showslideronfrontpage : 0;
+$showsliderondashboard = isset($childconfig->showsliderondashboard) ? $childconfig->showsliderondashboard : 0;
+
+if (($PAGE->pagelayout == 'frontpage' && $showslideronfrontpage) ||
+    ($PAGE->pagelayout == 'mydashboard' && $showsliderondashboard)) {
     require_once($CFG->dirroot . '/theme/boost_union_child/layout/includes/slider.php');
 }
 

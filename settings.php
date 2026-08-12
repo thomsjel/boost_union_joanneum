@@ -189,6 +189,38 @@ if ($hassiteconfig || has_capability('theme/boost_union:configure', context_syst
         $setting->set_updatedcallback('theme_reset_all_caches');
         $tab->add($setting);
 
+        // Heading: Slider visibility.
+        $name = 'theme_boost_union_child/slidervisibilityheading';
+        $title = get_string('slidervisibilityheading', 'theme_boost_union_child', null, true);
+        $setting = new admin_setting_heading($name, $title, null);
+        $tab->add($setting);
+
+        // Setting: Show slider on frontpage.
+        $name = 'theme_boost_union_child/showslideronfrontpage';
+        $title = get_string('showslideronfrontpage', 'theme_boost_union_child', null, true);
+        $description = get_string('showslideronfrontpage_desc', 'theme_boost_union_child', null, true);
+        $setting = new admin_setting_configcheckbox(
+            $name,
+            $title,
+            $description,
+            0
+        );
+        $setting->set_updatedcallback('theme_reset_all_caches');
+        $tab->add($setting);
+
+        // Setting: Show slider on dashboard.
+        $name = 'theme_boost_union_child/showsliderondashboard';
+        $title = get_string('showsliderondashboard', 'theme_boost_union_child', null, true);
+        $description = get_string('showsliderondashboard_desc', 'theme_boost_union_child', null, true);
+        $setting = new admin_setting_configcheckbox(
+            $name,
+            $title,
+            $description,
+            0
+        );
+        $setting->set_updatedcallback('theme_reset_all_caches');
+        $tab->add($setting);
+
         // Add tab to settings page.
         $page->add($tab);
 
