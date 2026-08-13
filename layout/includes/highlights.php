@@ -42,6 +42,18 @@ if (!isset($templatecontext)) {
 // Check if highlights are enabled
 $enablehighlights = isset($childconfig->enablehighlights) ? $childconfig->enablehighlights : 0;
 
+// Check if highlights container is dismissible (but not on the login page as the user preference can't be stored there).
+if ($PAGE->pagelayout != 'login') {
+    $highlightsdismissible = isset($childconfig->highlightsdismissible) ? $childconfig->highlightsdismissible : 0;
+    // If highlights are dismissible and the user has dismissed them, don't show them.
+    // Note: get_user_preferences returns a string "1" or "0", not boolean true/false.
+    if ($highlightsdismissible && get_user_preferences('theme_boost_union_child_highlights_dismissed') != false) {
+        $enablehighlights = false;
+    }
+} else {
+    $highlightsdismissible = 0;
+}
+
 // Initialize the highlights array
 $highlights = [];
 
@@ -86,6 +98,12 @@ if ($templatecontext['showhighlights']) {
     $templatecontext['highlights'] = $highlights;
     $templatecontext['highlightsectiontitle'] = $childconfig->highlightsectiontitle;
     $templatecontext['issinglehighlight'] = (count($highlights) === 1);
+    $templatecontext['highlightsdismissible'] = $highlightsdismissible;
     // Set the position flag to render highlights after the slider
     $templatecontext['highlightspositionafter'] = true;
+    
+    // Add the dismissible AMD module to the page if highlights are dismissible.
+    if ($highlightsdismissible == true) {
+        $PAGE->requires->js_call_amd('theme_boost_union_child/highlights', 'init');
+    }
 }

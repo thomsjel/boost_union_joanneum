@@ -92,6 +92,9 @@ $string['highlightsheading_desc'] = 'Konfigurieren Sie bis zu 6 Highlights, die 
 // ... ... Setting: Enable highlights.
 $string['enablehighlights'] = 'Highlights aktivieren';
 $string['enablehighlights_desc'] = 'Wenn aktiviert, werden die Highlights im Frontend angezeigt.';
+// ... ... Setting: Highlights dismissible.
+$string['highlightsdismissible'] = 'Highlight-Bereich ausblendbar machen';
+$string['highlightsdismissible_desc'] = 'Wenn aktiviert, kann der gesamte Highlight-Bereich ausgeblendet werden. Wenn ein Benutzer auf die Schaltfläche zum Schließen klickt, wird der Bereich für diesen Benutzer dauerhaft ausgeblendet.';
 // ... Section: Highlights visibility.
 $string['highlightsvisibilityheading'] = 'Highlight-Sichtbarkeit';
 // ... ... Setting: Show highlights on frontpage.

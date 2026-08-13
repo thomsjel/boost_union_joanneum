@@ -26,6 +26,7 @@
       * description - The description for the highlight
       * link - The URL for the highlight tile
       * linktargetnewtab - The flag if the link should open in a new tab
+    * highlightsdismissible - The fact that the highlights section is dismissible
 
     Example context (json):
     {
@@ -37,18 +38,24 @@
                 "link": "/course",
                 "linktargetnewtab": false
             }
-        ]
+        ],
+        "highlightsdismissible": true
     }
 }}
 {{#showhighlights}}
-<div id="themeboostunionhighlights-wrapper" class="container-fluid pb-3 highlights-wrapper">
+<div id="themeboostunionchildhighlights-wrapper" class="container-fluid pb-3 highlights-wrapper{{#highlightsdismissible}} alert alert-dismissible{{/highlightsdismissible}}" role="{{#highlightsdismissible}}alert{{/highlightsdismissible}}">
+  {{#highlightsdismissible}}
+    <button type="button" id="themeboostunionchildhighlightsclose" class="close" data-dismiss="alert" aria-label="{{#str}}closebuttontitle{{/str}}">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  {{/highlightsdismissible}}
   {{#highlightsectiontitle}}
     <h3>{{highlightsectiontitle}}</h3>
   {{/highlightsectiontitle}}
-  <div style="{{#issinglehighlight}}grid-template-columns:1fr;{{/issinglehighlight}}{{^issinglehighlight}}grid-template-columns:1fr 1fr;{{/issinglehighlight}}" class="row px-3 highlights-container">
+  <div class="row px-3 highlights-container">
     {{#highlights}}
     <div class="{{#issinglehighlight}}issinglehighlight{{/issinglehighlight}}{{^issinglehighlight}}multiple-highlights{{/issinglehighlight}}">
-      <div class="card h-100 highlight-tile {{#issinglehighlight}}w-50 mx-auto{{/issinglehighlight}}">
+      <div class="card h-100 highlight-tile {{#issinglehighlight}}col-12 col-sm-12 col-md-6 mx-auto{{/issinglehighlight}}">
         {{#link}}
         <a href="{{link}}" {{#linktargetnewtab}}target="_blank" rel="noopener noreferrer"{{/linktargetnewtab}} class="highlight-link">
         {{/link}}
@@ -63,7 +70,7 @@
               <h5 class="card-title highlight-title">{{title}}</h5>
               {{/title}}
               {{#description}}
-              <div class="card-text highlight-description">{{description}}</div>
+              <p class="card-text highlight-description">{{description}}</p>
               {{/description}}
             </div>
           </div>

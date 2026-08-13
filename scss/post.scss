@@ -222,6 +222,92 @@
     }
 }
 
+
+
+/* Theme settings integration */
+.login-container-80t {
+    background-color: rgba(255, 255, 255, 0.8) !important;
+}
+
+/**************************************************************
+ * HIGHLIGHTS
+ ***************************************************************/
+
+.issinglehighlight{
+    flex-basis: 100%;
+    flex-grow: 1;
+}
+
+.multiple-highlights{
+    flex-basis: 0%;
+    flex-grow: 1;
+}
+.highlights-wrapper{
+    padding: 2rem 4rem 2.5rem !important;
+}
+
+.highlights-container{
+    gap: .5rem;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+}
+
+
+// Highlights tile styling
+.highlight-tile {
+    border: none;
+    border-radius: 0;
+    overflow: hidden;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    background: #dee2e64d;
+    .highlight-link {
+        text-decoration: none;
+        color: inherit;
+        display: block;
+        height: 100%;
+        
+        &:hover {
+            .highlight-tile {
+                transform: translateY(-2px);
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            }
+        }
+    }
+    
+    .card-body {
+        padding: 1.5rem;
+    }
+    
+    .highlight-icon {
+        min-width:17%;
+        max-width:17%;
+        margin: 0 1.5rem 0 0;
+
+        i {
+            font-size: 2.5rem;
+            color: $primary;
+        }
+    }
+    
+    .highlight-title {
+        font-weight: 400;
+        margin-bottom: 0.75rem;
+        color: var(--primary);
+        text-decoration: underline !important;
+    }
+    
+    .highlight-description {
+        color: $body-color;
+        opacity: 0.9;
+        line-height: 1.5;
+        font-weight: 400 !important;
+    }
+}
+
+.highlight-tile:hover{
+    background: #dee2e682;
+}
+
 /* Mobile fallback for split screen layout */
 @include media-breakpoint-down(md) {
     .pagelayout-login {
@@ -263,82 +349,15 @@
     .buc-slider-caption{
         font-size: 1.8rem;
     }
-}
-
-/* Theme settings integration */
-.login-container-80t {
-    background-color: rgba(255, 255, 255, 0.8) !important;
-}
-
-/**************************************************************
- * HIGHLIGHTS
- ***************************************************************/
-
-.issinglehighlight{
-    flex-basis: 100%;
-    flex-grow: 1;
-}
-
-.multiple-highlights{
-    flex-basis: 0%;
-    flex-grow: 1;
-}
-.highlights-wrapper{
-    padding: 2rem 4rem 2.5rem !important;
-}
-
-.highlights-container{
-    gap: .5rem;
-    display:grid;
-}
-
-// Highlights tile styling
-.highlight-tile {
-    border: none;
-    border-radius: 0.5rem;
-    overflow: hidden;
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-    background: #dee2e64d;
-    
-    .highlight-link {
-        text-decoration: none;
-        color: inherit;
-        display: block;
-        height: 100%;
-        
-        &:hover {
-            .highlight-tile {
-                transform: translateY(-2px);
-                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            }
-        }
+    .highlights-container{
+    grid-template-columns:1fr;
+   
     }
-    
-    .card-body {
-        padding: 1.5rem;
+    .highlight-tile {
+    max-width: 100%;
     }
-    
-    .highlight-icon {
-        min-width:17%;
-        max-width:17%;
-        margin: 0 1.5rem 0 0;
 
-        i {
-            font-size: 2.5rem;
-            color: $primary;
-        }
-    }
-    
-    .highlight-title {
-        font-weight: 600;
-        margin-bottom: 0.75rem;
-        color: var(--primary);
-        text-decoration: underline !important;
-    }
-    
-    .highlight-description {
-        color: $body-color;
-        opacity: 0.9;
-        line-height: 1.6;
+    .highlights-wrapper{
+        padding: 2rem 0 2.5rem !important;
     }
 }

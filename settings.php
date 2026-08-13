@@ -295,6 +295,19 @@ if ($hassiteconfig || has_capability('theme/boost_union:configure', context_syst
         $setting->set_updatedcallback('theme_reset_all_caches');
         $tab->add($setting);
 
+        // Setting: Highlights dismissible.
+        $name = 'theme_boost_union_child/highlightsdismissible';
+        $title = get_string('highlightsdismissible', 'theme_boost_union_child', null, true);
+        $description = get_string('highlightsdismissible_desc', 'theme_boost_union_child', null, true);
+        $setting = new admin_setting_configcheckbox(
+            $name,
+            $title,
+            $description,
+            0
+        );
+        $setting->set_updatedcallback('theme_reset_all_caches');
+        $tab->add($setting);
+
         // Setting: Highlight section title.
         $name = 'theme_boost_union_child/highlightsectiontitle';
         $title = get_string('highlightsectiontitle', 'theme_boost_union_child', null, true);
@@ -371,7 +384,7 @@ if ($hassiteconfig || has_capability('theme/boost_union:configure', context_syst
                 $description,
                 'highlight' . $i . 'icon',
                 0,
-                ['maxfiles' => 1, 'accepted_types' => ['.svg', '.png', '.jpg', '.jpeg']]
+                ['maxfiles' => 1, 'accepted_types' => ['.svg', '.png', '.jpg', '.jpeg', '.gif']]
             );
             $setting->set_updatedcallback('theme_reset_all_caches');
             $tab->add($setting);

@@ -100,6 +100,9 @@ $string['highlightsheading_desc'] = 'Configure up to 6 highlights to be displaye
 // ... ... Setting: Enable highlights.
 $string['enablehighlights'] = 'Enable highlights';
 $string['enablehighlights_desc'] = 'If checked, highlights will be displayed in the frontend.';
+// ... ... Setting: Highlights dismissible.
+$string['highlightsdismissible'] = 'Make highlights section dismissible';
+$string['highlightsdismissible_desc'] = 'If checked, the entire highlights section will be dismissible. If a user clicks on the close button, the section will be hidden for this user permanently.';
 // ... Section: Highlights visibility.
 $string['highlightsvisibilityheading'] = 'Highlights visibility';
 // ... ... Setting: Show highlights on frontpage.

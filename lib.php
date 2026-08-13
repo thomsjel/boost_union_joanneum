@@ -208,6 +208,25 @@ function theme_boost_union_child_extend_busettingsoverview() {
 }
 
 /**
+ * Define preferences which may be set via the core_user_set_user_preferences external function.
+ *
+ * @uses \core\user::is_current_user
+ *
+ * @return array[]
+ */
+function theme_boost_union_child_user_preferences(): array {
+    return [
+        'theme_boost_union_child_highlights_dismissed' => [
+            'type' => PARAM_INT,
+            'null' => NULL_NOT_ALLOWED,
+            'default' => 0,
+            'choices' => [0, 1],
+            'permissioncallback' => [\core\user::class, 'is_current_user'],
+        ],
+    ];
+}
+
+/**
  * Callback function which allows themes to alter the CSS URLs.
  * We use this function to change the CSS URL to the flavour CSS URL if a flavour applies to the current page.
  *
