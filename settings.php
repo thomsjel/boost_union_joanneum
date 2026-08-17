@@ -299,6 +299,19 @@ if ($hassiteconfig || has_capability('theme/boost_union:configure', context_syst
         $name = 'theme_boost_union_child/highlightsdismissible';
         $title = get_string('highlightsdismissible', 'theme_boost_union_child', null, true);
         $description = get_string('highlightsdismissible_desc', 'theme_boost_union_child', null, true);
+        // Add Reset button if the highlights section is already configured to be dismissible.
+        if (get_config('theme_boost_union_child', 'highlightsdismissible') == true) {
+            $reseturl = new \core\url(
+                '/theme/boost_union_child/settings_highlights_resetdismissed.php',
+                ['sesskey' => sesskey()]
+            );
+            $description .= \core\output\html_writer::empty_tag('br');
+            $description .= \core\output\html_writer::link(
+                $reseturl,
+                get_string('highlightsdismissresetbutton', 'theme_boost_union_child'),
+                ['class' => 'btn btn-secondary mt-3', 'role' => 'button']
+            );
+        }
         $setting = new admin_setting_configcheckbox(
             $name,
             $title,

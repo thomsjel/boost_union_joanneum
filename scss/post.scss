@@ -357,6 +357,10 @@
     max-width: 100%;
     }
 
+}
+
+@include media-breakpoint-down(sm) {
+
     .highlights-wrapper{
         padding: 2rem 0 2.5rem !important;
     }

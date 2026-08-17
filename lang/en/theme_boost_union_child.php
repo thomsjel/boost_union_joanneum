@@ -117,7 +117,13 @@ $string['enablehighlights'] = 'Enable highlights';
 $string['enablehighlights_desc'] = 'If checked, highlights will be displayed in the frontend.';
 // ... ... Setting: Highlights dismissible.
 $string['highlightsdismissible'] = 'Make highlights section dismissible';
-$string['highlightsdismissible_desc'] = 'If checked, the entire highlights section will be dismissible. If a user clicks on the close button, the section will be hidden for this user permanently.';
+$string['highlightsdismissible_desc'] = 'If checked, the entire highlights section will be dismissible. If a user clicks on the close button, the section will be hidden for this user permanently. If you want to reset the visibility of the highlights section, click the \'Reset visibility\' button below.';
+// ... ... Setting: Reset dismissed highlights.
+$string['highlightsdismissreset'] = 'Reset visibility of dismissed highlights';
+$string['highlightsdismissresetbutton'] = 'Reset visibility of highlights';
+$string['highlightsdismissconfirm'] = 'Do you really want to reset the visibility of the highlights section and want to re-show it for all users who have dismissed it?';
+$string['highlightsdismissresetsuccess'] = 'The visibility of the highlights section has been reset';
+$string['highlightsdismissresetfail'] = 'The visibility reset of the highlights section has failed for at least one user';
 // ... Section: Highlights visibility.
 $string['highlightsvisibilityheading'] = 'Highlights visibility';
 // ... ... Setting: Show highlights on frontpage.

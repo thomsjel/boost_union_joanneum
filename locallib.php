@@ -79,3 +79,34 @@ function theme_boost_union_child_get_highlight_icon_url($highlightno) {
     // As no file was found, return null.
     return null;
 }
+
+/**
+ * Reset the visibility of the dismissed highlights section.
+ *
+ * @return bool True if everything went fine, false if at least one user couldn't be resetted.
+ */
+function theme_boost_union_child_highlights_reset_visibility() {
+    global $DB;
+
+    // Get all users that have dismissed the highlights section once and therefore the user preference.
+    $whereclause = 'name = :name AND value = :value';
+    $params = ['name' => 'theme_boost_union_child_highlights_dismissed', 'value' => '1'];
+    $users = $DB->get_records_select('user_preferences', $whereclause, $params, '', 'userid');
+
+    // Initialize variable for feedback messages.
+    $somethingwentwrong = false;
+
+    foreach ($users as $user) {
+        try {
+            unset_user_preference('theme_boost_union_child_highlights_dismissed', $user->userid);
+        } catch (coding_exception $e) {
+            $somethingwentwrong = true;
+        }
+    }
+
+    if (!$somethingwentwrong) {
+        return true;
+    } else {
+        return false;
+    }
+}

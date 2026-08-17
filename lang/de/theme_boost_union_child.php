@@ -109,7 +109,13 @@ $string['enablehighlights'] = 'Highlights aktivieren';
 $string['enablehighlights_desc'] = 'Wenn aktiviert, werden die Highlights im Frontend angezeigt.';
 // ... ... Setting: Highlights dismissible.
 $string['highlightsdismissible'] = 'Highlight-Bereich ausblendbar machen';
-$string['highlightsdismissible_desc'] = 'Wenn aktiviert, kann der gesamte Highlight-Bereich ausgeblendet werden. Wenn ein Benutzer auf die Schaltfläche zum Schließen klickt, wird der Bereich für diesen Benutzer dauerhaft ausgeblendet.';
+$string['highlightsdismissible_desc'] = 'Wenn aktiviert, kann der gesamte Highlight-Bereich ausgeblendet werden. Wenn ein Benutzer auf die Schaltfläche zum Schließen klickt, wird der Bereich für diesen Benutzer dauerhaft ausgeblendet. Wenn Sie die Sichtbarkeit des Highlight-Bereichs zurücksetzen möchten, klicken Sie auf die Schaltfläche \'Sichtbarkeit zurücksetzen\' weiter unten.';
+// ... ... Setting: Reset dismissed highlights.
+$string['highlightsdismissreset'] = 'Sichtbarkeit ausgeblendeter Highlights zurücksetzen';
+$string['highlightsdismissresetbutton'] = 'Sichtbarkeit der Highlights zurücksetzen';
+$string['highlightsdismissconfirm'] = 'Möchten Sie die Sichtbarkeit des Highlight-Bereichs wirklich zurücksetzen und ihn für alle Benutzer, die ihn ausgeblendet haben, erneut anzeigen?';
+$string['highlightsdismissresetsuccess'] = 'Die Sichtbarkeit des Highlight-Bereichs wurde zurückgesetzt';
+$string['highlightsdismissresetfail'] = 'Das Zurücksetzen der Sichtbarkeit des Highlight-Bereichs ist für mindestens einen Benutzer fehlgeschlagen';
 // ... Section: Highlights visibility.
 $string['highlightsvisibilityheading'] = 'Highlight-Sichtbarkeit';
 // ... ... Setting: Show highlights on frontpage.
