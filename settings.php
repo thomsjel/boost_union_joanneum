@@ -437,6 +437,85 @@ if ($hassiteconfig || has_capability('theme/boost_union:configure', context_syst
         // Add tab to settings page.
         $page->add($tab);
 
+        // Tab: Fonts.
+        $tab = new admin_settingpage(
+            'theme_boost_union_child_fonts',
+            get_string('fontstab', 'theme_boost_union_child', null, true)
+        );
+
+        // Heading: Font 1.
+        $name = 'theme_boost_union_child/font1heading';
+        $title = get_string('font1heading', 'theme_boost_union_child', null, true);
+        $setting = new admin_setting_heading($name, $title, null);
+        $tab->add($setting);
+
+        // Setting: Font 1 file upload.
+        $name = 'theme_boost_union_child/font1file';
+        $title = get_string('font1file', 'theme_boost_union_child', null, true);
+        $description = get_string('font1file_desc', 'theme_boost_union_child', null, true);
+        $setting = new admin_setting_configstoredfile(
+            $name,
+            $title,
+            $description,
+            'font1',
+            0,
+            ['maxfiles' => 1, 'accepted_types' => ['.woff', '.woff2', '.ttf', '.eot', '.svg', '.otf']]
+        );
+        $setting->set_updatedcallback('theme_reset_all_caches');
+        $tab->add($setting);
+
+        // Setting: Font 1 CSS classes/tags.
+        $name = 'theme_boost_union_child/font1cssclasses';
+        $title = get_string('font1cssclasses', 'theme_boost_union_child', null, true);
+        $description = get_string('font1cssclasses_desc', 'theme_boost_union_child', null, true);
+        $setting = new admin_setting_configtext(
+            $name,
+            $title,
+            $description,
+            '',
+            PARAM_TEXT
+        );
+        $setting->set_updatedcallback('theme_reset_all_caches');
+        $tab->add($setting);
+
+        // Heading: Font 2.
+        $name = 'theme_boost_union_child/font2heading';
+        $title = get_string('font2heading', 'theme_boost_union_child', null, true);
+        $setting = new admin_setting_heading($name, $title, null);
+        $tab->add($setting);
+
+        // Setting: Font 2 file upload.
+        $name = 'theme_boost_union_child/font2file';
+        $title = get_string('font2file', 'theme_boost_union_child', null, true);
+        $description = get_string('font2file_desc', 'theme_boost_union_child', null, true);
+        $setting = new admin_setting_configstoredfile(
+            $name,
+            $title,
+            $description,
+            'font2',
+            0,
+            ['maxfiles' => 1, 'accepted_types' => ['.woff', '.woff2', '.ttf', '.eot', '.svg', '.otf']]
+        );
+        $setting->set_updatedcallback('theme_reset_all_caches');
+        $tab->add($setting);
+
+        // Setting: Font 2 CSS classes/tags.
+        $name = 'theme_boost_union_child/font2cssclasses';
+        $title = get_string('font2cssclasses', 'theme_boost_union_child', null, true);
+        $description = get_string('font2cssclasses_desc', 'theme_boost_union_child', null, true);
+        $setting = new admin_setting_configtext(
+            $name,
+            $title,
+            $description,
+            '',
+            PARAM_TEXT
+        );
+        $setting->set_updatedcallback('theme_reset_all_caches');
+        $tab->add($setting);
+
+        // Add tab to settings page.
+        $page->add($tab);
+
         // Add settings page to the admin settings category.
         $ADMIN->add('theme_boost_union', $page);
     }

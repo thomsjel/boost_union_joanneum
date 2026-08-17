@@ -97,6 +97,21 @@ $string['highlightstab'] = 'Highlights';
 // ... Section: Highlights settings.
 $string['highlightsheading'] = 'Highlights';
 $string['highlightsheading_desc'] = 'Configure up to 6 highlights to be displayed as tiles in the frontend.';
+
+// Settings: Fonts tab.
+$string['fontstab'] = 'Fonts';
+// ... Section: Font 1.
+$string['font1heading'] = 'Font 1';
+$string['font1file'] = 'Font 1 file';
+$string['font1file_desc'] = 'Upload a font file (WOFF, WOFF2, TTF, EOT, or SVG).';
+$string['font1cssclasses'] = 'CSS classes/tags for Font 1';
+$string['font1cssclasses_desc'] = 'Enter the CSS classes or HTML tags (comma-separated) that should use this font, e.g., h1,h2,h3,.custom-class';
+// ... Section: Font 2.
+$string['font2heading'] = 'Font 2';
+$string['font2file'] = 'Font 2 file';
+$string['font2file_desc'] = 'Upload a font file (WOFF, WOFF2, TTF, EOT, or SVG).';
+$string['font2cssclasses'] = 'CSS classes/tags for Font 2';
+$string['font2cssclasses_desc'] = 'Enter the CSS classes or HTML tags (comma-separated) that should use this font, e.g., h4,h5,h6,.another-class';
 // ... ... Setting: Enable highlights.
 $string['enablehighlights'] = 'Enable highlights';
 $string['enablehighlights_desc'] = 'If checked, highlights will be displayed in the frontend.';

@@ -1,35 +1,13 @@
-@font-face {
-     font-family: 'UnitSlab';
-     src: url("/pluginfile.php/1/theme_boost_union/customfonts/0/UnitSlabOT.otf");
-}
-
-@font-face {
-     font-family: 'Parka';
-     src: url("/pluginfile.php/1/theme_boost_union/customfonts/0/Parka Regular.otf");
-}
+@import "data-lang";
 
 :root{
     --buc-box-shadow-color: #00000036;
     --buc-box-shadow: 0 0 .5rem var(--buc-box-shadow-color);
 }
 
-body{
-    font-family: 'Parka', sans-serif !important;
-}
-
-h1, h2, h3, h4, h5{
-    font-family: 'UnitSlab', serif !important;
-}
-
 /*=======================================
  * Slider
  ======================================*/
-
- .buc-slider-caption{
-    font-size: 2.3rem;
-    line-height: 1.2;
-    font-family: 'UnitSlab';
- }
 
 // Slider layout: Text left with solid background and image right
 .slider-layout-textleft-solid {
@@ -67,6 +45,12 @@ h1, h2, h3, h4, h5{
                 align-items: center;
                 height: 20rem;
                 border-radius: 0;
+
+                h2{
+                    font-size: 2.3rem;
+                    line-height: 1.2;
+                    font-weight: 400;
+                }
                 
                 .slide-text-solid {
                     flex: 1;
@@ -88,7 +72,6 @@ h1, h2, h3, h4, h5{
                         color: #333;
                         font-size: 1.5rem;
                         margin-bottom: 1rem;
-                        font-family: 'UnitSlab';
                     }
                     
                     // Dark content style overrides for solid background

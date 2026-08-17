@@ -89,6 +89,21 @@ $string['highlightstab'] = 'Highlights';
 // ... Section: Highlights settings.
 $string['highlightsheading'] = 'Highlights';
 $string['highlightsheading_desc'] = 'Konfigurieren Sie bis zu 6 Highlights, die als Kacheln im Frontend angezeigt werden.';
+
+// Settings: Fonts tab.
+$string['fontstab'] = 'Schriftarten';
+// ... Section: Font 1.
+$string['font1heading'] = 'Schriftart 1';
+$string['font1file'] = 'Schriftart 1 Datei';
+$string['font1file_desc'] = 'Laden Sie eine Schriftart-Datei (WOFF, WOFF2, TTF, EOT oder SVG) hoch.';
+$string['font1cssclasses'] = 'CSS-Klassen/Tags für Schriftart 1';
+$string['font1cssclasses_desc'] = 'Geben Sie die CSS-Klassen oder HTML-Tags (durch Kommas getrennt) ein, die diese Schriftart verwenden sollen, z.B. h1,h2,h3,.custom-class';
+// ... Section: Font 2.
+$string['font2heading'] = 'Schriftart 2';
+$string['font2file'] = 'Schriftart 2 Datei';
+$string['font2file_desc'] = 'Laden Sie eine Schriftart-Datei (WOFF, WOFF2, TTF, EOT oder SVG) hoch.';
+$string['font2cssclasses'] = 'CSS-Klassen/Tags für Schriftart 2';
+$string['font2cssclasses_desc'] = 'Geben Sie die CSS-Klassen oder HTML-Tags (durch Kommas getrennt) ein, die diese Schriftart verwenden sollen, z.B. h4,h5,h6,.another-class';
 // ... ... Setting: Enable highlights.
 $string['enablehighlights'] = 'Highlights aktivieren';
 $string['enablehighlights_desc'] = 'Wenn aktiviert, werden die Highlights im Frontend angezeigt.';

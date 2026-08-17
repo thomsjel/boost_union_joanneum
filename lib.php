@@ -53,6 +53,7 @@ function theme_boost_union_child_pluginfile($course, $cm, $context, $filearea, $
     $allowedfileareas = [
         'highlight1icon', 'highlight2icon', 'highlight3icon',
         'highlight4icon', 'highlight5icon', 'highlight6icon',
+        'font1', 'font2',
         // Add future fileareas here, e.g.:
         // 'customfont1', 'customfont2', 'backgroundimage', etc.
     ];
@@ -150,6 +151,120 @@ function theme_boost_union_child_get_pre_scss($theme) {
      * Compose and add additional pre-SCSS code here.
      * It will be added on top of Boost Union's pre-SCSS code.
      *********************************************************/
+
+    // Add custom font CSS.
+    $scss .= theme_boost_union_child_get_font_scss($theme);
+
+    return $scss;
+}
+
+/**
+ * Generate SCSS for custom fonts.
+ *
+ * @param \core\output\theme_config $theme The theme config object.
+ * @return string
+ */
+function theme_boost_union_child_get_font_scss($theme) {
+    $scss = '';
+
+    $fs = get_file_storage();
+    $context = context_system::instance();
+
+    // Process Font 1.
+    $font1file = get_config('theme_boost_union_child', 'font1file');
+    $font1cssclasses = get_config('theme_boost_union_child', 'font1cssclasses');
+
+    if (!empty($font1file) && !empty($font1cssclasses)) {
+        // Get the font file URL.
+        $files = $fs->get_area_files($context->id, 'theme_boost_union_child', 'font1', 0, '', false);
+
+        foreach ($files as $file) {
+            if ($file->get_filename() !== '.') {
+                $fonturl = moodle_url::make_pluginfile_url(
+                    $context->id,
+                    'theme_boost_union_child',
+                    'font1',
+                    0,
+                    '/',
+                    $file->get_filename()
+                );
+                
+                // Extract font family name from filename (without extension).
+                $filename = $file->get_filename();
+                $basename = pathinfo($filename, PATHINFO_FILENAME);
+                // Sanitize the basename to be a valid CSS font family name.
+                $basename = preg_replace('/[^a-zA-Z0-9\-_]/', '-', $basename);
+                $fontfamily = 'font1-' . $basename;
+
+                // Generate @font-face rule.
+                $scss .= "@font-face {\n";
+                $scss .= "    font-family: '$fontfamily';\n";
+                $scss .= "    src: url('$fonturl');\n";
+                $scss .= "}\n\n";
+
+                // Apply to specified CSS classes/tags.
+                $selectors = explode(',', $font1cssclasses);
+                $selectors = array_map('trim', $selectors);
+                $selectors = array_filter($selectors);
+
+                if (!empty($selectors)) {
+                    $selectorstring = implode(', ', $selectors);
+                    $scss .= "$selectorstring {\n";
+                    $scss .= "    font-family: '$fontfamily', sans-serif !important;\n";
+                    $scss .= "}\n\n";
+                }
+                break; // Only process the first file.
+            }
+        }
+    }
+
+    // Process Font 2.
+    $font2file = get_config('theme_boost_union_child', 'font2file');
+    $font2cssclasses = get_config('theme_boost_union_child', 'font2cssclasses');
+
+    if (!empty($font2file) && !empty($font2cssclasses)) {
+        // Get the font file URL.
+        $files = $fs->get_area_files($context->id, 'theme_boost_union_child', 'font2', 0, '', false);
+
+        foreach ($files as $file) {
+            if ($file->get_filename() !== '.') {
+                $fonturl = moodle_url::make_pluginfile_url(
+                    $context->id,
+                    'theme_boost_union_child',
+                    'font2',
+                    0,
+                    '/',
+                    $file->get_filename()
+                );
+
+                // Extract font family name from filename (without extension).
+                $filename = $file->get_filename();
+                $basename = pathinfo($filename, PATHINFO_FILENAME);
+                // Sanitize the basename to be a valid CSS font family name.
+                $basename = preg_replace('/[^a-zA-Z0-9\-_]/', '-', $basename);
+                $fontfamily = 'font2-' . $basename;
+
+                // Generate @font-face rule.
+                $scss .= "@font-face {\n";
+                $scss .= "    font-family: '$fontfamily';\n";
+                $scss .= "    src: url('$fonturl');\n";
+                $scss .= "}\n\n";
+
+                // Apply to specified CSS classes/tags.
+                $selectors = explode(',', $font2cssclasses);
+                $selectors = array_map('trim', $selectors);
+                $selectors = array_filter($selectors);
+
+                if (!empty($selectors)) {
+                    $selectorstring = implode(', ', $selectors);
+                    $scss .= "$selectorstring {\n";
+                    $scss .= "    font-family: '$fontfamily', sans-serif !important;\n";
+                    $scss .= "}\n\n";
+                }
+                break; // Only process the first file.
+            }
+        }
+    }
 
     return $scss;
 }
