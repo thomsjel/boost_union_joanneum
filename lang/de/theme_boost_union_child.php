@@ -57,6 +57,7 @@ $string['privacy:metadata'] = 'Das „Boost Union Child“-Theme speichert keine
 
 // Settings: Slider tab.
 $string['slidertab'] = 'Slider';
+$string['sliderreference'] = 'Für allgemeine Slider-Einstellungen siehe den <a href="{$a}">Slider-Bereich in Boost Union</a>.';
 // ... Section: Slider layout.
 $string['sliderlayoutheading'] = 'Slider-Layout';
 // ... ... Setting: Slider layout type.

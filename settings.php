@@ -163,6 +163,20 @@ if ($hassiteconfig || has_capability('theme/boost_union:configure', context_syst
             get_string('slidertab', 'theme_boost_union_child', null, true)
         );
 
+        // Add reference to Boost Union Slider section.
+        $sliderurl = new \core\url(
+            '/admin/settings.php',
+            ['section' => 'theme_boost_union_content']
+        );
+        $sliderurl->set_anchor('theme_boost_union_slider');
+        $reference = get_string('sliderreference', 'theme_boost_union_child', $sliderurl->out(), true);
+        $setting = new admin_setting_heading(
+            'theme_boost_union_child/sliderreference',
+            '',
+            $reference
+        );
+        $tab->add($setting);
+
         // Heading: Slider layout.
         $name = 'theme_boost_union_child/sliderlayoutheading';
         $title = get_string('sliderlayoutheading', 'theme_boost_union_child', null, true);

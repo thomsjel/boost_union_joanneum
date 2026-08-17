@@ -65,6 +65,7 @@ $string['cohorttagscontainer_desc'] = 'Cohort visibility';
 
 // Settings: Slider tab.
 $string['slidertab'] = 'Slider';
+$string['sliderreference'] = 'For general slider settings, see the <a href="{$a}">Slider section in Boost Union</a>.';
 // ... Section: Slider layout.
 $string['sliderlayoutheading'] = 'Slider layout';
 // ... ... Setting: Slider layout type.
