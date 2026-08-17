@@ -145,6 +145,8 @@ $string['highlightdescription'] = 'Description';
 $string['highlightdescription_desc'] = 'Enter the description for this highlight.';
 $string['highlightlink'] = 'Link';
 $string['highlightlink_desc'] = 'Enter the URL for this highlight tile (e.g., /course or https://example.com).';
+$string['highlightcohortvisibility'] = 'Cohort visibility';
+$string['highlightcohortvisibility_desc'] = 'Enter cohort IDs (comma-separated) that should be able to see this highlight. Leave empty to show to all users.';
 
 // Miscellaneous
 $string['or'] = 'or';

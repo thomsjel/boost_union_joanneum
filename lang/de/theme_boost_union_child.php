@@ -137,6 +137,8 @@ $string['highlightdescription'] = 'Beschreibung';
 $string['highlightdescription_desc'] = 'Geben Sie die Beschreibung für dieses Highlight ein.';
 $string['highlightlink'] = 'Link';
 $string['highlightlink_desc'] = 'Geben Sie die URL für diese Highlight-Kachel ein (z.B. /course oder https://beispiel.de).';
+$string['highlightcohortvisibility'] = 'Kohortensichtbarkeit';
+$string['highlightcohortvisibility_desc'] = 'Geben Sie die Kohorten-IDs (durch Kommas getrennt) ein, die dieses Highlight sehen können sollen. Lassen Sie das Feld leer, um es allen Benutzern anzuzeigen.';
 
 // Settings: General settings tab.
 // ... Section: Cohort-based navigation.

@@ -110,3 +110,67 @@ function theme_boost_union_child_highlights_reset_visibility() {
         return false;
     }
 }
+
+/**
+ * Check if the current user can see a highlight based on cohort visibility settings.
+ *
+ * @param int $highlightno The highlight number (1-6).
+ * @return bool True if the user can see the highlight, false otherwise.
+ */
+function theme_boost_union_child_highlight_is_visible_for_user($highlightno) {
+    global $CFG, $USER;
+
+    // If the highlight number is apparently not valid, return true (show by default).
+    if ($highlightno < 1 || $highlightno > 6) {
+        return true;
+    }
+
+    // Get the cohort visibility configuration for this highlight.
+    $cohortvisibility = get_config('theme_boost_union_child', 'highlight' . $highlightno . 'cohortvisibility');
+
+    // If no cohort visibility is configured (empty string), show to all users.
+    if (empty(trim($cohortvisibility))) {
+        return true;
+    }
+
+    // If the user is not logged in, they can't be in any cohort, so don't show.
+    if (!isloggedin() || isguestuser()) {
+        return false;
+    }
+
+    // Require cohort library.
+    require_once($CFG->dirroot . '/cohort/lib.php');
+
+    // Get the user's cohorts.
+    $usercohorts = cohort_get_user_cohorts($USER->id);
+
+    // If the user has no cohorts and cohort visibility is configured, don't show.
+    if (empty($usercohorts)) {
+        return false;
+    }
+
+    // Extract cohort IDs from the user's cohorts.
+    $usercohortids = array_keys($usercohorts);
+
+    // Parse the configured cohort IDs (comma-separated).
+    $allowedcohortids = explode(',', $cohortvisibility);
+    $allowedcohortids = array_map('trim', $allowedcohortids);
+    $allowedcohortids = array_filter($allowedcohortids);
+
+    // If no valid cohort IDs are configured, show to all users.
+    if (empty($allowedcohortids)) {
+        return true;
+    }
+
+    // Check if the user is in any of the allowed cohorts.
+    foreach ($allowedcohortids as $allowedid) {
+        // Normalize the cohort ID (convert to int for comparison).
+        $normalizedid = (int) $allowedid;
+        if (in_array($normalizedid, $usercohortids)) {
+            return true;
+        }
+    }
+
+    // User is not in any of the allowed cohorts.
+    return false;
+}

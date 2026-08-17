@@ -67,6 +67,11 @@ for ($i = 1; $i <= 6; $i++) {
         continue;
     }
     
+    // Check cohort visibility for this highlight.
+    if (!theme_boost_union_child_highlight_is_visible_for_user($i)) {
+        continue;
+    }
+    
     $title = isset($childconfig->{'highlight' . $i . 'title'}) ? $childconfig->{'highlight' . $i . 'title'} : '';
     $description = isset($childconfig->{'highlight' . $i . 'description'}) ? $childconfig->{'highlight' . $i . 'description'} : '';
     $link = isset($childconfig->{'highlight' . $i . 'link'}) ? $childconfig->{'highlight' . $i . 'link'} : '';
