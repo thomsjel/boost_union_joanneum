@@ -18,6 +18,24 @@
  * Theme Boost Union Child - slider layout include.
  *
  * This file extends the Boost Union slider functionality to support additional layouts.
+ * 
+ * Architecture Overview:
+ *
+ * This file serves as a layout INCLUDE and is not a standalone renderer.
+ * Its purpose is to populate the `$templatecontext` variable with slider-related data,
+ * such as `slidergeneralsettings` with layout configuration.
+ *
+ * The populated `$templatecontext` is then consumed by `layout/drawers.php`.
+ * That file calls `render_from_template()` using either:
+ *   - The template `'theme_boost/drawers'`, or
+ *   - The template `'local_boost_union_mwp/drawers'`.
+ *
+ * These templates include the `{{> theme_boost_union/slider }}` partial,
+ * which renders the actual HTML using the context prepared in this file.
+ *
+ * Note: The rendering process occurs in `drawers.php` (lines 259 or 264), not in this file.
+ * This design pattern centralizes template context preparation in this file while delegating
+ * the rendering call to the main layout file (`drawers.php`).
  *
  * @package   theme_boost_union_child
  * @copyright 2026 Daniel Poggenpohl <daniel.poggenpohl@fernuni-hagen.de>

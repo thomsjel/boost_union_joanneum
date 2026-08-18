@@ -1,6 +1,17 @@
+/****************************************************************
+ * EXTENSION POINT:
+ * Add your Pre-SCSS code here.
+ * It will be added on top of Boost Union's Pre-SCSS code.
+ ***************************************************************/
 @import "data-lang";
 
-:root{
+:root {
+    --child-dark-green: #008a00;
+    --child-light-green: #e6f6e6;
+    --child-light-gray: #dadde1;
+    --child-light-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .1);
+    --child-code-blue: #00009f;
+    --child-code-red: #e3116c;
     --buc-box-shadow-color: #00000036;
     --buc-box-shadow: 0 0 .5rem var(--buc-box-shadow-color);
 }
@@ -65,8 +76,6 @@
                     flex-direction: column;
                     align-items: flex-start;
                     padding: 3rem 5rem;
-                    /*border-top-right-radius: 0;
-                    border-bottom-right-radius: 0;*/
                     
                     h5 {
                         color: #333;
@@ -167,20 +176,6 @@
         background-color: #fff !important;
         border: 1px solid white !important;
     }
-}
-
-/****************************************************************
- * EXTENSION POINT:
- * Add your Pre-SCSS code here.
- * It will be added on top of Boost Union's Pre-SCSS code.
- ***************************************************************/
-:root {
-    --child-dark-green: #008a00;
-    --child-light-green: #e6f6e6;
-    --child-light-gray: #dadde1;
-    --child-light-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .1);
-    --child-code-blue: #00009f;
-    --child-code-red: #e3116c;
 }
 
 .settings-example {

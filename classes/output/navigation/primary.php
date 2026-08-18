@@ -1,10 +1,32 @@
 <?php
+// This file is part of Moodle - http://moodle.org/
+//
+// Moodle is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// Moodle is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+
 namespace theme_boost_union_child\output\navigation;
 
 use renderer_base;
 use theme_boost_union\output\navigation\primary as boost_union_primary;
 use custom_menu;
 
+/**
+ * Primary navigation renderer for Boost Union Child theme with cohort filtering.
+ *
+ * @package   theme_boost_union_child
+ * @copyright 2026 Thomas Kautz <thomas.kautz@fh-joanneum.at>
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
 class primary extends boost_union_primary {
     /**
      * Override to filter custom menu items by cohort.
@@ -30,7 +52,7 @@ class primary extends boost_union_primary {
         // Special handling for admin: show all items with cohort spans.
         if ($isadmin) {
             // For admin: parse the original menu string (with cohort markers),
-            // then use reflection to add cohort spans directly to node text before export.
+            // then add cohort spans directly to node text before export.
             $custommenunodes = \custom_menu::convert_text_to_menu_nodes($custommenustring, $currentlang);
 
             // Process nodes recursively to add cohort spans.
@@ -73,16 +95,14 @@ class primary extends boost_union_primary {
      * Build HTML span for a cohort ID.
      */
     private function build_cohort_span(int $cohortid, $DB): string {
-        $cohort = $DB->get_record('cohort', ['id' => $cohortid], 'id, name, description');
+        $cohort = $DB->get_record('cohort', ['id' => $cohortid], 'id, name');
         if (!$cohort) {
             return '';
         }
 
-        $color = $cohort->description ? trim(strip_tags($cohort->description)) : '';
-        $bgcolor = $color . '05'; // Add alpha for background
         $escapedname = htmlspecialchars($cohort->name, ENT_QUOTES, 'UTF-8');
 
-        return "<span class='cohort-tag cohort-$cohortid'>&#x2022; $escapedname</span>"; //style='background-color:$bgcolor; color:$color; border:1px solid $color;'
+        return "<span class='cohort-tag cohort-$cohortid'>&#x2022; $escapedname</span>";
     }
 
     /**
@@ -103,7 +123,7 @@ class primary extends boost_union_primary {
 
         $label = get_string('cohorttagscontainer_desc', 'theme_boost_union_child');
         
-        return '<div class="cohort-tags-container"><legend>' . $label . '</legend>' . implode(' ', $spans) . '</div>';
+        return '<div class="cohort-tags-container"><fieldset><legend>' . $label . '</legend>' . implode(' ', $spans) . '</fieldset></div>';
     }
 
     /**

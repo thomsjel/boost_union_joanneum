@@ -18,9 +18,27 @@
  * Theme Boost Union Child - highlights layout include.
  *
  * This file prepares the template context for the highlights tiles.
+ * 
+ * Architecture Overview:
+ *
+ * This file serves as a layout INCLUDE and is not a standalone renderer.
+ * Its purpose is to populate the `$templatecontext` variable with highlight-related data,
+ * such as `showhighlights` and the `highlights` array.
+ *
+ * The populated `$templatecontext` is then consumed by `layout/drawers.php`.
+ * That file calls `render_from_template()` using either:
+ *   - The template `'theme_boost/drawers'`, or
+ *   - The template `'local_boost_union_mwp/drawers'`.
+ *
+ * These templates include the `{{> theme_boost_union_child/highlights }}` partial,
+ * which renders the actual HTML using the context prepared in this file.
+ *
+ * Note: The rendering process occurs in `drawers.php` (lines 259 or 264), not in this file.
+ * This design pattern centralizes template context preparation in this file while delegating
+ * the rendering call to the main layout file (`drawers.php`).
  *
  * @package   theme_boost_union_child
- * @copyright 2026 Daniel Poggenpohl <daniel.poggenpohl@fernuni-hagen.de>
+ * @copyright 2026 Thomas Kautz <thomas.kautz@fh-joanneum.at>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -57,19 +75,23 @@ if ($PAGE->pagelayout != 'login') {
 // Initialize the highlights array
 $highlights = [];
 
+$isadmin = is_siteadmin($USER->id);
+
 // Get all configured highlights (up to 6)
 for ($i = 1; $i <= 6; $i++) {
     // Check if this highlight is enabled
     $enabled = isset($childconfig->{'highlight' . $i . 'enabled'}) ? $childconfig->{'highlight' . $i . 'enabled'} : 0;
     
-    // Skip if highlight is disabled
-    if (!$enabled) {
-        continue;
-    }
-    
-    // Check cohort visibility for this highlight.
-    if (!theme_boost_union_child_highlight_is_visible_for_user($i)) {
-        continue;
+    if(!$isadmin){
+        // Skip if highlight is disabled
+        if (!$enabled) {
+            continue;
+        }
+        
+        // Check cohort visibility for this highlight.
+        if (!theme_boost_union_child_highlight_is_visible_for_user($i)) {
+            continue;
+        }
     }
     
     $title = isset($childconfig->{'highlight' . $i . 'title'}) ? $childconfig->{'highlight' . $i . 'title'} : '';
