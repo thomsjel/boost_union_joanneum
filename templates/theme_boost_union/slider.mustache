@@ -103,14 +103,14 @@
           <div class="slide-container d-flex align-items-center">
             {{! Text content with solid background - left side }}
             <div class="slide-text-solid bg-light {{contentstyleclass}}">
-              {{#linktext}}{{#link}}<a aria-label="{{link}}" href="{{link}}" {{#linktitle}}title="{{linktitle}}"{{/linktitle}} {{#linktargetnewtab}}target="_blank" rel="noopener noreferrer"{{/linktargetnewtab}}>{{/link}}{{/linktext}}
+              {{#linktext}}{{#link}}<a {{#linktitle}}aria-label="{{linktitle}}"{{/linktitle}} {{^linktitle}}aria-label="{{title}}"{{/linktitle}} href="{{link}}" {{#linktitle}}title="{{linktitle}}"{{/linktitle}} {{#linktargetnewtab}}target="_blank" rel="noopener noreferrer"{{/linktargetnewtab}}>{{/link}}{{/linktext}}
                 {{#caption}}<p class="text-light buc-slider-caption">{{caption}}</p>{{/caption}}
                 {{{content}}}
               {{#linktext}}{{#link}}</a>{{/link}}{{/linktext}}
             </div>
             {{! Image - right side }}
             <div class="slide-image flex-shrink-0">
-              {{#linkimage}}{{#link}}<a aria-label="{{link}}" href="{{link}}" {{#linktitle}}title="{{linktitle}}"{{/linktitle}} {{#linktargetnewtab}}target="_blank" rel="noopener noreferrer"{{/linktargetnewtab}}>{{/link}}{{/linkimage}}
+              {{#linkimage}}{{#link}}<a {{#linktitle}}aria-label="{{linktitle}}"{{/linktitle}} {{^linktitle}}aria-label="{{title}}"{{/linktitle}} href="{{link}}" {{#linktitle}}title="{{linktitle}}"{{/linktitle}} {{#linktargetnewtab}}target="_blank" rel="noopener noreferrer"{{/linktargetnewtab}}>{{/link}}{{/linkimage}}
                 {{#backgroundimageurl}}<img class="d-block w-100 h-100 object-fit-cover" style="border-radius: 0;" src="{{backgroundimageurl}}" alt="{{backgroundimagealt}}">{{/backgroundimageurl}}
               {{#linkimage}}{{#link}}</a>{{/link}}{{/linkimage}}
             </div>
