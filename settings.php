@@ -45,14 +45,9 @@ if ($hassiteconfig || has_capability('theme/boost_union:configure', context_syst
     // Create empty settings page structure to make the site administration work on non-admin pages.
     if (!$ADMIN->fulltree) {
         // Create Boost Union Child settings page as an external page to avoid displaying
-        // all settings on the category page, which would trigger the "Too much data passed as
-        // arguments to js_call_amd" warning due to the many hide_if constraints in the parent theme.
-        // (and allow users with the theme/boost_union:configure capability to access it).
-        $childsettingsurl = new \core\url('/admin/settings.php', ['section' => 'theme_boost_union_child']);
-        $tab = new admin_externalpage(
+        $tab = new admin_settingpage(
             'theme_boost_union_child',
             get_string('configtitle', 'theme_boost_union_child', null, true),
-            $childsettingsurl,
             'theme/boost_union:configure'
         );
         $ADMIN->add('theme_boost_union', $tab);
@@ -562,15 +557,6 @@ if ($hassiteconfig || has_capability('theme/boost_union:configure', context_syst
         $page->add($tab);
 
         // Add settings page to the admin settings category.
-        // However, to avoid the "Too much data passed as arguments to js_call_amd" warning
-        // when viewing the category page, we add it as an external page instead of a settings page.
-        // This way, the category page will only show a link instead of trying to display all settings.
-        $childsettingsurl = new \core\url('/admin/settings.php', ['section' => 'theme_boost_union_child']);
-        $ADMIN->add('theme_boost_union', new admin_externalpage(
-            'theme_boost_union_child',
-            get_string('configtitle', 'theme_boost_union_child', null, true),
-            $childsettingsurl,
-            'theme/boost_union:configure'
-        ));
+        $ADMIN->add('theme_boost_union', $page);
     }
 }
