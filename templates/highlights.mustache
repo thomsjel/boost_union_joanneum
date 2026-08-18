@@ -43,7 +43,7 @@
     }
 }}
 {{#showhighlights}}
-<div id="themeboostunionchildhighlights-wrapper" class="container-fluid pb-3 highlights-wrapper{{#highlightsdismissible}} alert alert-dismissible{{/highlightsdismissible}}" role="{{#highlightsdismissible}}alert{{/highlightsdismissible}}">
+<div aria-live="polite" id="themeboostunionchildhighlights-wrapper" class="container-fluid pb-3 highlights-wrapper{{#highlightsdismissible}} alert alert-dismissible{{/highlightsdismissible}}" role="{{#highlightsdismissible}}alert{{/highlightsdismissible}}">
   {{#highlightsdismissible}}
     <button type="button" id="themeboostunionchildhighlightsclose" class="close" data-dismiss="alert" aria-label="{{#str}}closebuttontitle{{/str}}">
       <span aria-hidden="true">&times;</span>
@@ -57,7 +57,7 @@
     <div class="{{#issinglehighlight}}issinglehighlight{{/issinglehighlight}}{{^issinglehighlight}}multiple-highlights{{/issinglehighlight}}">
       <div class="card h-100 highlight-tile {{#issinglehighlight}}col-12 col-sm-12 col-md-6 mx-auto{{/issinglehighlight}}">
         {{#link}}
-        <a href="{{link}}" {{#linktargetnewtab}}target="_blank" rel="noopener noreferrer"{{/linktargetnewtab}} class="highlight-link">
+        <a href="{{link}}" aria-label="{{ title }}" {{#linktargetnewtab}}target="_blank" rel="noopener noreferrer"{{/linktargetnewtab}} class="highlight-link">
         {{/link}}
           <div class="card-body d-flex flex-row">
             {{#iconurl}}
@@ -67,7 +67,7 @@
             {{/iconurl}}
             <div>
               {{#title}}
-              <h5 class="card-title highlight-title">{{title}}</h5>
+              <h4 class="card-title highlight-title">{{title}}</h4>
               {{/title}}
               {{#description}}
               <p class="card-text highlight-description">{{description}}</p>
