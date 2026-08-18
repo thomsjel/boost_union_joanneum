@@ -60,7 +60,7 @@ $string['privacy:metadata'] = 'The Boost Union Child theme does not store any pe
 $string['custommenuitemsheading'] = 'Cohort-based navigation';
 // ... ... Setting: Custom menu items.
 $string['custommenuitems'] = 'Custom menu items';
-$string['custommenuitems_desc'] = 'Enter each menu item on a new line with <strong>format</strong>:<br><br><strong>Menu item title | Link URL | Tooltip title (optional) | language code (optional) | {cohort IDs} (optional)</strong><br><br>Lines starting with a hyphen will appear as menu items in the previous top level menu and ### makes a divider.<br><br><div class="settings-example"><span class="settings-example-title">Example</span><div class="settings-example-code"><code>Teacher Resources <span>|</span> /teacher <span>|</span> Teacher Area <span>|</span> en <span>|</span> <strong>{1}</strong><br>Student Resources <span>|</span> /students <span>| | |</span> <strong>{2}</strong></code></div></div><br>This will only show "Teacher Resources" to users in cohorts with database id=1 and "Student Resources" to users in cohorts with database id=2.';
+$string['custommenuitems_desc'] = 'Enter menu items line by line: Title | URL | Tooltip | Language | {Cohort IDs}. Use - for subitems, ### for dividers. Example: Teacher Resources | /teacher | Teacher Area | en | {1}';
 $string['cohorttagscontainer_desc'] = 'Cohort visibility';
 
 // Settings: Slider tab.
@@ -118,7 +118,7 @@ $string['enablehighlights'] = 'Enable highlights';
 $string['enablehighlights_desc'] = 'If checked, highlights will be displayed in the frontend.';
 // ... ... Setting: Highlights dismissible.
 $string['highlightsdismissible'] = 'Make highlights section dismissible';
-$string['highlightsdismissible_desc'] = 'If checked, the entire highlights section will be dismissible. If a user clicks on the close button, the section will be hidden for this user permanently. If you want to reset the visibility of the highlights section, click the \'Reset visibility\' button below.';
+$string['highlightsdismissible_desc'] = 'If checked, the highlights section becomes dismissible. Clicking the close button hides it permanently for the user. Use the Reset visibility button to restore it.';
 // ... ... Setting: Reset dismissed highlights.
 $string['highlightsdismissreset'] = 'Reset visibility of dismissed highlights';
 $string['highlightsdismissresetbutton'] = 'Reset visibility of highlights';
