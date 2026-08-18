@@ -37,7 +37,7 @@
  * This design pattern centralizes template context preparation in this file while delegating
  * the rendering call to the main layout file (`drawers.php`).
  *
- * @package   theme_boost_union_child
+ * @package   theme_boost_union_joanneum
  * @copyright 2026 Daniel Poggenpohl <daniel.poggenpohl@fernuni-hagen.de>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -51,7 +51,7 @@ require_once($CFG->dirroot . '/theme/boost_union/layout/includes/slider.php');
 
 // Now extend the templatecontext with Boost Union Child specific slider settings
 // Get Boost Union Child theme config
-$childconfig = get_config('theme_boost_union_child');
+$childconfig = get_config('theme_boost_union_joanneum');
 
 // Initialize layout settings
 $templatecontext['slidergeneralsettings']->layout = 0;
@@ -61,12 +61,12 @@ $templatecontext['slidergeneralsettings']->islayouttextleft = false;
 if (isset($childconfig->sliderlayout)) {
     // Set the layout flag for the template
     switch ($childconfig->sliderlayout) {
-        case THEME_BOOST_UNION_CHILD_SETTING_SLIDER_LAYOUT_DEFAULT:
+        case THEME_BOOST_union_joanneum_SETTING_SLIDER_LAYOUT_DEFAULT:
             // Default layout (no special handling needed)
             $templatecontext['slidergeneralsettings']->layout = 0;
             $templatecontext['slidergeneralsettings']->islayouttextleft = false;
             break;
-        case THEME_BOOST_UNION_CHILD_SETTING_SLIDER_LAYOUT_TEXTLEFT_SOLID:
+        case THEME_BOOST_union_joanneum_SETTING_SLIDER_LAYOUT_TEXTLEFT_SOLID:
             // Text left with solid background and image right layout
             $templatecontext['slidergeneralsettings']->layout = 1;
             $templatecontext['slidergeneralsettings']->islayouttextleft = true;

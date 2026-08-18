@@ -17,7 +17,7 @@
 /**
  * Theme Boost Union Child - Local library
  *
- * @package    theme_boost_union_child
+ * @package    theme_boost_union_joanneum
  * @copyright  2023 Alexander Bias <bias@alexanderbias.de>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -33,14 +33,14 @@
  * @param int $highlightno The highlight number (1-6).
  * @return string|null The URL of the icon file, or null if not found.
  */
-function theme_boost_union_child_get_highlight_icon_url($highlightno) {
+function theme_boost_union_joanneum_get_highlight_icon_url($highlightno) {
     // If the highlight number is apparently not valid, return.
     if ($highlightno < 1 || $highlightno > 6) {
         return null;
     }
 
     // Get the icon config for this highlight.
-    $iconconfig = get_config('theme_boost_union_child', 'highlight' . $highlightno . 'icon');
+    $iconconfig = get_config('theme_boost_union_joanneum', 'highlight' . $highlightno . 'icon');
 
     // If an icon is configured.
     if (!empty($iconconfig)) {
@@ -53,7 +53,7 @@ function theme_boost_union_child_get_highlight_icon_url($highlightno) {
         // Get all files from filearea.
         $files = $fs->get_area_files(
             $systemcontext->id,
-            'theme_boost_union_child',
+            'theme_boost_union_joanneum',
             'highlight' . $highlightno . 'icon',
             false,
             'itemid',
@@ -85,12 +85,12 @@ function theme_boost_union_child_get_highlight_icon_url($highlightno) {
  *
  * @return bool True if everything went fine, false if at least one user couldn't be resetted.
  */
-function theme_boost_union_child_highlights_reset_visibility() {
+function theme_boost_union_joanneum_highlights_reset_visibility() {
     global $DB;
 
     // Get all users that have dismissed the highlights section once and therefore the user preference.
     $whereclause = 'name = :name AND value = :value';
-    $params = ['name' => 'theme_boost_union_child_highlights_dismissed', 'value' => '1'];
+    $params = ['name' => 'theme_boost_union_joanneum_highlights_dismissed', 'value' => '1'];
     $users = $DB->get_records_select('user_preferences', $whereclause, $params, '', 'userid');
 
     // Initialize variable for feedback messages.
@@ -98,7 +98,7 @@ function theme_boost_union_child_highlights_reset_visibility() {
 
     foreach ($users as $user) {
         try {
-            unset_user_preference('theme_boost_union_child_highlights_dismissed', $user->userid);
+            unset_user_preference('theme_boost_union_joanneum_highlights_dismissed', $user->userid);
         } catch (coding_exception $e) {
             $somethingwentwrong = true;
         }
@@ -117,7 +117,7 @@ function theme_boost_union_child_highlights_reset_visibility() {
  * @param int $highlightno The highlight number (1-6).
  * @return bool True if the user can see the highlight, false otherwise.
  */
-function theme_boost_union_child_highlight_is_visible_for_user($highlightno) {
+function theme_boost_union_joanneum_highlight_is_visible_for_user($highlightno) {
     global $CFG, $USER;
 
     // If the highlight number is apparently not valid, return true (show by default).
@@ -126,7 +126,7 @@ function theme_boost_union_child_highlight_is_visible_for_user($highlightno) {
     }
 
     // Get the cohort visibility configuration for this highlight.
-    $cohortvisibility = get_config('theme_boost_union_child', 'highlight' . $highlightno . 'cohortvisibility');
+    $cohortvisibility = get_config('theme_boost_union_joanneum', 'highlight' . $highlightno . 'cohortvisibility');
 
     // If no cohort visibility is configured (empty string), show to all users.
     if (empty(trim($cohortvisibility))) {

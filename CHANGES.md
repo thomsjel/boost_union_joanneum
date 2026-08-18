@@ -1,4 +1,4 @@
-moodle-theme_boost_union_child
+moodle-theme_boost_union_joanneum
 ==============================
 
 Changes

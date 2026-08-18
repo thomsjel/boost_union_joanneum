@@ -19,7 +19,7 @@
  *
  * This layout extends theme/boost_union/layout/login.php
  *
- * @package   theme_boost_union_child
+ * @package   theme_boost_union_joanneum
  * @copyright  2026 Thomas Kautz <thomas.kautz@fh-joanneum.at>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -28,8 +28,8 @@ defined('MOODLE_INTERNAL') || die();
 
 global $CFG;
 
-// Get the login layout setting from theme_boost_union_child.
-$loginlayout = get_config('theme_boost_union_child', 'loginlayout');
+// Get the login layout setting from theme_boost_union_joanneum.
+$loginlayout = get_config('theme_boost_union_joanneum', 'loginlayout');
 
 
 
@@ -92,10 +92,10 @@ $loginlayout = get_config('theme_boost_union_child', 'loginlayout');
     require_once($CFG->dirroot . '/theme/boost_union/layout/includes/infobanners.php');
 
     // Handle different login layouts.
-if ($loginlayout === THEME_BOOST_UNION_CHILD_SETTING_LOGIN_LAYOUT_SPLIT_SCREEN) {
+if ($loginlayout === THEME_BOOST_UNION_JOANNEUM_SETTING_LOGIN_LAYOUT_SPLIT_SCREEN) {
 
     // Render login.mustache from theme_boost (which is overridden in theme_boost_union).
-    echo $OUTPUT->render_from_template('theme_boost_union_child/core/login_split', $templatecontext);
+    echo $OUTPUT->render_from_template('theme_boost_union_joanneum/core/login_split', $templatecontext);
 
 } else {
 

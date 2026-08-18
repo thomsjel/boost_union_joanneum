@@ -124,9 +124,9 @@ if ($PAGE->has_secondary_navigation()) {
     }
 }
 
-// Load the navigation from boost_union_child primary navigation, the extended version with cohort filtering.
+// Load the navigation from boost_union_joanneum primary navigation, the extended version with cohort filtering.
 // It includes the smart menus and menu items, for multiple locations.
-$primary = new theme_boost_union_child\output\navigation\primary($PAGE);
+$primary = new theme_boost_union_joanneum\output\navigation\primary($PAGE);
 $renderer = $PAGE->get_renderer('core');
 $primarymenu = $primary->export_for_template($renderer);
 
@@ -222,13 +222,13 @@ if ($PAGE->pagelayout == 'frontpage') {
 
 // Include the template content for the slider, but only if we are on the frontpage or dashboard
 // and the corresponding setting is enabled.
-$childconfig = get_config('theme_boost_union_child');
+$childconfig = get_config('theme_boost_union_joanneum');
 $showslideronfrontpage = isset($childconfig->showslideronfrontpage) ? $childconfig->showslideronfrontpage : 0;
 $showsliderondashboard = isset($childconfig->showsliderondashboard) ? $childconfig->showsliderondashboard : 0;
 
 if (($PAGE->pagelayout == 'frontpage' && $showslideronfrontpage) ||
     ($PAGE->pagelayout == 'mydashboard' && $showsliderondashboard)) {
-    require_once($CFG->dirroot . '/theme/boost_union_child/layout/includes/slider.php');
+    require_once($CFG->dirroot . '/theme/boost_union_joanneum/layout/includes/slider.php');
 }
 
 // Include the template content for the highlights, but only if we are on the frontpage or dashboard
@@ -238,7 +238,7 @@ $showhighlightsonDashboard = isset($childconfig->showhighlightsonDashboard) ? $c
 
 if (($PAGE->pagelayout == 'frontpage' && $showhighlightsonfrontpage) ||
     ($PAGE->pagelayout == 'mydashboard' && $showhighlightsonDashboard)) {
-    require_once($CFG->dirroot . '/theme/boost_union_child/layout/includes/highlights.php');
+    require_once($CFG->dirroot . '/theme/boost_union_joanneum/layout/includes/highlights.php');
 }
 
 // Include the template content for the smart menus.

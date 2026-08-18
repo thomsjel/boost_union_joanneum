@@ -69,9 +69,9 @@ if ($PAGE->has_secondary_navigation()) {
     }
 }
 
-// Load the navigation from boost_union_child primary navigation, the extended version with cohort filtering.
+// Load the navigation from boost_union_joanneum primary navigation, the extended version with cohort filtering.
 // It includes the smart menus and menu items, for multiple locations.
-$primary = new theme_boost_union_child\output\navigation\primary($PAGE);
+$primary = new theme_boost_union_joanneum\output\navigation\primary($PAGE);
 $renderer = $PAGE->get_renderer('core');
 $primarymenu = $primary->export_for_template($renderer);
 

@@ -30,14 +30,14 @@
  *   - The template `'theme_boost/drawers'`, or
  *   - The template `'local_boost_union_mwp/drawers'`.
  *
- * These templates include the `{{> theme_boost_union_child/highlights }}` partial,
+ * These templates include the `{{> theme_boost_union_joanneum/highlights }}` partial,
  * which renders the actual HTML using the context prepared in this file.
  *
  * Note: The rendering process occurs in `drawers.php` (lines 259 or 264), not in this file.
  * This design pattern centralizes template context preparation in this file while delegating
  * the rendering call to the main layout file (`drawers.php`).
  *
- * @package   theme_boost_union_child
+ * @package   theme_boost_union_joanneum
  * @copyright 2026 Thomas Kautz <thomas.kautz@fh-joanneum.at>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -47,10 +47,10 @@ defined('MOODLE_INTERNAL') || die();
 global $CFG, $PAGE;
 
 // Require Boost Union Child locallib for helper functions.
-require_once($CFG->dirroot . '/theme/boost_union_child/locallib.php');
+require_once($CFG->dirroot . '/theme/boost_union_joanneum/locallib.php');
 
 // Get Boost Union Child theme config
-$childconfig = get_config('theme_boost_union_child');
+$childconfig = get_config('theme_boost_union_joanneum');
 
 // Initialize templatecontext if it doesn't exist in the current scope
 if (!isset($templatecontext)) {
@@ -65,7 +65,7 @@ if ($PAGE->pagelayout != 'login') {
     $highlightsdismissible = isset($childconfig->highlightsdismissible) ? $childconfig->highlightsdismissible : 0;
     // If highlights are dismissible and the user has dismissed them, don't show them.
     // Note: get_user_preferences returns a string "1" or "0", not boolean true/false.
-    if ($highlightsdismissible && get_user_preferences('theme_boost_union_child_highlights_dismissed') != false) {
+    if ($highlightsdismissible && get_user_preferences('theme_boost_union_joanneum_highlights_dismissed') != false) {
         $enablehighlights = false;
     }
 } else {
@@ -89,7 +89,7 @@ for ($i = 1; $i <= 6; $i++) {
         }
         
         // Check cohort visibility for this highlight.
-        if (!theme_boost_union_child_highlight_is_visible_for_user($i)) {
+        if (!theme_boost_union_joanneum_highlight_is_visible_for_user($i)) {
             continue;
         }
     }
@@ -101,7 +101,7 @@ for ($i = 1; $i <= 6; $i++) {
     // Only add highlights that have at least a title or description
     if (!empty($title) || !empty($description)) {
         // Get the icon file URL.
-        $iconurl = theme_boost_union_child_get_highlight_icon_url($i);
+        $iconurl = theme_boost_union_joanneum_get_highlight_icon_url($i);
         
         // Check if link should open in new tab (for external links)
         $linktargetnewtab = false;
@@ -131,6 +131,6 @@ if ($templatecontext['showhighlights']) {
     
     // Add the dismissible AMD module to the page if highlights are dismissible.
     if ($highlightsdismissible == true) {
-        $PAGE->requires->js_call_amd('theme_boost_union_child/highlights', 'init');
+        $PAGE->requires->js_call_amd('theme_boost_union_joanneum/highlights', 'init');
     }
 }

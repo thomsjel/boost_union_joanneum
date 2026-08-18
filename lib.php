@@ -17,25 +17,25 @@
 /**
  * Theme Boost Union Child - Library
  *
- * @package    theme_boost_union_child
+ * @package    theme_boost_union_joanneum
  * @copyright  2023 Daniel Poggenpohl <daniel.poggenpohl@fernuni-hagen.de> and Alexander Bias <bias@alexanderbias.de>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 // Constants which are use throughout this theme.
-define('THEME_BOOST_UNION_CHILD_SETTING_INHERITANCE_INHERIT', 0);
-define('THEME_BOOST_UNION_CHILD_SETTING_INHERITANCE_DUPLICATE', 1);
+define('THEME_BOOST_UNION_JOANNEUM_SETTING_INHERITANCE_INHERIT', 0);
+define('THEME_BOOST_UNION_JOANNEUM_SETTING_INHERITANCE_DUPLICATE', 1);
 
 // Constants for slider layout options.
-define('THEME_BOOST_UNION_CHILD_SETTING_SLIDER_LAYOUT_DEFAULT', 0);
-define('THEME_BOOST_UNION_CHILD_SETTING_SLIDER_LAYOUT_TEXTLEFT_SOLID', 1);
+define('THEME_BOOST_UNION_JOANNEUM_SETTING_SLIDER_LAYOUT_DEFAULT', 0);
+define('THEME_BOOST_UNION_JOANNEUM_SETTING_SLIDER_LAYOUT_TEXTLEFT_SOLID', 1);
 
 // Constants for login page layout options.
-define('THEME_BOOST_UNION_CHILD_SETTING_LOGIN_LAYOUT_DEFAULT', 'default');
-define('THEME_BOOST_UNION_CHILD_SETTING_LOGIN_LAYOUT_SPLIT_SCREEN', 'splitscreen');
+define('THEME_BOOST_UNION_JOANNEUM_SETTING_LOGIN_LAYOUT_DEFAULT', 'default');
+define('THEME_BOOST_UNION_JOANNEUM_SETTING_LOGIN_LAYOUT_SPLIT_SCREEN', 'splitscreen');
 
 /**
- * Serves files from the theme_boost_union_child file areas.
+ * Serves files from the theme_boost_union_joanneum file areas.
  *
  * @param stdClass $course
  * @param stdClass $cm
@@ -46,7 +46,7 @@ define('THEME_BOOST_UNION_CHILD_SETTING_LOGIN_LAYOUT_SPLIT_SCREEN', 'splitscreen
  * @param array $options
  * @return bool|null False to stop file serving, or null to continue
  */
-function theme_boost_union_child_pluginfile($course, $cm, $context, $filearea, $args, $forcedownload, array $options = []) {
+function theme_boost_union_joanneum_pluginfile($course, $cm, $context, $filearea, $args, $forcedownload, array $options = []) {
     global $CFG;
 
     // Define allowed fileareas - add new ones here as needed.
@@ -79,7 +79,7 @@ function theme_boost_union_child_pluginfile($course, $cm, $context, $filearea, $
     // Get the file from the file storage.
     $file = $fs->get_file(
         $context->id,
-        'theme_boost_union_child',
+        'theme_boost_union_joanneum',
         $filearea,
         $itemid,
         '/',
@@ -101,7 +101,7 @@ function theme_boost_union_child_pluginfile($course, $cm, $context, $filearea, $
  * @param \core\output\theme_config $theme The theme config object.
  * @return string
  */
-function theme_boost_union_child_get_main_scss_content($theme) {
+function theme_boost_union_joanneum_get_main_scss_content($theme) {
     global $CFG;
 
     // Require the necessary libraries.
@@ -112,7 +112,7 @@ function theme_boost_union_child_get_main_scss_content($theme) {
     $scss = theme_boost_union_get_main_scss_content(\core\output\theme_config::load('boost_union'));
 
     // And add Boost Union Child's main SCSS file to the stack.
-    $scss .= file_get_contents($CFG->dirroot . '/theme/boost_union_child/scss/post.scss');
+    $scss .= file_get_contents($CFG->dirroot . '/theme/boost_union_joanneum/scss/post.scss');
 
     return $scss;
 }
@@ -123,7 +123,7 @@ function theme_boost_union_child_get_main_scss_content($theme) {
  * @param \core\output\theme_config $theme The theme config object.
  * @return string
  */
-function theme_boost_union_child_get_pre_scss($theme) {
+function theme_boost_union_joanneum_get_pre_scss($theme) {
     global $CFG;
 
     // Require the necessary libraries.
@@ -138,13 +138,13 @@ function theme_boost_union_child_get_pre_scss($theme) {
     // not Boost Union. The Boost Union developers are aware of this topic, but faults can always happen.
     // If such a fault happens, the Boost Union Child administrator can switch the inheritance to 'Duplicate'.
     // This way, we will add the pre SCSS code with the explicit use of the Boost Union configuration to the stack.
-    $inheritanceconfig = get_config('theme_boost_union_child', 'prescssinheritance');
-    if ($inheritanceconfig == THEME_BOOST_UNION_CHILD_SETTING_INHERITANCE_DUPLICATE) {
+    $inheritanceconfig = get_config('theme_boost_union_joanneum', 'prescssinheritance');
+    if ($inheritanceconfig == THEME_BOOST_union_joanneum_SETTING_INHERITANCE_DUPLICATE) {
         $scss .= theme_boost_union_get_pre_scss(\core\output\theme_config::load('boost_union'));
     }
 
     // And add Boost Union Child's pre SCSS file to the stack.
-    $scss .= file_get_contents($CFG->dirroot . '/theme/boost_union_child/scss/pre.scss');
+    $scss .= file_get_contents($CFG->dirroot . '/theme/boost_union_joanneum/scss/pre.scss');
 
     /**********************************************************
      * EXTENSION POINT:
@@ -153,7 +153,7 @@ function theme_boost_union_child_get_pre_scss($theme) {
      *********************************************************/
 
     // Add custom font CSS.
-    $scss .= theme_boost_union_child_get_font_scss($theme);
+    $scss .= theme_boost_union_joanneum_get_font_scss($theme);
 
     return $scss;
 }
@@ -164,25 +164,25 @@ function theme_boost_union_child_get_pre_scss($theme) {
  * @param \core\output\theme_config $theme The theme config object.
  * @return string
  */
-function theme_boost_union_child_get_font_scss($theme) {
+function theme_boost_union_joanneum_get_font_scss($theme) {
     $scss = '';
 
     $fs = get_file_storage();
     $context = context_system::instance();
 
     // Process Font 1.
-    $font1file = get_config('theme_boost_union_child', 'font1file');
-    $font1cssclasses = get_config('theme_boost_union_child', 'font1cssclasses');
+    $font1file = get_config('theme_boost_union_joanneum', 'font1file');
+    $font1cssclasses = get_config('theme_boost_union_joanneum', 'font1cssclasses');
 
     if (!empty($font1file) && !empty($font1cssclasses)) {
         // Get the font file URL.
-        $files = $fs->get_area_files($context->id, 'theme_boost_union_child', 'font1', 0, '', false);
+        $files = $fs->get_area_files($context->id, 'theme_boost_union_joanneum', 'font1', 0, '', false);
 
         foreach ($files as $file) {
             if ($file->get_filename() !== '.') {
                 $fonturl = moodle_url::make_pluginfile_url(
                     $context->id,
-                    'theme_boost_union_child',
+                    'theme_boost_union_joanneum',
                     'font1',
                     0,
                     '/',
@@ -219,18 +219,18 @@ function theme_boost_union_child_get_font_scss($theme) {
     }
 
     // Process Font 2.
-    $font2file = get_config('theme_boost_union_child', 'font2file');
-    $font2cssclasses = get_config('theme_boost_union_child', 'font2cssclasses');
+    $font2file = get_config('theme_boost_union_joanneum', 'font2file');
+    $font2cssclasses = get_config('theme_boost_union_joanneum', 'font2cssclasses');
 
     if (!empty($font2file) && !empty($font2cssclasses)) {
         // Get the font file URL.
-        $files = $fs->get_area_files($context->id, 'theme_boost_union_child', 'font2', 0, '', false);
+        $files = $fs->get_area_files($context->id, 'theme_boost_union_joanneum', 'font2', 0, '', false);
 
         foreach ($files as $file) {
             if ($file->get_filename() !== '.') {
                 $fonturl = moodle_url::make_pluginfile_url(
                     $context->id,
-                    'theme_boost_union_child',
+                    'theme_boost_union_joanneum',
                     'font2',
                     0,
                     '/',
@@ -275,7 +275,7 @@ function theme_boost_union_child_get_font_scss($theme) {
  * @param \core\output\theme_config $theme The theme config object.
  * @return string
  */
-function theme_boost_union_child_get_extra_scss($theme) {
+function theme_boost_union_joanneum_get_extra_scss($theme) {
     global $CFG;
 
     // Require the necessary libraries.
@@ -290,8 +290,8 @@ function theme_boost_union_child_get_extra_scss($theme) {
     // not Boost Union. The Boost Union developers are aware of this topic, but faults can always happen.
     // If such a fault happens, the Boost Union Child administrator can switch the inheritance to 'Duplicate'.
     // This way, we will add the extra SCSS code with the explicit use of the Boost Union configuration to the stack.
-    $inheritanceconfig = get_config('theme_boost_union_child', 'extrascssinheritance');
-    if ($inheritanceconfig == THEME_BOOST_UNION_CHILD_SETTING_INHERITANCE_DUPLICATE) {
+    $inheritanceconfig = get_config('theme_boost_union_joanneum', 'extrascssinheritance');
+    if ($inheritanceconfig == THEME_BOOST_union_joanneum_SETTING_INHERITANCE_DUPLICATE) {
         $scss .= theme_boost_union_get_extra_scss(\core\output\theme_config::load('boost_union'));
     }
 
@@ -310,13 +310,13 @@ function theme_boost_union_child_get_extra_scss($theme) {
  *
  * @return array
  */
-function theme_boost_union_child_extend_busettingsoverview() {
+function theme_boost_union_joanneum_extend_busettingsoverview() {
 
     $cards[] = [
-        'label' => get_string('pluginname', 'theme_boost_union_child'),
-        'desc' => get_string('settingsoverview_buc_desc', 'theme_boost_union_child'),
+        'label' => get_string('pluginname', 'theme_boost_union_joanneum'),
+        'desc' => get_string('settingsoverview_buc_desc', 'theme_boost_union_joanneum'),
         'btn' => 'primary',
-        'url' => new \core\url('/admin/settings.php', ['section' => 'theme_boost_union_child']),
+        'url' => new \core\url('/admin/settings.php', ['section' => 'theme_boost_union_joanneum']),
     ];
 
     return $cards;
@@ -329,9 +329,9 @@ function theme_boost_union_child_extend_busettingsoverview() {
  *
  * @return array[]
  */
-function theme_boost_union_child_user_preferences(): array {
+function theme_boost_union_joanneum_user_preferences(): array {
     return [
-        'theme_boost_union_child_highlights_dismissed' => [
+        'theme_boost_union_joanneum_highlights_dismissed' => [
             'type' => PARAM_INT,
             'null' => NULL_NOT_ALLOWED,
             'default' => 0,
@@ -349,7 +349,7 @@ function theme_boost_union_child_user_preferences(): array {
  *
  * @param mixed $urls The CSS URLs (passed as reference).
  */
-function theme_boost_union_child_alter_css_urls(&$urls) {
+function theme_boost_union_joanneum_alter_css_urls(&$urls) {
     global $CFG;
 
     // Require Boost Union library.

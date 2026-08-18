@@ -17,7 +17,7 @@
 /**
  * Theme Boost Union Child - Reset dismissed highlights section visibility.
  *
- * @package    theme_boost_union_child
+ * @package    theme_boost_union_joanneum
  * @copyright  2026 Alexander Bias <bias@alexanderbias.de>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -25,8 +25,8 @@
 require_once(__DIR__ . '/../../config.php');
 
 // Require the necessary libraries.
-require_once($CFG->dirroot . '/theme/boost_union_child/lib.php');
-require_once($CFG->dirroot . '/theme/boost_union_child/locallib.php');
+require_once($CFG->dirroot . '/theme/boost_union_joanneum/lib.php');
+require_once($CFG->dirroot . '/theme/boost_union_joanneum/locallib.php');
 
 // Require login and sesskey.
 require_login();
@@ -44,25 +44,25 @@ $confirm = optional_param('confirm', false, PARAM_BOOL);
 // If we already have a confirmation.
 if ($confirm == true) {
     // Reset visibility of the highlights section.
-    $resetresult = theme_boost_union_child_highlights_reset_visibility();
+    $resetresult = theme_boost_union_joanneum_highlights_reset_visibility();
 
     // Redirect with a nice message.
     $redirecturl = new core\url(
         '/admin/settings.php',
-        ['section' => 'theme_boost_union_child_highlights'],
-        'theme_boost_union_child_highlights'
+        ['section' => 'theme_boost_union_joanneum_highlights'],
+        'theme_boost_union_joanneum_highlights'
     );
     if ($resetresult == true) {
         redirect(
             $redirecturl,
-            get_string('highlightsdismissresetsuccess', 'theme_boost_union_child'),
+            get_string('highlightsdismissresetsuccess', 'theme_boost_union_joanneum'),
             null,
             \core\output\notification::NOTIFY_SUCCESS
         );
     } else {
         redirect(
             $redirecturl,
-            get_string('highlightsdismissresetfail', 'theme_boost_union_child'),
+            get_string('highlightsdismissresetfail', 'theme_boost_union_joanneum'),
             null,
             \core\output\notification::NOTIFY_ERROR
         );
@@ -71,7 +71,7 @@ if ($confirm == true) {
     // Otherwise.
 } else {
     // Set page URL.
-    $PAGE->set_url('/theme/boost_union_child/settings_highlights_resetdismissed.php', ['sesskey' => sesskey()]);
+    $PAGE->set_url('/theme/boost_union_joanneum/settings_highlights_resetdismissed.php', ['sesskey' => sesskey()]);
 
     // Set page layout.
     $PAGE->set_pagelayout('standard');
@@ -80,23 +80,23 @@ if ($confirm == true) {
     $PAGE->set_context($context);
 
     // Set page title.
-    $PAGE->set_title(get_string('highlightsdismissreset', 'theme_boost_union_child'));
+    $PAGE->set_title(get_string('highlightsdismissreset', 'theme_boost_union_joanneum'));
 
     // Start page output.
     echo $OUTPUT->header();
 
     // Show page heading.
-    echo $OUTPUT->heading(get_string('highlightsdismissreset', 'theme_boost_union_child'));
+    echo $OUTPUT->heading(get_string('highlightsdismissreset', 'theme_boost_union_joanneum'));
 
     // Show confirmation message.
-    echo get_string('highlightsdismissconfirm', 'theme_boost_union_child');
+    echo get_string('highlightsdismissconfirm', 'theme_boost_union_joanneum');
 
     // Start buttons.
     echo \core\output\html_writer::start_tag('div', ['class' => 'mt-2']);
 
     // Show confirm button.
     $confirmurl = new core\url(
-        '/theme/boost_union_child/settings_highlights_resetdismissed.php',
+        '/theme/boost_union_joanneum/settings_highlights_resetdismissed.php',
         ['sesskey' => sesskey(), 'confirm' => 1]
     );
     echo \core\output\html_writer::link(
@@ -108,8 +108,8 @@ if ($confirm == true) {
     // Show cancel button.
     $cancelurl = new core\url(
         '/admin/settings.php',
-        ['section' => 'theme_boost_union_child_highlights'],
-        'theme_boost_union_child_highlights'
+        ['section' => 'theme_boost_union_joanneum_highlights'],
+        'theme_boost_union_joanneum_highlights'
     );
     echo \core\output\html_writer::link(
         $cancelurl,

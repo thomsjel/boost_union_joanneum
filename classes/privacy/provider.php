@@ -17,17 +17,17 @@
 /**
  * Theme Boost Union Child - Privacy provider
  *
- * @package    theme_boost_union_child
+ * @package    theme_boost_union_joanneum
  * @copyright  2023 Daniel Poggenpohl <daniel.poggenpohl@fernuni-hagen.de> and Alexander Bias <bias@alexanderbias.de>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-namespace theme_boost_union_child\privacy;
+namespace theme_boost_union_joanneum\privacy;
 
 /**
  * Privacy Subsystem implementing null_provider.
  *
- * @package    theme_boost_union_child
+ * @package    theme_boost_union_joanneum
  * @copyright  2023 Daniel Poggenpohl <daniel.poggenpohl@fernuni-hagen.de> and Alexander Bias <bias@alexanderbias.de>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */

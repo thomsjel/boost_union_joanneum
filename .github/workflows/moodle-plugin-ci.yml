@@ -34,9 +34,9 @@ jobs:
         # Add a suffix to the feature title in the Boost Union features.
         # This is necessary as the Moodle code checker would otherwise complain about duplicate feature names.
         sed -i '/^Feature:/ s/$/ - Running on Boost Union Child/' plugin/tests/behatbu/*.feature
-        # Add the @theme_boost_union_child tag to the tag list of the Boost Union features.
+        # Add the @theme_boost_union_joanneum tag to the tag list of the Boost Union features.
         # This is necessary as the Moodle plugin validator would otherwise complain about the missing tag.
-        sed -i '1 s/$/ @theme_boost_union_child/' plugin/tests/behatbu/*.feature
+        sed -i '1 s/$/ @theme_boost_union_joanneum/' plugin/tests/behatbu/*.feature
         # Move the modified Boost Union feature files to the Boost Union Child Behat test directory.
         mv plugin/tests/behatbu/*.feature plugin/tests/behat/
         rm -rf plugin/tests/behatbu
@@ -50,6 +50,6 @@ jobs:
         # specific theme-selection steps.
         sed -i 's/I set the field "id_filter_theme" to "Boost Union"/I set the field "id_filter_theme" to "Boost Union Child"/' plugin/tests/behat/*.feature
       pr-check-diff-does-not-contain: "theme->settings->"
-      behat-suite: "boost_union_child"
+      behat-suite: "boost_union_joanneum"
       behat-slices: 4
-      behat-tags: "@theme_boost_union,@theme_boost_union_child"
+      behat-tags: "@theme_boost_union,@theme_boost_union_joanneum"

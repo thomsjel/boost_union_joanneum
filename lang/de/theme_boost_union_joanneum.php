@@ -15,9 +15,9 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Theme Boost Union Child - Sprachpaket
+ * Theme Boost Union Joanneum - Sprachpaket
  *
- * @package    theme_boost_union_child
+ * @package    theme_boost_union_joanneum
  * @copyright  2023 Daniel Poggenpohl <daniel.poggenpohl@fernuni-hagen.de> und Alexander Bias <bias@alexanderbias.de>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 oder neuer
  */
@@ -29,17 +29,17 @@ defined('MOODLE_INTERNAL') || die();
 // phpcs:disable moodle.Files.LangFilesOrdering.IncorrectOrder
 
 // Allgemein.
-$string['pluginname'] = 'Boost Union Child';
-$string['choosereadme'] = 'Dieses Plugin ist nur eine Vorlage, die Sie verwenden können, um Boost Union Child-Themes zu entwickeln.';
-$string['configtitle'] = 'Boost Union Child';
-$string['settingsoverview_buc_desc'] = 'Mit Boost Union Child können Sie Boost Union an Ihre lokalen Bedürfnisse anpassen.';
+$string['pluginname'] = 'Boost Union Joanneum';
+$string['choosereadme'] = 'Dieses Plugin ist nur eine Vorlage, die Sie verwenden können, um Boost Union Joanneum-Themes zu entwickeln.';
+$string['configtitle'] = 'Boost Union Joanneum';
+$string['settingsoverview_buc_desc'] = 'Mit Boost Union Joanneum können Sie Boost Union an Ihre lokalen Bedürfnisse anpassen.';
 
 // Einstellungen: Registerkarte Allgemeine Einstellungen.
 // ... Abschnitt: Vererbung.
 $string['inheritanceheading'] = 'Vererbung';
 $string['inheritanceinherit'] = 'Vererben';
 $string['inheritanceduplicate'] = 'Duplizieren';
-$string['inheritanceoptionsexplanation'] = 'In den meisten Fällen ist die Vererbung völlig ausreichend. Es kann jedoch vorkommen, dass fehlerhafter Code in Boost Union integriert ist, der die einfache SCSS-Vererbung für bestimmte Boost Union-Funktionen verhindert. Wenn Sie Probleme mit Boost Union-Funktionen haben, die in Boost Union Child nicht zu funktionieren scheinen, versuchen Sie, diese Einstellung auf "Duplizieren" zu ändern. Wenn dies das Problem löst, melden Sie bitte ein Problem auf GitHub (siehe README.md-Datei für Details, wie man ein Problem meldet).';
+$string['inheritanceoptionsexplanation'] = 'In den meisten Fällen ist die Vererbung völlig ausreichend. Es kann jedoch vorkommen, dass fehlerhafter Code in Boost Union integriert ist, der die einfache SCSS-Vererbung für bestimmte Boost Union-Funktionen verhindert. Wenn Sie Probleme mit Boost Union-Funktionen haben, die in Boost Union Joanneum nicht zu funktionieren scheinen, versuchen Sie, diese Einstellung auf "Duplizieren" zu ändern. Wenn dies das Problem löst, melden Sie bitte ein Problem auf GitHub (siehe README.md-Datei für Details, wie man ein Problem meldet).';
 // ... ... Einstellung: Pre-SCSS-Vererbungseinstellung.
 $string['prescssinheritancesetting'] = 'Pre-SCSS-Vererbung';
 $string['prescssinheritancesetting_desc'] = 'Mit dieser Einstellung steuern Sie, ob der Pre-SCSS-Code von Boost Union vererbt oder dupliziert werden soll.';
@@ -53,7 +53,7 @@ $string['extrascssinheritancesetting_desc'] = 'Mit dieser Einstellung steuern Si
  *************************************************************/
 
 // Datenschutz-API.
-$string['privacy:metadata'] = 'Das Boost Union Child-Theme speichert keine persönlichen Daten über Benutzer.';
+$string['privacy:metadata'] = 'Das Boost Union Joanneum-Theme speichert keine persönlichen Daten über Benutzer.';
 
 // Einstellungen: Registerkarte Allgemeine Einstellungen.
 // ... Abschnitt: Kohortenbasierte Navigation.

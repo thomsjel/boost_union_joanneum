@@ -16,7 +16,7 @@
 /**
  * Theme Boost Union Child - JS code for dismissible highlights section
  *
- * @module     theme_boost_union_child/highlights
+ * @module     theme_boost_union_joanneum/highlights
  * @copyright  2026 Thomas Kautz <thomas.kautz@fh-joanneum.at>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -72,7 +72,7 @@ define(['core_user/repository'], function(UserRepository) {
             e.stopPropagation();
 
             // Store the dismissal as a user preference to persist this decision.
-            UserRepository.setUserPreference('theme_boost_union_child_highlights_dismissed', 1)
+            UserRepository.setUserPreference('theme_boost_union_joanneum_highlights_dismissed', 1)
                 .then(() => fadeOut(wrapper))
                 .catch(() => fadeOut(wrapper));
         });

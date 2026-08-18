@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-namespace theme_boost_union_child\output\navigation;
+namespace theme_boost_union_joanneum\output\navigation;
 
 use renderer_base;
 use theme_boost_union\output\navigation\primary as boost_union_primary;
@@ -23,7 +23,7 @@ use custom_menu;
 /**
  * Primary navigation renderer for Boost Union Child theme with cohort filtering.
  *
- * @package   theme_boost_union_child
+ * @package   theme_boost_union_joanneum
  * @copyright 2026 Thomas Kautz <thomas.kautz@fh-joanneum.at>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -39,7 +39,7 @@ class primary extends boost_union_primary {
         require_once($CFG->dirroot . '/cohort/lib.php');
 
         // Get the raw custom menu string from theme settings.
-        $custommenustring = get_config('theme_boost_union_child', 'custommenuitems');
+        $custommenustring = get_config('theme_boost_union_joanneum', 'custommenuitems');
 
         // If empty, fall back to parent (which uses $CFG->custommenuitems).
         if (empty($custommenustring)) {
@@ -121,7 +121,7 @@ class primary extends boost_union_primary {
             return '';
         }
 
-        $label = get_string('cohorttagscontainer_desc', 'theme_boost_union_child');
+        $label = get_string('cohorttagscontainer_desc', 'theme_boost_union_joanneum');
         
         return '<div class="cohort-tags-container"><fieldset><legend>' . $label . '</legend>' . implode(' ', $spans) . '</fieldset></div>';
     }

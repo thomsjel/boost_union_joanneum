@@ -17,7 +17,7 @@
 /**
  * Behat mod_quiz-related step definition overrides for the Boost Union Child theme.
  *
- * @package    theme_boost_union_child
+ * @package    theme_boost_union_joanneum
  * @category   test
  * @copyright  2022 Luca Bösch, BFH Bern University of Applied Sciences luca.boesch@bfh.ch
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -34,10 +34,10 @@ use Behat\Mink\Exception\ExpectationException;
 /**
  * Quiz-related step definition overrides for the Boost Union Child theme.
  *
- * @package    theme_boost_union_child
+ * @package    theme_boost_union_joanneum
  * @category   test
  * @copyright  2022 Luca Bösch, BFH Bern University of Applied Sciences luca.boesch@bfh.ch
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class behat_theme_boost_union_child_behat_mod_quiz extends behat_theme_boost_union_behat_mod_quiz {
+class behat_theme_boost_union_joanneum_behat_mod_quiz extends behat_theme_boost_union_behat_mod_quiz {
 }
