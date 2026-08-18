@@ -17,38 +17,69 @@
  * Theme Boost Union Child - JS code for dismissible highlights section
  *
  * @module     theme_boost_union_child/highlights
- * @copyright  2026 Alexander Bias <bias@alexanderbias.de>
+ * @copyright  2026 Thomas Kautz <thomas.kautz@fh-joanneum.at>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-define(['jquery', 'core_user/repository'], function($, UserRepository) {
+define(['core_user/repository'], function(UserRepository) {
     "use strict";
 
     /**
-     * Initialising.
+     * Hide element with fade out animation.
+     *
+     * @param {HTMLElement} element The element to hide
+     * @param {number} duration The duration in milliseconds
+     * @returns {Promise} Promise that resolves when the animation completes
      */
-    function initHighlights() {
+    const fadeOut = (element, duration = 200) => {
+        return new Promise((resolve) => {
+            element.style.transition = `opacity ${duration}ms ease-in-out`;
+            element.style.opacity = '0';
+
+            const onTransitionEnd = () => {
+                element.style.display = 'none';
+                element.removeEventListener('transitionend', onTransitionEnd);
+                resolve();
+            };
+
+            element.addEventListener('transitionend', onTransitionEnd);
+
+            // Fallback in case transition doesn't fire
+            setTimeout(() => {
+                if (element.style.opacity === '0') {
+                    element.style.display = 'none';
+                    resolve();
+                }
+            }, duration);
+        });
+    };
+
+    /**
+     * Initialise the highlights dismissal functionality.
+     */
+    const initHighlights = () => {
+        const closeButton = document.getElementById('themeboostunionchildhighlightsclose');
+        const wrapper = document.getElementById('themeboostunionchildhighlights-wrapper');
+
+        if (!closeButton || !wrapper) {
+            return;
+        }
+
         // Register click handler for the highlights close button.
-        $('#themeboostunionchildhighlightsclose').on('click', function(e) {
+        closeButton.addEventListener('click', (e) => {
             // Prevent Bootstrap's default alert dismissal to handle it ourselves.
             e.preventDefault();
             e.stopPropagation();
 
             // Store the dismissal as a user preference to persist this decision.
             UserRepository.setUserPreference('theme_boost_union_child_highlights_dismissed', 1)
-                .then(function() {
-                    // Hide the highlights wrapper immediately for better UX.
-                    $('#themeboostunionchildhighlights-wrapper').fadeOut(200);
-                })
-                .catch(function() {
-                    // If the preference could not be saved, just hide it anyway for this session.
-                    $('#themeboostunionchildhighlights-wrapper').fadeOut(200);
-                });
+                .then(() => fadeOut(wrapper))
+                .catch(() => fadeOut(wrapper));
         });
-    }
+    };
 
     return {
-        init: function() {
+        init: () => {
             initHighlights();
         }
     };
