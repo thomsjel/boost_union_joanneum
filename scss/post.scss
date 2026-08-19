@@ -229,6 +229,10 @@
     grid-template-columns:1fr 1fr;
 }
 
+.highlights-container:has(.issinglehighlight){
+    grid-template-columns:1fr;
+}
+
 
 // Highlights tile styling
 .highlight-tile {

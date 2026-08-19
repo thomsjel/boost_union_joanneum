@@ -61,12 +61,12 @@ $templatecontext['slidergeneralsettings']->islayouttextleft = false;
 if (isset($childconfig->sliderlayout)) {
     // Set the layout flag for the template
     switch ($childconfig->sliderlayout) {
-        case THEME_BOOST_union_joanneum_SETTING_SLIDER_LAYOUT_DEFAULT:
+        case THEME_BOOST_UNION_JOANNEUM_SETTING_SLIDER_LAYOUT_DEFAULT:
             // Default layout (no special handling needed)
             $templatecontext['slidergeneralsettings']->layout = 0;
             $templatecontext['slidergeneralsettings']->islayouttextleft = false;
             break;
-        case THEME_BOOST_union_joanneum_SETTING_SLIDER_LAYOUT_TEXTLEFT_SOLID:
+        case THEME_BOOST_UNION_JOANNEUM_SETTING_SLIDER_LAYOUT_TEXTLEFT_SOLID:
             // Text left with solid background and image right layout
             $templatecontext['slidergeneralsettings']->layout = 1;
             $templatecontext['slidergeneralsettings']->islayouttextleft = true;
