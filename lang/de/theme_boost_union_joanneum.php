@@ -30,7 +30,7 @@ defined('MOODLE_INTERNAL') || die();
 
 // Allgemein.
 $string['pluginname'] = 'Boost Union Joanneum';
-$string['choosereadme'] = 'Dieses Plugin ist nur eine Vorlage, die Sie verwenden können, um Boost Union Joanneum-Themes zu entwickeln.';
+$string['choosereadme'] = 'Boost Union Joanneum ist eine Erweiterung des Boost Union-Themes, das speziell für die FH JOANNEUM entwickelt wurde. Es bietet kohorten-basierte Navigation mit individuellen Menüpunkten, ein modernes Slider-Layout, ein neues Login-Layout im Split-Screen-Design, Highlights-Kacheln mit kohorten-basierter Ansicht sowie den Upload von zwei individuellen Schriftarten.';
 $string['configtitle'] = 'Boost Union Joanneum';
 $string['settingsoverview_buc_desc'] = 'Mit Boost Union Joanneum können Sie Boost Union an Ihre lokalen Bedürfnisse anpassen.';
 
