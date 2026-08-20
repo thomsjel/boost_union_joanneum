@@ -53,6 +53,10 @@ require_once($CFG->dirroot . '/theme/boost_union/layout/includes/slider.php');
 // Get Boost Union Child theme config
 $childconfig = get_config('theme_boost_union_joanneum');
 
+if (!isset($templatecontext['slidergeneralsettings'])) {
+    $templatecontext['slidergeneralsettings'] = new stdClass();
+}
+
 // Initialize layout settings
 $templatecontext['slidergeneralsettings']->layout = 0;
 $templatecontext['slidergeneralsettings']->islayouttextleft = false;
