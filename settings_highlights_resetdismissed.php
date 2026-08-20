@@ -49,7 +49,7 @@ if ($confirm == true) {
     // Redirect with a nice message.
     $redirecturl = new core\url(
         '/admin/settings.php',
-        ['section' => 'theme_boost_union_joanneum_highlights'],
+        ['section' => 'theme_boost_union_joanneum'],
         'theme_boost_union_joanneum_highlights'
     );
     if ($resetresult == true) {
