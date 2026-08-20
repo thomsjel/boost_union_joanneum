@@ -4,6 +4,60 @@
  * It will be added on top of Boost Union's SCSS code.
  ***************************************************************/
 
+/****************************************************************
+* SOME LAYOUT FIXES, NEW STYLES
+***************************************************************/
+/*.card-grid{
+    gap: .5rem;
+    div{
+        flex: 1 !important;
+        width: auto !important;
+        min-width:30% !important;
+    }
+}
+
+.card.course-card.mx-1{
+    margin: 0 !important;
+}
+
+.block-myoverview.block-cards{
+    div[role="search"]{
+        div:not(.input-group){
+                gap: .5rem;
+                div{
+                    margin-right: 0 !important;
+                    margin-left: 0 !important;
+                }
+        }
+    }
+}
+*/
+.modal.moodle-has-zindex.show{
+    backdrop-filter: blur(5px) !important;
+    background-color: #ffffff8a !important;
+}
+
+/****************************************************************
+* NAVBAR
+***************************************************************/
+
+.navbar-expand.navbar-nav.nav-link {
+    padding-right: .8rem;
+    padding-left: .8rem;
+}
+
+.editmode-switch-form{
+    label{
+        line-height: 1.9;
+    }
+}
+
+.navbar.fixed-top{
+    text-transform: uppercase;
+    background-color: #ffffff8a !important;
+    backdrop-filter: blur(10px);
+}
+
  /****************************************************************
  * DASHBOARD
  ***************************************************************/
