@@ -41,11 +41,6 @@
 * NAVBAR
 ***************************************************************/
 
-.navbar-expand.navbar-nav.nav-link {
-    padding-right: .8rem;
-    padding-left: .8rem;
-}
-
 .editmode-switch-form{
     label{
         line-height: 1.9;
@@ -56,6 +51,13 @@
     text-transform: uppercase;
     background-color: #ffffff8a !important;
     backdrop-filter: blur(10px);
+
+    .primary-navigation{
+        a[role="menuitem"]{
+            padding-right: .8rem;
+            padding-left: .8rem;
+        }
+    }
 }
 
  /****************************************************************
@@ -79,7 +81,7 @@
     display: none;
     flex-direction: column;
     background: white;
-    width: 100%;
+    width: fit-content;
     border: 1px solid rgb(0 0 0 / .15);
     border-radius: .5rem;
 
