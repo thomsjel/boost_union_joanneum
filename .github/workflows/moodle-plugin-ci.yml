@@ -14,11 +14,11 @@ on:
 
 jobs:
   moodle-plugin-ci:
-    uses: moodle-an-hochschulen/moodle-workflows/.github/workflows/moodle-plugin-ci.yml@main
+    uses: moodle-an-hochschulen/moodle-workflows/.github/workflows/moodle-plugin-ci.yml@MOODLE_405_STABLE
     with:
       moodle-core-branch: ${{ inputs.moodle-core-branch || github.event.client_payload.moodle-core-branch }}
       plugin-dependencies: |
-        moodle-an-hochschulen/moodle-theme_boost_union,main
+        moodle-an-hochschulen/moodle-theme_boost_union,MOODLE_405_STABLE
       pre-install-script: |
         # Copy and modify Boost Union Behat tests to be used on Boost Union Child.
         #
