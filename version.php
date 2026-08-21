@@ -25,6 +25,6 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'theme_boost_union_joanneum';
-$plugin->version = 2025041408.65;
+$plugin->version = 2025041408.66;
 $plugin->maturity = MATURITY_STABLE;
-$plugin->dependencies = ['theme_boost_union' => 2024100793]; //2024100793 ... 2025041403
+$plugin->dependencies = ['theme_boost_union' => 2024100796]; //2024100793 ... 2025041403
