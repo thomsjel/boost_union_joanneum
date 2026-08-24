@@ -14,7 +14,7 @@ on:
 
 jobs:
   moodle-plugin-ci:
-    uses: moodle-an-hochschulen/moodle-workflows/.github/workflows/moodle-plugin-ci.yml@v4.5.11
+    uses: moodle-an-hochschulen/moodle-workflows/.github/workflows/moodle-plugin-ci.yml@MOODLE_405_STABLE
     with:
       moodle-core-branch: ${{ inputs.moodle-core-branch || github.event.client_payload.moodle-core-branch }}
       plugin-dependencies: |
