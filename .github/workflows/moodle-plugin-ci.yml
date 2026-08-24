@@ -18,7 +18,7 @@ jobs:
     with:
       moodle-core-branch: ${{ inputs.moodle-core-branch || github.event.client_payload.moodle-core-branch }}
       plugin-dependencies: |
-        moodle-an-hochschulen/moodle-theme_boost_union,v.4.5.11
+        moodle-an-hochschulen/moodle-theme_boost_union,v4.5.11
       pre-install-script: |
         # Copy and modify Boost Union Behat tests to be used on Boost Union Child.
         #
