@@ -1,39 +1,39 @@
 /* Hide all elements with a data-lang attribute by default */
 [data-lang] {
-  display: none;
+    display: none;
 }
 
 /* Define the list of language codes */
 $languages: (
-  "ab", "af", "sq", "am", "ar", "ar_wp", "an", "oc_es", "hy", "ast", "az",
-  "bm", "ba", "eu", "bar", "be", "bn", "bi", "bs", "br", "bg", "my",
-  "ca_valencia", "ca", "ca_wp", "zh_cn", "zh_cn_wp", "zh_tw", "zh_tw_wp",
-  "hr", "cs", "da_kursus", "da", "da_wp", "da_rum", "prs", "dv", "nl",
-  "nl_ho", "nl_wp", "dz", "en_ca", "en_kids", "en_ar", "en", "en_us",
-  "en_us_k12", "en_us_wp", "en_wp", "eo", "et", "ee", "fo", "fj", "fil",
-  "fi_co", "fi", "fi_wp", "fr_ca", "fr", "fr_ca_epi", "fr_wp", "fr_incl",
-  "gl", "ka", "de_comm", "de_kids", "de_du", "de", "de_wp", "de_ch", "el",
-  "el_kids", "el_uni", "el_wp", "kl", "gu", "hat", "ha", "haw", "he_kids",
-  "he", "he_wp", "hi_kids", "hi", "hi_wp", "hr_schools", "hu", "is", "ig",
-  "id", "ia", "iu", "ga", "it", "it_wp", "ja_kids", "ja", "ja_wp", "kab",
-  "kn", "kaa", "kk", "km", "qxr", "rw", "ko", "ckb", "kmr", "fkv", "ky",
-  "lo", "la", "lv", "lv_wp", "lt_uni", "lt", "lt_wp", "dsb", "lg", "smj",
-  "lb", "mk", "mg", "ml", "ms", "mt", "mi_tn", "mi_wwow", "mi", "arn", "mr",
-  "mh", "mwl", "mn", "mn_mong", "mis", "zgh", "ne", "pcm", "se", "no_gr",
-  "no", "nb", "no_wp", "nn", "oc_gsc", "oc_lnc", "oc_prv", "or", "om", "pap",
-  "ps", "fa", "pl", "pl_wp", "pt_br", "pt_br_wp", "pt", "pt_br_kids",
-  "pt_br_uni", "pan", "qu", "ro", "ro_wp", "rm_surs", "ru", "sm", "sgs",
-  "sa", "sc", "gd", "sr_cr", "sr_lt", "tn", "scn", "szl", "sd_ap", "si",
-  "sk", "sl", "so", "sma", "es_ar", "es_co", "es_mx", "es_mx_kids", "es",
-  "es_ve", "es_wp", "sw", "sv_fi", "sv", "sv_wp", "syc", "tl", "tg",
-  "ta_lk", "ta", "tt", "te", "tet", "th", "xct", "ti", "tpi", "to", "tr",
-  "tk", "uk", "hsb", "ur", "ug_lt", "ug_ug", "uz", "ca_valencia_racv", "vi",
-  "cy", "wo", "xh", "yo", "zu"
+    "ab", "af", "sq", "am", "ar", "ar_wp", "an", "oc_es", "hy", "ast", "az",
+    "bm", "ba", "eu", "bar", "be", "bn", "bi", "bs", "br", "bg", "my",
+    "ca_valencia", "ca", "ca_wp", "zh_cn", "zh_cn_wp", "zh_tw", "zh_tw_wp",
+    "hr", "cs", "da_kursus", "da", "da_wp", "da_rum", "prs", "dv", "nl",
+    "nl_ho", "nl_wp", "dz", "en_ca", "en_kids", "en_ar", "en", "en_us",
+    "en_us_k12", "en_us_wp", "en_wp", "eo", "et", "ee", "fo", "fj", "fil",
+    "fi_co", "fi", "fi_wp", "fr_ca", "fr", "fr_ca_epi", "fr_wp", "fr_incl",
+    "gl", "ka", "de_comm", "de_kids", "de_du", "de", "de_wp", "de_ch", "el",
+    "el_kids", "el_uni", "el_wp", "kl", "gu", "hat", "ha", "haw", "he_kids",
+    "he", "he_wp", "hi_kids", "hi", "hi_wp", "hr_schools", "hu", "is", "ig",
+    "id", "ia", "iu", "ga", "it", "it_wp", "ja_kids", "ja", "ja_wp", "kab",
+    "kn", "kaa", "kk", "km", "qxr", "rw", "ko", "ckb", "kmr", "fkv", "ky",
+    "lo", "la", "lv", "lv_wp", "lt_uni", "lt", "lt_wp", "dsb", "lg", "smj",
+    "lb", "mk", "mg", "ml", "ms", "mt", "mi_tn", "mi_wwow", "mi", "arn", "mr",
+    "mh", "mwl", "mn", "mn_mong", "mis", "zgh", "ne", "pcm", "se", "no_gr",
+    "no", "nb", "no_wp", "nn", "oc_gsc", "oc_lnc", "oc_prv", "or", "om", "pap",
+    "ps", "fa", "pl", "pl_wp", "pt_br", "pt_br_wp", "pt", "pt_br_kids",
+    "pt_br_uni", "pan", "qu", "ro", "ro_wp", "rm_surs", "ru", "sm", "sgs",
+    "sa", "sc", "gd", "sr_cr", "sr_lt", "tn", "scn", "szl", "sd_ap", "si",
+    "sk", "sl", "so", "sma", "es_ar", "es_co", "es_mx", "es_mx_kids", "es",
+    "es_ve", "es_wp", "sw", "sv_fi", "sv", "sv_wp", "syc", "tl", "tg",
+    "ta_lk", "ta", "tt", "te", "tet", "th", "xct", "ti", "tpi", "to", "tr",
+    "tk", "uk", "hsb", "ur", "ug_lt", "ug_ug", "uz", "ca_valencia_racv", "vi",
+    "cy", "wo", "xh", "yo", "zu"
 );
 
 /* Loop through the list and generate the selectors */
 @each $lang in $languages {
-  [lang|="#{$lang}"] [data-lang="#{$lang}"] {
-    display: block !important;
-  }
+    [lang|="#{$lang}"] [data-lang="#{$lang}"] {
+        display: block;
+    }
 }
