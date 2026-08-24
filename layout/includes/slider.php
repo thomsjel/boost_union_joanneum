@@ -38,7 +38,7 @@
  * the rendering call to the main layout file (`drawers.php`).
  *
  * @package   theme_boost_union_joanneum
- * @copyright 2026 Daniel Poggenpohl <daniel.poggenpohl@fernuni-hagen.de>
+ * @copyright 2026 Thomas Kautz <thomas.kautz@fh-joanneum.at>, Daniel Poggenpohl <daniel.poggenpohl@fernuni-hagen.de>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 

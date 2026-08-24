@@ -37,7 +37,7 @@
  * * Include course index modification
  *
  * @package   theme_boost_union
- * @copyright 2022 Luca Bösch, BFH Bern University of Applied Sciences luca.boesch@bfh.ch
+ * @copyright 2026 Thomas Kautz <thomas.kautz@fh-joanneum.at>, Luca Bösch <luca.boesch@bfh.ch>
  * @copyright based on code from theme_boost by Bas Brands
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */

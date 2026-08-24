@@ -18,7 +18,7 @@
  * Theme Boost Union - Core renderer
  *
  * @package    theme_boost_union
- * @copyright  2022 Alexander Bias, lern.link GmbH <alexander.bias@lernlink.de>
+ * @copyright  2026 Thomas Kautz <thomas.kautz@fh-joanneum.at>, Alexander Bias <alexander.bias@lernlink.de>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 

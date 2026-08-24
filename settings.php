@@ -18,7 +18,7 @@
  * Theme Boost Union Child - Settings file
  *
  * @package    theme_boost_union_joanneum
- * @copyright  2023 Daniel Poggenpohl <daniel.poggenpohl@fernuni-hagen.de> and Alexander Bias <bias@alexanderbias.de>
+ * @copyright  2026 Thomas Kautz <thomas.kautz@fh-joanneum.at>, Daniel Poggenpohl <daniel.poggenpohl@fernuni-hagen.de> and Alexander Bias <bias@alexanderbias.de>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -27,16 +27,14 @@ use theme_boost_union\admin_settingspage_tabs_with_tertiary;
 defined('MOODLE_INTERNAL') || die();
 
 if ($hassiteconfig || has_capability('theme/boost_union:configure', context_system::instance())) {
-    // How this file works:
-    // Boost Union's settings are divided into multiple settings pages which resides in its own settings category.
-    // You will understand it as soon as you look at /theme/boost_union/settings.php.
-    // This settings file here is built in a way that it adds another settings page to this existing settings
-    // category. You can add all child-theme-specific settings to this settings page here.
+    // This file extends the Boost Union theme settings by adding a dedicated settings page
+    // for the Boost Union Joanneum child theme. The parent theme's settings are organized in
+    // multiple pages within a shared settings category (see /theme/boost_union/settings.php).
+    // This file adds child-theme-specific settings to that existing category.
 
-    // However, there is still the $settings variable which is expected by Moodle core to be filled with the theme
-    // settings and which is automatically linked from the theme selector page.
-    // To avoid that there appears a broken "Boost Union Child" settings page, we redirect the user to a settings
-    // overview page if he opens this page.
+    // Moodle core expects the $settings variable to contain theme settings for the theme selector page.
+    // Since we use a custom settings structure, we redirect users from the default settings URL
+    // to our custom settings overview page to prevent a broken settings page from appearing.
     $mainsettingspageurl = new \core\url('/admin/settings.php', ['section' => 'themesettingboost_union_joanneum']);
     if ($ADMIN->fulltree && $PAGE->has_set_url() && $PAGE->url->compare($mainsettingspageurl)) {
         redirect(new \core\url('/admin/settings.php', ['section' => 'theme_boost_union_joanneum']));
@@ -55,7 +53,7 @@ if ($hassiteconfig || has_capability('theme/boost_union:configure', context_syst
         // Create full settings page structure.
         // phpcs:disable moodle.ControlStructures.ControlSignature.Found
     } else if ($ADMIN->fulltree) {
-        // Require the necessary libraries.
+        // Require Boost Union and Boost Union Joanneum libraries for settings functionality.
         require_once($CFG->dirroot . '/theme/boost_union/lib.php');
         require_once($CFG->dirroot . '/theme/boost_union/locallib.php');
         require_once($CFG->dirroot . '/theme/boost_union_joanneum/lib.php');
@@ -126,7 +124,7 @@ if ($hassiteconfig || has_capability('theme/boost_union:configure', context_syst
         $setting->set_updatedcallback('theme_reset_all_caches');
         $tab->add($setting);
 
-        // Create cohort settings heading.
+        // Create custom menu items heading.
         $name = 'theme_boost_union_joanneum/custommenuitemsheading';
         $title = get_string('custommenuitemsheading', 'theme_boost_union_joanneum', null, true);
         $setting = new admin_setting_heading($name, $title, null);
@@ -269,7 +267,7 @@ if ($hassiteconfig || has_capability('theme/boost_union:configure', context_syst
         $setting->set_updatedcallback('theme_reset_all_caches');
         $tab->add($setting);
 
-        // Setting: Show OPENIDC Login Button
+        // Setting: Enable OPENIDC login button
         $name = 'theme_boost_union_joanneum/enableoidclogin';
         $setting = new admin_setting_configcheckbox(
             $name,  
@@ -308,7 +306,7 @@ if ($hassiteconfig || has_capability('theme/boost_union:configure', context_syst
         $setting->set_updatedcallback('theme_reset_all_caches');
         $tab->add($setting);
 
-        // Setting: Highlights dismissible.
+        // Setting: Enable dismissible highlights
         $name = 'theme_boost_union_joanneum/highlightsdismissible';
         $title = get_string('highlightsdismissible', 'theme_boost_union_joanneum', null, true);
         $description = get_string('highlightsdismissible_desc', 'theme_boost_union_joanneum', null, true);

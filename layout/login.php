@@ -20,7 +20,7 @@
  * This layout extends theme/boost_union/layout/login.php
  *
  * @package   theme_boost_union_joanneum
- * @copyright  2026 Thomas Kautz <thomas.kautz@fh-joanneum.at>
+ * @copyright 2026 Thomas Kautz <thomas.kautz@fh-joanneum.at>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
