@@ -24,3 +24,10 @@ Feature: Extending the theme_boost_union plugin with a child theme
   # They will be tested alongside Boost Union's
   # scenarios in Github Actions.
   #################################################################
+
+  @javascript
+  Scenario: Admin sees "Boost Union Joanneum" under "Boost Union" category at /admin/search.php#linkappearance
+    When I log in as "admin"
+    And I am on "/admin/search.php#linkappearance" page
+    Then I should see "Boost Union" in the ".adminsettings" "css_element"
+    And I should see "Boost Union Joanneum" in the ".adminsettings" "css_element"

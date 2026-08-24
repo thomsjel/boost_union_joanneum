@@ -18,7 +18,9 @@
  * Theme Boost Union Child - Settings file
  *
  * @package    theme_boost_union_joanneum
- * @copyright  2026 Thomas Kautz <thomas.kautz@fh-joanneum.at>, Daniel Poggenpohl <daniel.poggenpohl@fernuni-hagen.de> and Alexander Bias <bias@alexanderbias.de>
+ * @copyright  2026 Thomas Kautz <thomas.kautz@fh-joanneum.at>, 
+ *             Daniel Poggenpohl <daniel.poggenpohl@fernuni-hagen.de> 
+ *             and Alexander Bias <bias@alexanderbias.de>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -42,7 +44,7 @@ if ($hassiteconfig || has_capability('theme/boost_union:configure', context_syst
 
     // Create empty settings page structure to make the site administration work on non-admin pages.
     if (!$ADMIN->fulltree) {
-        // Create Boost Union Child settings page as an external page to avoid displaying
+        // Create Boost Union Joanneum settings page as an external page to avoid displaying.
         $tab = new admin_settingpage(
             'theme_boost_union_joanneum',
             get_string('configtitle', 'theme_boost_union_joanneum', null, true),
@@ -51,7 +53,6 @@ if ($hassiteconfig || has_capability('theme/boost_union:configure', context_syst
         $ADMIN->add('theme_boost_union', $tab);
 
         // Create full settings page structure.
-        // phpcs:disable moodle.ControlStructures.ControlSignature.Found
     } else if ($ADMIN->fulltree) {
         // Require Boost Union and Boost Union Joanneum libraries for settings functionality.
         require_once($CFG->dirroot . '/theme/boost_union/lib.php');
@@ -65,7 +66,7 @@ if ($hassiteconfig || has_capability('theme/boost_union:configure', context_syst
                 THEME_BOOST_UNION_SETTING_SELECT_NO => get_string('no'), ];
 
 
-        // Create Boost Union Child settings page with tabs and tertiary navigation
+        // Create Boost Union Joanneum settings page with tabs and tertiary navigation.
         // (and allow users with the theme/boost_union:configure capability to access it).
         $page = new admin_settingspage_tabs_with_tertiary(
             'theme_boost_union_joanneum',
