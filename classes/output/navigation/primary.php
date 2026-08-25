@@ -31,6 +31,9 @@ class primary extends boost_union_primary {
     /**
      * Override to filter custom menu items by cohort.
      * This is called by export_for_template() in the parent class.
+     *
+     * @param renderer_base $output The renderer to use for exporting nodes.
+     * @return array The filtered custom menu nodes.
      */
     protected function get_custom_menu(renderer_base $output): array {
         global $CFG, $USER, $DB;
@@ -93,6 +96,10 @@ class primary extends boost_union_primary {
 
     /**
      * Build HTML span for a cohort ID.
+     *
+     * @param int $cohortid The cohort ID.
+     * @param \moodle_database $DB The database connection.
+     * @return string The HTML span element for the cohort tag.
      */
     private function build_cohort_span(int $cohortid, $DB): string {
         $cohort = $DB->get_record('cohort', ['id' => $cohortid], 'id, name');
@@ -107,6 +114,11 @@ class primary extends boost_union_primary {
 
     /**
      * Build HTML div container with multiple cohort spans.
+     *
+     * @param string $currenttext The text to display.
+     * @param array $cohortids The cohort IDs to build spans for.
+     * @param \moodle_database $DB The database connection.
+     * @return string The HTML div container with cohort spans.
      */
     private function build_cohort_spans_container($currenttext, array $cohortids, $DB): string {
         $spans = [];
@@ -129,6 +141,8 @@ class primary extends boost_union_primary {
 
     /**
      * Build toggle button which shows the cohort spans container on hover.
+     *
+     * @return string The HTML toggle button element.
      */
     private function build_cohort_spans_container_toggle(): string {
 
@@ -138,6 +152,12 @@ class primary extends boost_union_primary {
     /**
      * Recursively process nodes to add cohort spans.
      * Modifies exported node data AFTER export to ensure HTML is preserved.
+     *
+     * @param array $nodes The menu nodes to process.
+     * @param string $originalmenustring The original custom menu string.
+     * @param \moodle_database $DB The database connection.
+     * @param renderer_base $output The renderer to use for exporting nodes.
+     * @return array The processed nodes with cohort spans added.
      */
     private function add_cohort_labels_to_nodes(array $nodes, string $originalmenustring, $DB, renderer_base $output): array {
         $result = [];
@@ -226,7 +246,9 @@ class primary extends boost_union_primary {
      * Filter the custom menu string by cohort, removing items that the user doesn't have access to.
      * For admin users, all items are shown (cohort markers are removed but not replaced with spans here).
      *
-     * @param bool $foradmin If true, skip filtering and just remove cohort markers from all lines.
+     * @param string $custommenustring The custom menu string to filter.
+     * @param array $usercohortids The cohort IDs the user belongs to.
+     * @return string The filtered custom menu string.
      */
     private function filter_custom_menu_by_cohort(string $custommenustring, array $usercohortids): string {
         $lines = explode("\n", $custommenustring);
