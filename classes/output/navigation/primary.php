@@ -65,7 +65,7 @@ class primary extends boost_union_primary {
         $usercohortids = [];
         if (isloggedin() && !isguestuser()) {
             $usercohorts = cohort_get_user_cohorts($USER->id, 0); // 0 = system context
-            $usercohortids = array_map(function($cohort) {
+            $usercohortids = array_map(function ($cohort) {
                 return $cohort->id;
             }, $usercohorts);
         }
@@ -80,7 +80,7 @@ class primary extends boost_union_primary {
 
         // Use Moodle's standard parsing on the filtered string.
         $custommenunodes = \custom_menu::convert_text_to_menu_nodes($filteredmenustring, $currentlang);
-        
+
         // Convert nodes to template format.
         $nodes = [];
         foreach ($custommenunodes as $node) {
@@ -116,14 +116,15 @@ class primary extends boost_union_primary {
                 $spans[] = $span;
             }
         }
-        
+
         if (empty($spans)) {
             return '';
         }
 
         $label = get_string('cohorttagscontainer_desc', 'theme_boost_union_joanneum');
-        
-        return '<div class="cohort-tags-container"><fieldset><legend>' . $label . '</legend>' . implode(' ', $spans) . '</fieldset></div>';
+
+        return '<div class="cohort-tags-container"><fieldset><legend>'
+        . $label . '</legend>' . implode(' ', $spans) . '</fieldset></div>';
     }
 
     /**
@@ -140,27 +141,27 @@ class primary extends boost_union_primary {
      */
     private function add_cohort_labels_to_nodes(array $nodes, string $originalmenustring, $DB, renderer_base $output): array {
         $result = [];
-        
+
         // Build a map of text to cohort IDs from original menu string.
         $lines = explode("\n", $originalmenustring);
         $texttocohorts = [];
-        
+
         foreach ($lines as $line) {
             $trimmed = trim($line);
             if (empty($trimmed) || $trimmed === '###') {
                 continue;
             }
-            
+
             $cohortids = [];
             if (preg_match('/\{([^}]+)\}/', $trimmed, $matches)) {
                 $cohortids = array_map('trim', explode(',', $matches[1]));
             }
-            
+
             // Get text part (before first |), strip - prefix for child items.
             $firstpipe = strpos($trimmed, '|');
             $textpart = $firstpipe === false ? $trimmed : substr($trimmed, 0, $firstpipe);
             $textpart = trim(ltrim($textpart, '- '));
-            
+
             if (!empty($cohortids)) {
                 $texttocohorts[$textpart] = $cohortids;
             }
@@ -173,7 +174,7 @@ class primary extends boost_union_primary {
             } else {
                 $exported = (array) $node;
             }
-            
+
             // Get the text from exported data.
             $currenttext = match (true) {
                 is_array($exported) => $exported['text'] ?? '',
@@ -181,10 +182,10 @@ class primary extends boost_union_primary {
                 default => '',
             };
             $currenttext = trim($currenttext);
-            
+
             // Find matching cohort IDs.
             $cohortids = $texttocohorts[$currenttext] ?? [];
-            
+
             // Add cohort spans container if any.
             if (!empty($cohortids)) {
                 $toggle = $this->build_cohort_spans_container_toggle();
@@ -198,7 +199,7 @@ class primary extends boost_union_primary {
                     }
                 }
             }
-            
+
             // Recursively process children.
             $children = [];
             if (is_array($exported) && isset($exported['children']) && is_array($exported['children'])) {
@@ -206,7 +207,7 @@ class primary extends boost_union_primary {
             } else if (is_object($exported) && isset($exported->children) && is_array($exported->children)) {
                 $children = $exported->children;
             }
-            
+
             if (!empty($children)) {
                 if (is_array($exported)) {
                     $exported['children'] = $this->add_cohort_labels_to_nodes($children, $originalmenustring, $DB, $output);
@@ -224,7 +225,7 @@ class primary extends boost_union_primary {
     /**
      * Filter the custom menu string by cohort, removing items that the user doesn't have access to.
      * For admin users, all items are shown (cohort markers are removed but not replaced with spans here).
-     * 
+     *
      * @param bool $foradmin If true, skip filtering and just remove cohort markers from all lines.
      */
     private function filter_custom_menu_by_cohort(string $custommenustring, array $usercohortids): string {

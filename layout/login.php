@@ -31,75 +31,68 @@ global $CFG;
 // Get the login layout setting from theme_boost_union_joanneum.
 $loginlayout = get_config('theme_boost_union_joanneum', 'loginlayout');
 
+// Split screen layout.
+$bodyattributes = $OUTPUT->body_attributes();
+[$loginbackgroundimagetext, $loginbackgroundimagetextcolor] = theme_boost_union_get_loginbackgroundimage_text();
+
+// Prepare template context.
+$templatecontext = [
+    'sitename' => format_string($SITE->shortname, true, ['context' => context_course::instance(SITEID), "escape" => false]),
+    'output' => $OUTPUT,
+    'bodyattributes' => $bodyattributes,
+    'loginbackgroundimagetext' => $loginbackgroundimagetext,
+    'loginbackgroundimagetextcolor' => $loginbackgroundimagetextcolor,
+];
+
+// Add login container classes based on parent theme settings.
+$templatecontext['loginwrapperclass'] = 'login-wrapper-' . get_config('theme_boost_union', 'loginformposition');
+$templatecontext['logincontainerclass'] = (
+    get_config('theme_boost_union', 'loginformtransparency') == THEME_BOOST_UNION_SETTING_SELECT_YES
+) ? 'login-container-80t' : '';
+
+// For split screen layout, we need to get the background image URL directly.
+// We'll use Boost Union's functions to get the files and generate the URL.
+require_once($CFG->dirroot . '/theme/boost_union/locallib.php');
+
+$loginbackgroundimageurl = '';
+$files = theme_boost_union_get_loginbackgroundimage_files();
+
+// If files exist, get the URL for the first one (or random if available).
+if (!empty($files)) {
+    $file = reset($files); // Get the first file as fallback.
+    $loginbackgroundimageurl = core\url::make_pluginfile_url(
+        $file->get_contextid(),
+        $file->get_component(),
+        $file->get_filearea(),
+        $file->get_itemid(),
+        $file->get_filepath(),
+        $file->get_filename()
+    )->out();
+}
+
+$templatecontext['loginbackgroundimageurl'] = $loginbackgroundimageurl;
 
 
-    // Split screen layout.
-    $bodyattributes = $OUTPUT->body_attributes();
-    [$loginbackgroundimagetext, $loginbackgroundimagetextcolor] = theme_boost_union_get_loginbackgroundimage_text();
+// Include the template content for the footnote.
+require_once($CFG->dirroot . '/theme/boost_union/layout/includes/footnote.php');
 
-    // Prepare template context.
-    $templatecontext = [
-        'sitename' => format_string($SITE->shortname, true, ['context' => context_course::instance(SITEID), "escape" => false]),
-        'output' => $OUTPUT,
-        'bodyattributes' => $bodyattributes,
-        'loginbackgroundimagetext' => $loginbackgroundimagetext,
-        'loginbackgroundimagetextcolor' => $loginbackgroundimagetextcolor,
-        
-    ];
+// Include the template content for the static pages.
+require_once($CFG->dirroot . '/theme/boost_union/layout/includes/staticpages.php');
 
-    // Add login container classes based on parent theme settings.
-    $templatecontext['loginwrapperclass'] = 'login-wrapper-' . get_config('theme_boost_union', 'loginformposition');
-    $templatecontext['logincontainerclass'] = (
-        get_config('theme_boost_union', 'loginformtransparency') == THEME_BOOST_UNION_SETTING_SELECT_YES
-    ) ? 'login-container-80t' : '';
+// Include the template content for the accessibility pages.
+require_once($CFG->dirroot . '/theme/boost_union/layout/includes/accessibilitypages.php');
 
-    // For split screen layout, we need to get the background image URL directly.
-    // We'll use Boost Union's functions to get the files and generate the URL.
-    require_once($CFG->dirroot . '/theme/boost_union/locallib.php');
-    
-    $loginbackgroundimageurl = '';
-    $files = theme_boost_union_get_loginbackgroundimage_files();
-    
-    // If files exist, get the URL for the first one (or random if available).
-    if (!empty($files)) {
-        $file = reset($files); // Get the first file as fallback.
-        $loginbackgroundimageurl = core\url::make_pluginfile_url(
-            $file->get_contextid(),
-            $file->get_component(),
-            $file->get_filearea(),
-            $file->get_itemid(),
-            $file->get_filepath(),
-            $file->get_filename()
-        )->out();
-    }
-    
-    $templatecontext['loginbackgroundimageurl'] = $loginbackgroundimageurl;
+// Include the template content for the footer button.
+require_once($CFG->dirroot . '/theme/boost_union/layout/includes/footer.php');
 
+// Include the template content for the info banners.
+require_once($CFG->dirroot . '/theme/boost_union/layout/includes/infobanners.php');
 
-    // Include the template content for the footnote.
-    require_once($CFG->dirroot . '/theme/boost_union/layout/includes/footnote.php');
-
-    // Include the template content for the static pages.
-    require_once($CFG->dirroot . '/theme/boost_union/layout/includes/staticpages.php');
-
-    // Include the template content for the accessibility pages.
-    require_once($CFG->dirroot . '/theme/boost_union/layout/includes/accessibilitypages.php');
-
-    // Include the template content for the footer button.
-    require_once($CFG->dirroot . '/theme/boost_union/layout/includes/footer.php');
-
-    // Include the template content for the info banners.
-    require_once($CFG->dirroot . '/theme/boost_union/layout/includes/infobanners.php');
-
-    // Handle different login layouts.
+// Handle different login layouts.
 if ($loginlayout === THEME_BOOST_UNION_JOANNEUM_SETTING_LOGIN_LAYOUT_SPLIT_SCREEN) {
-
     // Render login.mustache from theme_boost (which is overridden in theme_boost_union).
     echo $OUTPUT->render_from_template('theme_boost_union_joanneum/core/login_split', $templatecontext);
-
 } else {
-
     // Render login.mustache from theme_boost (which is overridden in theme_boost_union).
     echo $OUTPUT->render_from_template('theme_boost/login', $templatecontext);
-
 }

@@ -18,7 +18,8 @@
  * Theme Boost Union Child - Version file
  *
  * @package    theme_boost_union_joanneum
- * @copyright  2026 Thomas Kautz <thomas.kautz@fh-joanneum.at>, Daniel Poggenpohl <daniel.poggenpohl@fernuni-hagen.de> and Alexander Bias <bias@alexanderbias.de>
+ * @copyright  2026 Thomas Kautz <thomas.kautz@fh-joanneum.at>, Daniel Poggenpohl <daniel.poggenpohl@fernuni-hagen.de>
+ *             and Alexander Bias <bias@alexanderbias.de>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -27,4 +28,4 @@ defined('MOODLE_INTERNAL') || die();
 $plugin->component = 'theme_boost_union_joanneum';
 $plugin->version = 2025041408.66;
 $plugin->maturity = MATURITY_STABLE;
-$plugin->dependencies = ['theme_boost_union' => 2024100796]; //2024100793 ... 2025041403
+$plugin->dependencies = ['theme_boost_union' => 2024100796];

@@ -18,8 +18,8 @@
  * Theme Boost Union Child - Settings file
  *
  * @package    theme_boost_union_joanneum
- * @copyright  2026 Thomas Kautz <thomas.kautz@fh-joanneum.at>, 
- *             Daniel Poggenpohl <daniel.poggenpohl@fernuni-hagen.de> 
+ * @copyright  2026 Thomas Kautz <thomas.kautz@fh-joanneum.at>,
+ *             Daniel Poggenpohl <daniel.poggenpohl@fernuni-hagen.de>
  *             and Alexander Bias <bias@alexanderbias.de>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -268,13 +268,13 @@ if ($hassiteconfig || has_capability('theme/boost_union:configure', context_syst
         $setting->set_updatedcallback('theme_reset_all_caches');
         $tab->add($setting);
 
-        // Setting: Enable OPENIDC login button
+        // Setting: Enable OPENIDC login button.
         $name = 'theme_boost_union_joanneum/enableoidclogin';
         $setting = new admin_setting_configcheckbox(
-            $name,  
+            $name,
             get_string('loginoidc', 'theme_boost_union_joanneum', null, true),
             '',
-            0              
+            0
         );
         $setting->set_updatedcallback('theme_reset_all_caches');
         $tab->add($setting);
@@ -307,7 +307,7 @@ if ($hassiteconfig || has_capability('theme/boost_union:configure', context_syst
         $setting->set_updatedcallback('theme_reset_all_caches');
         $tab->add($setting);
 
-        // Setting: Enable dismissible highlights
+        // Setting: Enable dismissible highlights.
         $name = 'theme_boost_union_joanneum/highlightsdismissible';
         $title = get_string('highlightsdismissible', 'theme_boost_union_joanneum', null, true);
         $description = get_string('highlightsdismissible_desc', 'theme_boost_union_joanneum', null, true);
@@ -366,9 +366,9 @@ if ($hassiteconfig || has_capability('theme/boost_union:configure', context_syst
         $tab->add($setting);
 
         // Setting: Show highlights on dashboard.
-        $name = 'theme_boost_union_joanneum/showhighlightsonDashboard';
-        $title = get_string('showhighlightsonDashboard', 'theme_boost_union_joanneum', null, true);
-        $description = get_string('showhighlightsonDashboard_desc', 'theme_boost_union_joanneum', null, true);
+        $name = 'theme_boost_union_joanneum/showhighlightsondashboard';
+        $title = get_string('showhighlightsondashboard', 'theme_boost_union_joanneum', null, true);
+        $description = get_string('showhighlightsondashboard_desc', 'theme_boost_union_joanneum', null, true);
         $setting = new admin_setting_configcheckbox(
             $name,
             $title,

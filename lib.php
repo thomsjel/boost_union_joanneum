@@ -18,7 +18,9 @@
  * Theme Boost Union Child - Library
  *
  * @package    theme_boost_union_joanneum
- * @copyright  2026 Thomas Kautz <thomas.kautz@fh-joanneum.at>, Daniel Poggenpohl <daniel.poggenpohl@fernuni-hagen.de> and Alexander Bias <bias@alexanderbias.de>
+ * @copyright  2026 Thomas Kautz <thomas.kautz@fh-joanneum.at>,
+ *             Daniel Poggenpohl <daniel.poggenpohl@fernuni-hagen.de>
+ *             and Alexander Bias <bias@alexanderbias.de>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -188,7 +190,7 @@ function theme_boost_union_joanneum_get_font_scss($theme) {
                     '/',
                     $file->get_filename()
                 );
-                
+
                 // Extract font family name from filename (without extension).
                 $filename = $file->get_filename();
                 $basename = pathinfo($filename, PATHINFO_FILENAME);

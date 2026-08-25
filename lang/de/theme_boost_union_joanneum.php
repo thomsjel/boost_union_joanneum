@@ -5,7 +5,7 @@
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
-// //
+//
 // Moodle is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -18,8 +18,8 @@
  * Theme Boost Union Joanneum - Sprachpaket
  *
  * @package    theme_boost_union_joanneum
- * @copyright  2023 Daniel Poggenpohl <daniel.poggenpohl@fernuni-hagen.de> und Alexander Bias <bias@alexanderbias.de>
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 oder neuer
+ * @copyright  2023 Daniel Poggenpohl <daniel.poggenpohl@fernuni-hagen.de> and Alexander Bias <bias@alexanderbias.de>
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
@@ -131,8 +131,8 @@ $string['highlightsvisibilityheading'] = 'Highlights-Sichtbarkeit';
 $string['showhighlightsonfrontpage'] = 'Highlights auf der Startseite anzeigen';
 $string['showhighlightsonfrontpage_desc'] = 'Wenn aktiviert, werden die Highlights auf der Startseite der Website angezeigt.';
 // ... ... Einstellung: Highlights auf dem Dashboard anzeigen.
-$string['showhighlightsonDashboard'] = 'Highlights auf dem Dashboard anzeigen';
-$string['showhighlightsonDashboard_desc'] = 'Wenn aktiviert, werden die Highlights auf dem Benutzer-Dashboard (Mein Moodle) angezeigt.';
+$string['showhighlightsondashboard'] = 'Highlights auf dem Dashboard anzeigen';
+$string['showhighlightsondashboard_desc'] = 'Wenn aktiviert, werden die Highlights auf dem Benutzer-Dashboard (Mein Moodle) angezeigt.';
 // ... ... Einstellungen: Highlight-Elemente.
 $string['highlightenabled'] = 'Highlight aktivieren';
 $string['highlightenabled_desc'] = 'Wenn aktiviert, wird dieses Highlight angezeigt.';
@@ -148,5 +148,5 @@ $string['highlightlink_desc'] = 'Geben Sie die URL für diese Highlight-Kachel e
 $string['highlightcohortvisibility'] = 'Kohortensichtbarkeit';
 $string['highlightcohortvisibility_desc'] = 'Geben Sie die Kohorten-IDs (kommagetrennt) ein, die dieses Highlight sehen können sollen. Lassen Sie das Feld leer, um es allen Benutzern anzuzeigen.';
 
-// Sonstiges
+// Sonstiges.
 $string['or'] = 'oder';

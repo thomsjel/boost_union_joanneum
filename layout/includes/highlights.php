@@ -18,7 +18,7 @@
  * Theme Boost Union Child - highlights layout include.
  *
  * This file prepares the template context for the highlights tiles.
- * 
+ *
  * Architecture Overview:
  *
  * This file serves as a layout INCLUDE and is not a standalone renderer.
@@ -49,15 +49,15 @@ global $CFG, $PAGE;
 // Require Boost Union Child locallib for helper functions.
 require_once($CFG->dirroot . '/theme/boost_union_joanneum/locallib.php');
 
-// Get Boost Union Child theme config
+// Get Boost Union Child theme config.
 $childconfig = get_config('theme_boost_union_joanneum');
 
-// Initialize templatecontext if it doesn't exist in the current scope
+// Initialize templatecontext if it doesn't exist in the current scope.
 if (!isset($templatecontext)) {
     $templatecontext = [];
 }
 
-// Check if highlights are enabled
+// Check if highlights are enabled.
 $enablehighlights = isset($childconfig->enablehighlights) ? $childconfig->enablehighlights : 0;
 
 // Check if highlights container is dismissible (but not on the login page as the user preference can't be stored there).
@@ -72,43 +72,43 @@ if ($PAGE->pagelayout != 'login') {
     $highlightsdismissible = 0;
 }
 
-// Initialize the highlights array
+// Initialize the highlights array.
 $highlights = [];
 
 $isadmin = is_siteadmin($USER->id);
 
-// Get all configured highlights (up to 6)
+// Get all configured highlights (up to 6).
 for ($i = 1; $i <= 6; $i++) {
-    // Check if this highlight is enabled
+    // Check if this highlight is enabled.
     $enabled = isset($childconfig->{'highlight' . $i . 'enabled'}) ? $childconfig->{'highlight' . $i . 'enabled'} : 0;
-    
-    if(!$isadmin){
-        // Skip if highlight is disabled
+
+    if (!$isadmin) {
+        // Skip if highlight is disabled.
         if (!$enabled) {
             continue;
         }
-        
+
         // Check cohort visibility for this highlight.
         if (!theme_boost_union_joanneum_highlight_is_visible_for_user($i)) {
             continue;
         }
     }
-    
+
     $title = isset($childconfig->{'highlight' . $i . 'title'}) ? $childconfig->{'highlight' . $i . 'title'} : '';
     $description = isset($childconfig->{'highlight' . $i . 'description'}) ? $childconfig->{'highlight' . $i . 'description'} : '';
     $link = isset($childconfig->{'highlight' . $i . 'link'}) ? $childconfig->{'highlight' . $i . 'link'} : '';
-    
-    // Only add highlights that have at least a title or description
+
+    // Only add highlights that have at least a title or description.
     if (!empty($title) || !empty($description)) {
         // Get the icon file URL.
         $iconurl = theme_boost_union_joanneum_get_highlight_icon_url($i);
-        
-        // Check if link should open in new tab (for external links)
+
+        // Check if link should open in new tab (for external links).
         $linktargetnewtab = false;
         if (!empty($link) && (strpos($link, 'http://') === 0 || strpos($link, 'https://') === 0)) {
             $linktargetnewtab = true;
         }
-        
+
         $highlights[] = [
             'iconurl' => $iconurl,
             'title' => $title,
@@ -119,16 +119,16 @@ for ($i = 1; $i <= 6; $i++) {
     }
 }
 
-// Prepare the template context - always set showhighlights for the template
+// Prepare the template context - always set showhighlights for the template.
 $templatecontext['showhighlights'] = $enablehighlights && !empty($highlights);
 if ($templatecontext['showhighlights']) {
     $templatecontext['highlights'] = $highlights;
     $templatecontext['highlightsectiontitle'] = $childconfig->highlightsectiontitle;
     $templatecontext['issinglehighlight'] = (count($highlights) === 1);
     $templatecontext['highlightsdismissible'] = $highlightsdismissible;
-    // Set the position flag to render highlights after the slider
+    // Set the position flag to render highlights after the slider.
     $templatecontext['highlightspositionafter'] = true;
-    
+
     // Add the dismissible AMD module to the page if highlights are dismissible.
     if ($highlightsdismissible == true) {
         $PAGE->requires->js_call_amd('theme_boost_union_joanneum/highlights', 'init');

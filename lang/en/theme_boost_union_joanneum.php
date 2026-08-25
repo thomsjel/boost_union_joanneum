@@ -131,8 +131,8 @@ $string['highlightsvisibilityheading'] = 'Highlights visibility';
 $string['showhighlightsonfrontpage'] = 'Show highlights on frontpage';
 $string['showhighlightsonfrontpage_desc'] = 'If checked, the highlights will be displayed on the site frontpage.';
 // ... ... Setting: Show highlights on dashboard.
-$string['showhighlightsonDashboard'] = 'Show highlights on dashboard';
-$string['showhighlightsonDashboard_desc'] = 'If checked, the highlights will be displayed on the user dashboard (My Moodle).';
+$string['showhighlightsondashboard'] = 'Show highlights on dashboard';
+$string['showhighlightsondashboard_desc'] = 'If checked, the highlights will be displayed on the user dashboard (My Moodle).';
 // ... ... Settings: Highlight items.
 $string['highlightenabled'] = 'Enable highlight';
 $string['highlightenabled_desc'] = 'If checked, this highlight will be displayed.';
@@ -148,5 +148,5 @@ $string['highlightlink_desc'] = 'Enter the URL for this highlight tile (e.g., /c
 $string['highlightcohortvisibility'] = 'Cohort visibility';
 $string['highlightcohortvisibility_desc'] = 'Enter cohort IDs (comma-separated) that should be able to see this highlight. Leave empty to show to all users.';
 
-// Miscellaneous
+// Miscellaneous.
 $string['or'] = 'or';

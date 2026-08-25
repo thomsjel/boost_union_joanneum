@@ -17,7 +17,7 @@
 /**
  * Theme Boost Union - Core renderer
  *
- * @package    theme_boost_union
+ * @package    theme_boost_union_joanneum
  * @copyright  2026 Thomas Kautz <thomas.kautz@fh-joanneum.at>, Alexander Bias <alexander.bias@lernlink.de>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -1376,20 +1376,16 @@ class core_renderer extends core_renderer_intermediate {
             $this->page->requires->js_call_amd('theme_boost_union/logintabs', 'init');
         }
 
-        // Check if the splitscreen layout is enabled in theme settings.
-        $splitscreenabled = true; //get_config('theme_boost_union_joanneum', 'loginsplitscreenenabled');
         // Get the login layout setting from theme_boost_union_joanneum.
         $loginlayout = get_config('theme_boost_union_joanneum', 'loginlayout');
 
-        if($loginlayout === THEME_BOOST_UNION_JOANNEUM_SETTING_LOGIN_LAYOUT_SPLIT_SCREEN){
-
+        if ($loginlayout === THEME_BOOST_UNION_JOANNEUM_SETTING_LOGIN_LAYOUT_SPLIT_SCREEN) {
             $context->loginurloidc = new moodle_url('/auth/oidc/?source=loginpage');
             $context->isoidcloginenabled = get_config('theme_boost_union_joanneum', 'enableoidclogin');
             $context->labelor = get_string('or', 'theme_boost_union_joanneum', null, true);
-            
+
             // Render the custom splitscreen template.
             return $this->render_from_template('theme_boost_union_joanneum/core/loginform_split', $context);
-
         } else {
             // Render the login form template with the context.
             return $this->render_from_template('theme_boost_union/core/loginform', $context);

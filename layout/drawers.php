@@ -36,7 +36,7 @@
  * * Include smart menus
  * * Include course index modification
  *
- * @package   theme_boost_union
+ * @package   theme_boost_union_joanneum
  * @copyright 2026 Thomas Kautz <thomas.kautz@fh-joanneum.at>, Luca Bösch <luca.boesch@bfh.ch>
  * @copyright based on code from theme_boost by Bas Brands
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -152,8 +152,8 @@ $bodyattributes = $OUTPUT->body_attributes($extraclasses); // In the original la
 $header = $PAGE->activityheader;
 $headercontent = $header->export_for_template($renderer);
 
-// Pre-render the main content placeholder to ensure it's available in the template
-// This is needed for compatibility with Moodle's header() method which expects the token
+// Pre-render the main content placeholder to ensure it's available in the template.
+// This is needed for compatibility with Moodle's header() method which expects the token.
 $maincontentplaceholder = $OUTPUT->main_content();
 
 $templatecontext = [
@@ -176,7 +176,6 @@ $templatecontext = [
     'overflow' => $overflow,
     'headercontent' => $headercontent,
     'addblockbutton' => $addblockbutton,
-    //'main_content' => $maincontentplaceholder,
 ];
 
 // Include the template content for the course related hints.
@@ -226,18 +225,22 @@ $childconfig = get_config('theme_boost_union_joanneum');
 $showslideronfrontpage = isset($childconfig->showslideronfrontpage) ? $childconfig->showslideronfrontpage : 0;
 $showsliderondashboard = isset($childconfig->showsliderondashboard) ? $childconfig->showsliderondashboard : 0;
 
-if (($PAGE->pagelayout == 'frontpage' && $showslideronfrontpage) ||
-    ($PAGE->pagelayout == 'mydashboard' && $showsliderondashboard)) {
+if (
+    ($PAGE->pagelayout == 'frontpage' && $showslideronfrontpage) ||
+    ($PAGE->pagelayout == 'mydashboard' && $showsliderondashboard)
+) {
     require_once($CFG->dirroot . '/theme/boost_union_joanneum/layout/includes/slider.php');
 }
 
 // Include the template content for the highlights, but only if we are on the frontpage or dashboard
 // and the corresponding setting is enabled.
 $showhighlightsonfrontpage = isset($childconfig->showhighlightsonfrontpage) ? $childconfig->showhighlightsonfrontpage : 0;
-$showhighlightsonDashboard = isset($childconfig->showhighlightsonDashboard) ? $childconfig->showhighlightsonDashboard : 0;
+$showhighlightsondashboard = isset($childconfig->showhighlightsondashboard) ? $childconfig->showhighlightsondashboard : 0;
 
-if (($PAGE->pagelayout == 'frontpage' && $showhighlightsonfrontpage) ||
-    ($PAGE->pagelayout == 'mydashboard' && $showhighlightsonDashboard)) {
+if (
+    ($PAGE->pagelayout == 'frontpage' && $showhighlightsonfrontpage) ||
+    ($PAGE->pagelayout == 'mydashboard' && $showhighlightsondashboard)
+) {
     require_once($CFG->dirroot . '/theme/boost_union_joanneum/layout/includes/highlights.php');
 }
 

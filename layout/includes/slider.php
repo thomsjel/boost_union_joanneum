@@ -18,7 +18,7 @@
  * Theme Boost Union Child - slider layout include.
  *
  * This file extends the Boost Union slider functionality to support additional layouts.
- * 
+ *
  * Architecture Overview:
  *
  * This file serves as a layout INCLUDE and is not a standalone renderer.
@@ -46,41 +46,41 @@ defined('MOODLE_INTERNAL') || die();
 
 global $CFG;
 
-// First, include the parent theme's slider functionality
+// First, include the parent theme's slider functionality.
 require_once($CFG->dirroot . '/theme/boost_union/layout/includes/slider.php');
 
-// Now extend the templatecontext with Boost Union Child specific slider settings
-// Get Boost Union Child theme config
+// Now extend the templatecontext with Boost Union Child specific slider settings.
+// Get Boost Union Child theme config.
 $childconfig = get_config('theme_boost_union_joanneum');
 
 if (!isset($templatecontext['slidergeneralsettings'])) {
     $templatecontext['slidergeneralsettings'] = new stdClass();
 }
 
-// Initialize layout settings
+// Initialize layout settings.
 $templatecontext['slidergeneralsettings']->layout = 0;
 $templatecontext['slidergeneralsettings']->islayouttextleft = false;
 
-// Check if we have a slider layout setting from Boost Union Child
+// Check if we have a slider layout setting from Boost Union Child.
 if (isset($childconfig->sliderlayout)) {
-    // Set the layout flag for the template
+    // Set the layout flag for the template.
     switch ($childconfig->sliderlayout) {
         case THEME_BOOST_UNION_JOANNEUM_SETTING_SLIDER_LAYOUT_DEFAULT:
-            // Default layout (no special handling needed)
+            // Default layout (no special handling needed).
             $templatecontext['slidergeneralsettings']->layout = 0;
             $templatecontext['slidergeneralsettings']->islayouttextleft = false;
             break;
         case THEME_BOOST_UNION_JOANNEUM_SETTING_SLIDER_LAYOUT_TEXTLEFT_SOLID:
-            // Text left with solid background and image right layout
+            // Text left with solid background and image right layout.
             $templatecontext['slidergeneralsettings']->layout = 1;
             $templatecontext['slidergeneralsettings']->islayouttextleft = true;
             break;
         default:
-            // Default to standard layout
+            // Default to standard layout.
             $templatecontext['slidergeneralsettings']->layout = 0;
             $templatecontext['slidergeneralsettings']->islayouttextleft = false;
     }
 }
 
-// Make sure the template uses the Boost Union Child slider template
-// The template will be automatically selected based on the theme in use
+// Make sure the template uses the Boost Union Child slider template.
+// The template will be automatically selected based on the theme in use.
