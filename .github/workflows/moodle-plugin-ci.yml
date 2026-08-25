@@ -48,7 +48,7 @@ jobs:
         # the (parent) Boost Union plugin pages (e.g. "Boost Union settings overview", "Boost Union built-in")
         # which keep their name even when the active theme is Boost Union Child. We therefore only rewrite the
         # specific theme-selection steps.
-        sed -i 's/I set the field "id_filter_theme" to "Boost Union"/I set the field "id_filter_theme" to "Boost Union Child"/' plugin/tests/behat/*.feature
+        sed -i 's/I set the field "id_filter_theme" to "Boost Union"/I set the field "id_filter_theme" to "Boost Union Joanneum"/' plugin/tests/behat/*.feature
       pr-check-diff-does-not-contain: "theme->settings->"
       behat-suite: "boost_union_joanneum"
       behat-slices: 4
