@@ -43,9 +43,9 @@
     }
 }}
 {{#showhighlights}}
-<div aria-live="polite" id="themeboostunionchildhighlights-wrapper" class="container-fluid pb-3 highlights-wrapper{{#highlightsdismissible}} alert alert-dismissible{{/highlightsdismissible}}" role="{{#highlightsdismissible}}alert{{/highlightsdismissible}}">
+<div aria-live="polite" id="{{highlights_wrapper_id}}" class="container-fluid pb-3 highlights-wrapper{{#highlightsdismissible}} alert alert-dismissible{{/highlightsdismissible}}" role="{{#highlightsdismissible}}alert{{/highlightsdismissible}}">
   {{#highlightsdismissible}}
-    <button type="button" id="themeboostunionchildhighlightsclose" class="close" data-dismiss="alert" aria-label="{{#str}}closebuttontitle{{/str}}">
+    <button type="button" id="{{highlights_close_id}}" class="close" data-dismiss="alert" aria-label="{{#str}}closebuttontitle{{/str}}">
       <span aria-hidden="true">&times;</span>
     </button>
   {{/highlightsdismissible}}

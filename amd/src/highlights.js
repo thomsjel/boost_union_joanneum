@@ -58,8 +58,8 @@ define(['core_user/repository'], function(UserRepository) {
      * Initialise the highlights dismissal functionality.
      */
     const initHighlights = () => {
-        const closeButton = document.getElementById('themeboostunionchildhighlightsclose');
-        const wrapper = document.getElementById('themeboostunionchildhighlights-wrapper');
+        const closeButton = document.getElementById('theme_boost_union_joanneum_highlights_close');
+        const wrapper = document.getElementById('theme_boost_union_joanneum_highlights_wrapper');
 
         if (!closeButton || !wrapper) {
             return;

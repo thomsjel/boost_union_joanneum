@@ -128,6 +128,8 @@ if ($templatecontext['showhighlights']) {
     $templatecontext['highlightsdismissible'] = $highlightsdismissible;
     // Set the position flag to render highlights after the slider.
     $templatecontext['highlightspositionafter'] = true;
+    $templatecontext['highlights_wrapper_id'] = 'theme_boost_union_joanneum_highlights_wrapper';
+    $templatecontext['highlights_close_id'] = 'theme_boost_union_joanneum_highlights_close';
 
     // Add the dismissible AMD module to the page if highlights are dismissible.
     if ($highlightsdismissible == true) {
